@@ -1,7 +1,9 @@
 .card {
   background: color(white);
-  box-shadow: 3px 2px 11px rgba(78, 55, 210, 0.07);
   border-radius: 5px;
+  border: none;
+  box-shadow: 3px 2px 11px rgba(78, 55, 210, 0.07);
+  height: 100%;
 }
 
 .csr-card {
@@ -10,6 +12,7 @@
     display: flex;
     flex-direction: column;
     padding: 3rem 2rem;
+    padding-top: 5rem;
     .title {
       margin-bottom: 3rem;
     }
@@ -48,6 +51,12 @@
         }
         &__icon {
           background: rgba(color(purple), 0.1);
+
+          svg {
+            path {
+              fill: color(purple);
+            }
+          }
         }
       }
     }
@@ -59,6 +68,12 @@
         }
         &__icon {
           background: rgba(color(green), 0.1);
+
+          svg {
+            path {
+              fill: color(green);
+            }
+          }
         }
       }
     }
@@ -70,6 +85,11 @@
         }
         &__icon {
           background: rgba(color(yellow), 0.1);
+          svg {
+            path {
+              fill: color(yellow);
+            }
+          }
         }
       }
     }
@@ -81,6 +101,12 @@
         }
         &__icon {
           background: rgba(color(red), 0.1);
+
+          svg {
+            path {
+              fill: color(red);
+            }
+          }
         }
       }
     }
@@ -104,8 +130,16 @@
   &__body {
     align-items: center;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     padding: 4rem 3rem;
+    height: 100%;
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .title {
       margin-bottom: 3rem;
     }
@@ -118,15 +152,16 @@
     align-items: center;
     border-radius: 50%;
     display: flex;
-    height: 4rem;
+    height: 5rem;
     justify-content: center;
-    width: 4rem;
+    margin-bottom: 2rem;
+    width: 5rem;
   }
 
   &__link {
     align-items: center;
     border-radius: 50%;
-    border: 3px solid color(off-dark);
+    border: 3px solid color(offDark);
     display: flex;
     height: 4rem;
     justify-content: center;
@@ -139,13 +174,18 @@
       .product-card {
         &__link {
           border-color: rgba(color(purple), 0.6);
-
           &:hover {
             border-color: rgba(color(purple), 1);
           }
         }
         &__icon {
-          background: rgba(color(purple), 0.6);
+          background: rgba(color(purple), 0.3);
+
+          svg {
+            path {
+              fill: color(purple);
+            }
+          }
         }
       }
     }
@@ -154,13 +194,18 @@
       .product-card {
         &__link {
           border-color: rgba(color(green), 0.6);
-
           &:hover {
             border-color: rgba(color(green), 1);
           }
         }
         &__icon {
-          background: rgba(color(green), 0.6);
+          background: rgba(color(green), 0.3);
+
+          svg {
+            path {
+              fill: color(green);
+            }
+          }
         }
       }
     }
@@ -169,13 +214,18 @@
       .product-card {
         &__link {
           border-color: rgba(color(yellow), 0.6);
-
           &:hover {
             border-color: rgba(color(yellow), 1);
           }
         }
         &__icon {
-          background: rgba(color(yellow), 0.6);
+          background: rgba(color(yellow), 0.3);
+
+          svg {
+            path {
+              fill: color(yellow);
+            }
+          }
         }
       }
     }
@@ -184,13 +234,18 @@
       .product-card {
         &__link {
           border-color: rgba(color(red), 0.6);
-
           &:hover {
             border-color: rgba(color(red), 1);
           }
         }
         &__icon {
-          background: rgba(color(red), 0.6);
+          background: rgba(color(red), 0.3);
+
+          svg {
+            path {
+              fill: color(red);
+            }
+          }
         }
       }
     }
@@ -202,7 +257,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 2.5rem;
+    padding: 1rem;
     padding-bottom: 4rem;
 
     .title {
@@ -222,7 +277,7 @@
   }
 
   &__img {
-    height: 12rem;
+    height: 16rem;
     margin-bottom: 2rem;
     width: 100%;
     img {
