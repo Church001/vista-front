@@ -1,6 +1,11 @@
 import React from 'react';
+import { Wrapper } from 'components';
 
 const Home = props => {
-  return <div className='container'>Home</div>;
+  return (
+    <Wrapper>
+      <div className='container'>Home</div>
+    </Wrapper>
+  );
 };
 export default Home;
