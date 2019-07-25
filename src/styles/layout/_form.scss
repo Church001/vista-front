@@ -1,0 +1,21 @@
+.form {
+  &__label {
+    @extend .text;
+    @extend .text--xs;
+    @extend .fw-semi;
+  }
+
+  &__field {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(color(dark), 0.15);
+    box-shadow: none !important;
+    font-size: 1.8rem;
+    outline: none !important;
+    padding: 0;
+
+    &:not(textarea) {
+      height: 2.5rem;
+    }
+  }
+}
