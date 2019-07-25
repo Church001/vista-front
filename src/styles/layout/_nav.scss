@@ -1,0 +1,79 @@
+.nav {
+  &__bar {
+    position: relative;
+
+    &--fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  &__brand {
+    img {
+      height: 4.5rem;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 5rem;
+    }
+
+    &.special {
+      background: color(green);
+      border-bottom-left-radius: 500px;
+      border-top-left-radius: 500px;
+      padding: 1rem 2rem 1rem 3rem;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      color: color(white);
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1.5rem;
+      padding: 0.5rem 0;
+      position: relative;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    &:hover,
+    &.active {
+      opacity: 0.7;
+    }
+  }
+}
+
+.navbar-toggler {
+  border: 1px solid color(green);
+
+  &-icon {
+    background-image: url('../assets/svg/menu.svg');
+    background-repeat: no-repeat;
+    height: 3rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 3rem;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

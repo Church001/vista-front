@@ -1,12 +1,16 @@
 $colors: (
-  dark: #4a4a4a,
-  grey: #9b9b9b,
+  purple: #4e37d2,
+  lightPurple: #513bd3,
+  green: #17bdba,
+  yellow: #fba50e,
+  red: #ff0000,
+  dark: #2c2a34,
+  offDark: rgba(#2c2a34, 0.7),
   white: #fff,
   black: #000
 );
 
 $system-font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
   Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-// $main-font: 'Raleway', sans-serif;
 $main-font: 'Open Sans', sans-serif;
 $default-font-size: 1.6rem;
