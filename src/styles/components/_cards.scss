@@ -1,0 +1,234 @@
+.card {
+  background: color(white);
+  box-shadow: 3px 2px 11px rgba(78, 55, 210, 0.07);
+  border-radius: 5px;
+}
+
+.csr-card {
+  &__body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 2rem;
+    .title {
+      margin-bottom: 3rem;
+    }
+    .subtitle {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__icon {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 12rem;
+    justify-content: center;
+    width: 12rem;
+  }
+
+  &__header {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 5rem;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    top: -2.5rem;
+    transform: translateX(-50%);
+    width: 5rem;
+  }
+
+  &--c {
+    &-purple {
+      .csr-card {
+        &__header {
+          background: color(purple);
+        }
+        &__icon {
+          background: rgba(color(purple), 0.1);
+        }
+      }
+    }
+
+    &-green {
+      .csr-card {
+        &__header {
+          background: color(green);
+        }
+        &__icon {
+          background: rgba(color(green), 0.1);
+        }
+      }
+    }
+
+    &-yellow {
+      .csr-card {
+        &__header {
+          background: color(yellow);
+        }
+        &__icon {
+          background: rgba(color(yellow), 0.1);
+        }
+      }
+    }
+
+    &-red {
+      .csr-card {
+        &__header {
+          background: color(red);
+        }
+        &__icon {
+          background: rgba(color(red), 0.1);
+        }
+      }
+    }
+  }
+}
+
+.explore-card {
+  &__header {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20rem;
+  }
+
+  &__body {
+    padding: 2rem 1rem;
+  }
+}
+
+.product-card {
+  &__body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 3rem;
+    .title {
+      margin-bottom: 3rem;
+    }
+    .subtitle {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__icon {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 4rem;
+    justify-content: center;
+    width: 4rem;
+  }
+
+  &__link {
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid color(off-dark);
+    display: flex;
+    height: 4rem;
+    justify-content: center;
+    transition: all 0.2s;
+    width: 4rem;
+  }
+
+  &--c {
+    &-purple {
+      .product-card {
+        &__link {
+          border-color: rgba(color(purple), 0.6);
+
+          &:hover {
+            border-color: rgba(color(purple), 1);
+          }
+        }
+        &__icon {
+          background: rgba(color(purple), 0.6);
+        }
+      }
+    }
+
+    &-green {
+      .product-card {
+        &__link {
+          border-color: rgba(color(green), 0.6);
+
+          &:hover {
+            border-color: rgba(color(green), 1);
+          }
+        }
+        &__icon {
+          background: rgba(color(green), 0.6);
+        }
+      }
+    }
+
+    &-yellow {
+      .product-card {
+        &__link {
+          border-color: rgba(color(yellow), 0.6);
+
+          &:hover {
+            border-color: rgba(color(yellow), 1);
+          }
+        }
+        &__icon {
+          background: rgba(color(yellow), 0.6);
+        }
+      }
+    }
+
+    &-red {
+      .product-card {
+        &__link {
+          border-color: rgba(color(red), 0.6);
+
+          &:hover {
+            border-color: rgba(color(red), 1);
+          }
+        }
+        &__icon {
+          background: rgba(color(red), 0.6);
+        }
+      }
+    }
+  }
+}
+
+.service-card {
+  &__body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    padding-bottom: 4rem;
+
+    .title {
+      margin-bottom: 2rem;
+    }
+
+    .subtitle {
+      margin-bottom: 4rem;
+    }
+
+    .link {
+      &:hover {
+        opacity: 0.7;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__img {
+    height: 12rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}
