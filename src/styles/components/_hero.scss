@@ -1,0 +1,92 @@
+.hero {
+  background-color: color(dark);
+  position: relative;
+  &__slide {
+    align-items: flex-end;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    min-height: 70vh;
+    padding: 10rem 0;
+    position: relative;
+
+    .overlay {
+      background: rgba(color(black), 0.2);
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .title {
+      margin-bottom: 2rem;
+    }
+    .subtitle {
+      margin-bottom: 4rem;
+    }
+    @include respond('xs') {
+      min-height: 40vh;
+      padding-bottom: 14rem;
+    }
+  }
+
+  &__controls {
+    bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+    min-width: 10rem;
+    position: absolute;
+    right: 11rem;
+
+    @include respond('xs') {
+      right: unset;
+      left: 3rem;
+      bottom: 6rem;
+    }
+
+    &__top {
+      margin-bottom: 1rem;
+      .pills {
+        background: rgba(color(white), 0.5);
+        display: flex;
+        height: 0.5rem;
+        overflow: hidden;
+        width: 100%;
+        border-radius: 500px;
+      }
+      .pill {
+        border-radius: 500px;
+        cursor: pointer;
+        height: 100%;
+        transition: all 0.3s;
+        &.active {
+          background: color(white);
+        }
+      }
+    }
+    &__bottom {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      .dots {
+        align-items: center;
+        display: flex;
+        margin: 0 2rem;
+        .dot {
+          background: rgba(color(white), 0.5);
+          border-radius: 50%;
+          cursor: pointer;
+          height: 1rem;
+          margin: 0 0.5rem;
+          transition: all 0.3s;
+          width: 1rem;
+          &.active {
+            background: color(white);
+          }
+        }
+      }
+    }
+  }
+}

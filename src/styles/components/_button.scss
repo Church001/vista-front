@@ -43,6 +43,16 @@
     }
   }
 
+  &__white {
+    background: color(white);
+    border-color: color(white);
+    color: color(dark);
+    &:hover {
+      background: rgba(color(white), 0.8);
+      border-color: rgba(color(white), 0.8);
+    }
+  }
+
   &--rounded {
     border-radius: 500px;
   }
