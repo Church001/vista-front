@@ -1,0 +1,33 @@
+.sl {
+  align-items: center;
+  background: rgba(color(purple), 0.02);
+  display: flex;
+  justify-content: flex-start;
+  padding: 1.5rem 0;
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    transition: all 0.2s;
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  &--alternate {
+    justify-content: center;
+
+    .sl__link {
+      svg {
+        path {
+          fill: color(dark);
+        }
+      }
+    }
+  }
+}
