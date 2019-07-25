@@ -1,0 +1,50 @@
+.text {
+  color: color(dark);
+  font-size: 2rem;
+
+  &--xs {
+    font-size: 1.5rem;
+  }
+  &--sm {
+    font-size: 1.8rem;
+  }
+  &--lg {
+    font-size: 3rem;
+  }
+  &--xl {
+    font-size: 3.7rem;
+  }
+
+  &.fw-light {
+    font-weight: 300;
+  }
+
+  &.fw-regular {
+    font-weight: 400;
+  }
+  &.fw-semi {
+    font-weight: 600;
+  }
+  &.fw-bold {
+    font-weight: 700;
+  }
+
+  &.c-white {
+    color: color(white);
+  }
+  &.c-purple {
+    color: color(purple);
+  }
+  &.c-green {
+    color: color(green);
+  }
+  &.c-yellow {
+    color: color(yellow);
+  }
+  &.c-red {
+    color: color(red);
+  }
+  &.c-off-dark {
+    color: color(offDark);
+  }
+}

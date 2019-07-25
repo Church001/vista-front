@@ -2,4 +2,23 @@
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
 .footer {
+  padding: 3rem 0;
+  &__menu {
+    display: flex;
+    padding: 0;
+    margin: 0;
+
+    &__item {
+      list-style: none;
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  &__copyright {
+    span {
+      margin-right: 1rem;
+    }
+  }
 }
