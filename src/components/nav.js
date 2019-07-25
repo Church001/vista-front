@@ -15,7 +15,8 @@ import PropTypes from 'prop-types';
 
 export const Nav = props => {
   const [isOpen, setIsOpen] = useState(false);
-  const [menuMargin, setMenuMargin] = useState(100);
+  const [active, setActive] = useState(false);
+  const [menuMargin, setMenuMargin] = useState(0);
   const phoneBtn = createRef();
 
   const toggle = () => {
@@ -25,14 +26,22 @@ export const Nav = props => {
   useEffect(() => {
     if (!phoneBtn.current || !phoneBtn.current.getBoundingClientRect().width)
       return;
-    setMenuMargin(phoneBtn.current.getBoundingClientRect().width);
+    if (window.innerWidth > 576) {
+      setMenuMargin(phoneBtn.current.getBoundingClientRect().width + 30);
+    } else {
+      setMenuMargin(0);
+    }
   }, [window.innerWidth, phoneBtn, phoneBtn.current]);
 
   useEffect(() => {
     const handleResize = () => {
       if (!phoneBtn.current || !phoneBtn.current.getBoundingClientRect().width)
         return;
-      setMenuMargin(phoneBtn.current.getBoundingClientRect().width);
+      if (window.innerWidth > 576) {
+        setMenuMargin(phoneBtn.current.getBoundingClientRect().width + 30);
+      } else {
+        setMenuMargin(0);
+      }
     };
     window.addEventListener('resize', handleResize);
     return () => {
@@ -40,11 +49,27 @@ export const Nav = props => {
     };
   });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 30) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
   return (
     <Navbar
       expand='lg'
       className={cx('nav__bar', {
-        'nav__bar--fixed': props.fixed
+        'nav__bar--fixed': props.fixed,
+        active: active || isOpen
       })}
     >
       <div className='container'>
@@ -56,10 +81,10 @@ export const Nav = props => {
           <BNav
             className='ml-auto nav__list'
             navbar
-            style={{ marginRight: menuMargin + 30 }}
+            style={{ marginRight: menuMargin }}
           >
             <NavItem className='nav__item'>
-              <NavLink className='nav__link' to='/'>
+              <NavLink exact className='nav__link' to='/'>
                 Home
               </NavLink>
             </NavItem>
@@ -82,9 +107,9 @@ export const Nav = props => {
             </NavItem>
 
             <NavItem className='nav__item special'>
-              <NavLink ref={phoneBtn} className='nav__link' to='/agents'>
+              <a to='#' ref={phoneBtn} className='nav__link'>
                 <Phone /> +234 81 840 152 xx
-              </NavLink>
+              </a>
             </NavItem>
           </BNav>
         </Collapse>

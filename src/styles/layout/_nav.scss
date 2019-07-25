@@ -3,11 +3,35 @@
     position: relative;
 
     &--fixed {
+      background: transparent;
       left: 0;
       position: fixed;
       top: 0;
+      transition: all 0.3s;
       width: 100%;
       z-index: 9;
+
+      &.active {
+        background: color(white);
+        box-shadow: 3px 2px 11px rgba(78, 55, 210, 0.07);
+
+        .nav__item:not(.special) {
+          .nav__link {
+            color: color(dark);
+          }
+        }
+
+        @include respond('xs') {
+          .nav__item {
+            margin-right: 0;
+            margin-bottom: 1rem;
+            &.special {
+              position: static;
+              transform: none;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -62,7 +86,7 @@
 }
 
 .navbar-toggler {
-  border: 1px solid color(green);
+  border: 1px solid color(purple);
 
   &-icon {
     background-image: url('../assets/svg/menu.svg');
