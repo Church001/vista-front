@@ -107,7 +107,7 @@ export const Nav = props => {
             </NavItem>
 
             <NavItem className='nav__item special'>
-              <a to='#' ref={phoneBtn} className='nav__link'>
+              <a href='#' ref={phoneBtn} className='nav__link'>
                 <Phone /> +234 81 840 152 xx
               </a>
             </NavItem>
