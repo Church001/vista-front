@@ -5,7 +5,7 @@ export const Footer = () => {
     <div className='footer'>
       <div className='container'>
         <div className='row'>
-          <div className='col-md-6'>
+          <div className='col-md-6 mb-3 mb-md-0'>
             <ul className='footer__menu'>
               <li className='footer__menu__item'>
                 <a href='#' className='footer__menu__link text c-off-dark'>

@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import { Link, NavLink } from 'react-router-dom';
 import logo from 'assets/img/logo.png';
+import { ReactComponent as Phone } from 'assets/svg/phone.svg';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -58,31 +59,31 @@ export const Nav = props => {
             style={{ marginRight: menuMargin + 30 }}
           >
             <NavItem className='nav__item'>
-              <NavLink className='nav__link' to='/for-sale'>
+              <NavLink className='nav__link' to='/'>
                 Home
               </NavLink>
             </NavItem>
             <NavItem className='nav__item'>
-              <NavLink className='nav__link' to='/for-rent'>
+              <NavLink className='nav__link' to='/about-us'>
                 About
               </NavLink>
             </NavItem>
 
             <NavItem className='nav__item'>
-              <NavLink className='nav__link' to='/showcase'>
+              <NavLink className='nav__link' to='/explore'>
                 Our Products
               </NavLink>
             </NavItem>
 
             <NavItem className='nav__item'>
-              <NavLink className='nav__link' to='/agents'>
+              <NavLink className='nav__link' to='/contact-us'>
                 Contact Us
               </NavLink>
             </NavItem>
 
             <NavItem className='nav__item special'>
               <NavLink ref={phoneBtn} className='nav__link' to='/agents'>
-                +234 81 840 152 xx
+                <Phone /> +234 81 840 152 xx
               </NavLink>
             </NavItem>
           </BNav>

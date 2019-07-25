@@ -2,16 +2,32 @@
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
 .footer {
-  padding: 3rem 0;
+  padding: 2rem 0;
   &__menu {
     display: flex;
     padding: 0;
     margin: 0;
 
+    @include respond('xs') {
+      flex-direction: column;
+    }
+
     &__item {
       list-style: none;
       &:not(:last-child) {
         margin-right: 2rem;
+
+        @include respond('xs') {
+          margin-bottom: 2rem;
+          margin-right: 0;
+        }
+      }
+    }
+
+    &__link {
+      &:hover {
+        opacity: 0.7;
+        text-decoration: none;
       }
     }
   }
