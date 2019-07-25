@@ -1,0 +1,40 @@
+.section {
+  padding: 6rem 0;
+  &--wo {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &--p {
+      background-image: url('../assets/img/purple-objects.png');
+    }
+
+    &--g {
+      background-image: url('../assets/img/green-objects.png');
+    }
+  }
+
+  &--pbg {
+    background-color: rgba(color(purple), 0.02);
+  }
+
+  &__sub {
+    &:not(:last-child) {
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+
+    &.more {
+      margin-bottom: 7rem;
+    }
+
+    :nth-child(1) {
+      margin-bottom: 1rem;
+    }
+  }
+}

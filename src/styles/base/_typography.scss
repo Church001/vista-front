@@ -18,7 +18,6 @@
   &.fw-light {
     font-weight: 300;
   }
-
   &.fw-regular {
     font-weight: 400;
   }
@@ -46,5 +45,15 @@
   }
   &.c-off-dark {
     color: color(offDark);
+  }
+
+  &.w-50 {
+    @include respond('sm') {
+      width: 75% !important;
+    }
+
+    @include respond('xs') {
+      width: 100% !important;
+    }
   }
 }

@@ -6,10 +6,11 @@
 // 3. Base stuff
 @import 'base/base', 'base/typography';
 // 4. Layout-related sections
-@import 'layout/nav', 'layout/footer', 'layout/form';
+@import 'layout/nav', 'layout/footer', 'layout/form', 'layout/section';
 
 // 5. Components
-@import 'components/button', 'components/contact-form';
+@import 'components/button', 'components/contact-form', 'components/hero',
+  'components/social-links', 'components/cards';
 
 // 6. Page-specific styles
 @import 'pages/home';
