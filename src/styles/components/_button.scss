@@ -2,4 +2,53 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 .btn {
+  &__purple {
+    background: color(purple);
+    border-color: color(purple);
+    color: color(white);
+
+    &:hover {
+      background: rgba(color(purple), 0.8);
+      border-color: rgba(color(purple), 0.8);
+    }
+  }
+
+  &__green {
+    background: color(green);
+    border-color: color(green);
+    color: color(white);
+    &:hover {
+      background: rgba(color(green), 0.8);
+      border-color: rgba(color(green), 0.8);
+    }
+  }
+
+  &__yellow {
+    background: color(yellow);
+    border-color: color(yellow);
+    color: color(white);
+    &:hover {
+      background: rgba(color(yellow), 0.8);
+      border-color: rgba(color(yellow), 0.8);
+    }
+  }
+
+  &__red {
+    background: color(red);
+    border-color: color(red);
+    color: color(white);
+    &:hover {
+      background: rgba(color(red), 0.8);
+      border-color: rgba(color(red), 0.8);
+    }
+  }
+
+  &--rounded {
+    border-radius: 500px;
+  }
+
+  &--xl {
+    font-size: 2rem;
+    padding: 0.75rem 2.5rem;
+  }
 }
