@@ -27,7 +27,7 @@ export const Footer = () => {
           </div>
           <div className='col-md-6'>
             <p className='footer__copyright text c-off-dark'>
-              <span className='text fw-bold'>pts.</span>
+              <span className='text fw-bold'>Vista International.</span>
               Copyright 2019. All Rights Reserved.
             </p>
           </div>

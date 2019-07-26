@@ -20,10 +20,8 @@ const Slide = ({ btn, img, subtitle, title }) => (
     <div className='overlay'></div>
     <div className='container'>
       <div className='col-md-6'>
-        <h3 className='title text text--sm c-white fw-semi'>{title}</h3>
-        <h4 className='subtitle text text--xl c-white fw-regular'>
-          {subtitle}
-        </h4>
+        <h3 className='title text text--sm c-white fw-regular'>{title}</h3>
+        <h4 className='subtitle text text--xl c-white fw-light'>{subtitle}</h4>
 
         {btn && btn.title ? (
           <Link to={btn.link} className='btn btn__white btn--rounded btn--lg'>
