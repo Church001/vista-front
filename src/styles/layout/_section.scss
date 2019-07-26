@@ -1,5 +1,5 @@
 .section {
-  padding: 6rem 0;
+  padding: 10rem 0;
   &--wo {
     background-position: center;
     background-size: cover;
@@ -19,7 +19,7 @@
 
   &__sub {
     &:not(:last-child) {
-      margin-bottom: 6rem;
+      margin-bottom: 12rem;
     }
   }
 
@@ -27,14 +27,14 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 
     &.more {
       margin-bottom: 7rem;
     }
 
     :nth-child(1) {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
   }
 }

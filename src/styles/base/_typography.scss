@@ -1,6 +1,6 @@
 .text {
   color: color(dark);
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   &--xs {
     font-size: 1.5rem;
@@ -10,9 +10,10 @@
   }
   &--lg {
     font-size: 3rem;
+    line-height: 40px;
   }
   &--xl {
-    font-size: 3.7rem;
+    font-size: 3rem;
   }
 
   &.fw-light {

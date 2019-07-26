@@ -9,7 +9,7 @@ export const ServiceCard = props => {
           <img src={props.img} alt={props.title} />
         </div>
 
-        <h5 className='title text text--xs fw-bold text-center'>
+        <h5 className='title text text--xs fw-semi text-center'>
           {props.title}
         </h5>
         <h6 className='subtitle text text--xs c-off-dark text-center'>

@@ -144,7 +144,7 @@
       margin-bottom: 3rem;
     }
     .subtitle {
-      margin-bottom: 5rem;
+      margin-bottom: 6rem;
     }
   }
 
@@ -154,7 +154,7 @@
     display: flex;
     height: 5rem;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 6rem;
     width: 5rem;
   }
 
@@ -173,13 +173,13 @@
     &-purple {
       .product-card {
         &__link {
-          border-color: rgba(color(purple), 0.6);
+          border-color: rgba(color(purple), 0.4);
           &:hover {
             border-color: rgba(color(purple), 1);
           }
         }
         &__icon {
-          background: rgba(color(purple), 0.3);
+          background: rgba(color(purple), 0.1);
 
           svg {
             path {
@@ -193,13 +193,13 @@
     &-green {
       .product-card {
         &__link {
-          border-color: rgba(color(green), 0.6);
+          border-color: rgba(color(green), 0.4);
           &:hover {
             border-color: rgba(color(green), 1);
           }
         }
         &__icon {
-          background: rgba(color(green), 0.3);
+          background: rgba(color(green), 0.1);
 
           svg {
             path {
@@ -213,13 +213,13 @@
     &-yellow {
       .product-card {
         &__link {
-          border-color: rgba(color(yellow), 0.6);
+          border-color: rgba(color(yellow), 0.4);
           &:hover {
             border-color: rgba(color(yellow), 1);
           }
         }
         &__icon {
-          background: rgba(color(yellow), 0.3);
+          background: rgba(color(yellow), 0.1);
 
           svg {
             path {
@@ -233,13 +233,13 @@
     &-red {
       .product-card {
         &__link {
-          border-color: rgba(color(red), 0.6);
+          border-color: rgba(color(red), 0.4);
           &:hover {
             border-color: rgba(color(red), 1);
           }
         }
         &__icon {
-          background: rgba(color(red), 0.3);
+          background: rgba(color(red), 0.1);
 
           svg {
             path {
@@ -257,20 +257,24 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 2rem;
     padding-bottom: 4rem;
 
     .title {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
     }
 
     .subtitle {
       margin-bottom: 4rem;
+      padding: 4px;
     }
 
     .link {
+      font-size: 1.4rem;
+      font-weight: 600;
+      opacity: 0.7;
       &:hover {
-        opacity: 0.7;
+        opacity: 1;
         text-decoration: none;
       }
     }
@@ -284,6 +288,7 @@
       height: 100%;
       object-fit: cover;
       width: 100%;
+      border-radius: 3px;
     }
   }
 }

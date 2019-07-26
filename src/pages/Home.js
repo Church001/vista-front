@@ -16,7 +16,7 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-purple fw-bold text-center'>
+              <h4 className='text text--xs c-purple fw-semi text-center'>
                 ABOUT US
               </h4>
               <h5 className='text text--lg text-center mb-0'>
@@ -39,7 +39,7 @@ const Home = props => {
 
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-green fw-bold text-center'>
+              <h4 className='text text--xs c-green fw-semi text-center'>
                 PRODUCTS
               </h4>
               <h5 className='text text--lg text-center mb-0'>
@@ -92,7 +92,7 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-yellow fw-bold text-center'>
+              <h4 className='text text--xs c-yellow fw-semi text-center'>
                 OUR SERVICES
               </h4>
               <h5 className='text text--lg text-center mb-0'>
@@ -134,7 +134,7 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header more'>
-              <h4 className='text text--xs c-red fw-bold text-center'>CSR</h4>
+              <h4 className='text text--xs c-red fw-semi text-center'>CSR</h4>
               <h5 className='w-50 text text--lg text-center mb-0'>
                 Driven by a mission to guide, support and provide thought
                 leadership to all
