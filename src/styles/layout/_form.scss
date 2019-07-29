@@ -1,4 +1,7 @@
 .form {
+  &-group {
+    margin-bottom: 3rem;
+  }
   &__label {
     @extend .text;
     @extend .text--xs;

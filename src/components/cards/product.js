@@ -8,7 +8,9 @@ export const ProductCard = ({ color, icon, link, subtitle, title }) => {
     <div className={`card product-card product-card--c-${color}`}>
       <div className='product-card__body'>
         <div className='header'>
-          <div className='product-card__icon'>{icon}</div>
+          <div className='product-card__icon'>
+            <img src={icon} alt='' />
+          </div>
           <h5 className='title text text--sm fw-semi text-center'>{title}</h5>
           <h6 className='subtitle text text--xs c-off-dark text-center'>
             {subtitle}
@@ -25,7 +27,7 @@ export const ProductCard = ({ color, icon, link, subtitle, title }) => {
 
 ProductCard.propTypes = {
   color: PropTypes.string,
-  icon: PropTypes.node,
+  icon: PropTypes.any,
   link: PropTypes.string,
   subtitle: PropTypes.string,
   title: PropTypes.string

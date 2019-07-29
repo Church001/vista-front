@@ -52,10 +52,8 @@ export const ContactForm = () => {
                 </div>
 
                 <div className='texts'>
-                  <p className='text c-white mb-0'>Sales : (081) 508 844 93</p>
-                  <p className='text c-white mb-0'>
-                    Technical : (081) 508 844 96
-                  </p>
+                  <p className='text c-white'>Sales : (081) 508 844 93</p>
+                  <p className='text c-white'>Technical : (081) 508 844 96</p>
                 </div>
               </div>
             </div>
@@ -86,7 +84,7 @@ export const ContactForm = () => {
                 </FormGroup>
 
                 <div className='d-flex justify-content-center'>
-                  <Button className='btn__purple btn--rounded btn--xl'>
+                  <Button className='btn__purple btn--rounded btn--lg'>
                     SEND MESSAGE
                   </Button>
                 </div>

@@ -14,10 +14,14 @@ const Explore = props => {
               <h4 className='text text--lg text-center'>
                 Explore our items paper
               </h4>
-              <h5 className='w-50 text text--sm text-center c-off-dark mb-0'>
-                We supply top-quality paper technology solutions for your best
-                prints all over Nigeria.
-              </h5>
+              <div className='row justify-content-center'>
+                <div className='col-md-9 col-sm-8 col-10'>
+                  <p className='text text--sm c-off-dark text-center'>
+                    We supply top-quality paper technology solutions for your
+                    best prints all over Nigeria.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -26,7 +30,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -35,7 +39,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -43,7 +47,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -51,7 +55,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -59,7 +63,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -67,7 +71,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -75,7 +79,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -83,7 +87,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -91,7 +95,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -99,7 +103,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -107,7 +111,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>
@@ -116,7 +120,7 @@ const Explore = props => {
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates esse ex perferendis quaerat et consequatur? Alias quaerat rem placeat reiciendis?'
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
                 }
               />
             </div>

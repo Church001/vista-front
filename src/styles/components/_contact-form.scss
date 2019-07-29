@@ -8,13 +8,13 @@
   }
 
   &__info {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     &__item {
       display: flex;
       align-items: center;
 
       &:not(:last-child) {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
       }
 
       .icon {
@@ -25,6 +25,9 @@
       .texts {
         display: flex;
         flex-direction: column;
+        .text {
+          margin-bottom: 3px;
+        }
       }
     }
   }

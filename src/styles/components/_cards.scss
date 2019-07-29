@@ -11,7 +11,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 3rem 2rem;
+    padding: 4rem 3rem;
     padding-top: 5rem;
     .title {
       margin-bottom: 3rem;
@@ -122,7 +122,7 @@
   }
 
   &__body {
-    padding: 2rem 1rem;
+    padding: 3rem;
   }
 }
 
@@ -156,100 +156,106 @@
     justify-content: center;
     margin-bottom: 6rem;
     width: 5rem;
+    img {
+      width: 9rem;
+    }
   }
 
   &__link {
     align-items: center;
     border-radius: 50%;
-    border: 3px solid color(offDark);
+    border: 3px solid rgba(color(offDark), 0.2);
     display: flex;
     height: 4rem;
     justify-content: center;
     transition: all 0.2s;
     width: 4rem;
-  }
-
-  &--c {
-    &-purple {
-      .product-card {
-        &__link {
-          border-color: rgba(color(purple), 0.4);
-          &:hover {
-            border-color: rgba(color(purple), 1);
-          }
-        }
-        &__icon {
-          background: rgba(color(purple), 0.1);
-
-          svg {
-            path {
-              fill: color(purple);
-            }
-          }
-        }
-      }
-    }
-
-    &-green {
-      .product-card {
-        &__link {
-          border-color: rgba(color(green), 0.4);
-          &:hover {
-            border-color: rgba(color(green), 1);
-          }
-        }
-        &__icon {
-          background: rgba(color(green), 0.1);
-
-          svg {
-            path {
-              fill: color(green);
-            }
-          }
-        }
-      }
-    }
-
-    &-yellow {
-      .product-card {
-        &__link {
-          border-color: rgba(color(yellow), 0.4);
-          &:hover {
-            border-color: rgba(color(yellow), 1);
-          }
-        }
-        &__icon {
-          background: rgba(color(yellow), 0.1);
-
-          svg {
-            path {
-              fill: color(yellow);
-            }
-          }
-        }
-      }
-    }
-
-    &-red {
-      .product-card {
-        &__link {
-          border-color: rgba(color(red), 0.4);
-          &:hover {
-            border-color: rgba(color(red), 1);
-          }
-        }
-        &__icon {
-          background: rgba(color(red), 0.1);
-
-          svg {
-            path {
-              fill: color(red);
-            }
-          }
-        }
-      }
+    &:hover {
+      border-color: rgba(color(offDark), 1);
     }
   }
+
+  // &--c {
+  //   &-purple {
+  //     .product-card {
+  //       &__link {
+  //         border-color: rgba(color(purple), 0.2);
+  //         &:hover {
+  //           border-color: rgba(color(purple), 1);
+  //         }
+  //       }
+  //       &__icon {
+  //         background: rgba(color(purple), 0.1);
+
+  //         svg {
+  //           path {
+  //             fill: color(purple);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   &-green {
+  //     .product-card {
+  //       &__link {
+  //         border-color: rgba(color(green), 0.2);
+  //         &:hover {
+  //           border-color: rgba(color(green), 1);
+  //         }
+  //       }
+  //       &__icon {
+  //         background: rgba(color(green), 0.1);
+
+  //         svg {
+  //           path {
+  //             fill: color(green);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   &-yellow {
+  //     .product-card {
+  //       &__link {
+  //         border-color: rgba(color(yellow), 0.2);
+  //         &:hover {
+  //           border-color: rgba(color(yellow), 1);
+  //         }
+  //       }
+  //       &__icon {
+  //         background: rgba(color(yellow), 0.1);
+
+  //         svg {
+  //           path {
+  //             fill: color(yellow);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   &-red {
+  //     .product-card {
+  //       &__link {
+  //         border-color: rgba(color(red), 0.2);
+  //         &:hover {
+  //           border-color: rgba(color(red), 1);
+  //         }
+  //       }
+  //       &__icon {
+  //         background: rgba(color(red), 0.1);
+
+  //         svg {
+  //           path {
+  //             fill: color(red);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 .service-card {

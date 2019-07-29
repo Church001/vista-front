@@ -1,11 +1,16 @@
 import React from 'react';
 import { Card, Hero, SocialLinks, Wrapper } from 'components';
-import { ReactComponent as Paper } from 'assets/svg/paper.svg';
-import { ReactComponent as Stationery } from 'assets/svg/stationery.svg';
-import { ReactComponent as Print } from 'assets/svg/print.svg';
-import { ReactComponent as OilSpill } from 'assets/svg/oil-spill.svg';
+// import { ReactComponent as Paper } from 'assets/svg/paper.svg';
+// import { ReactComponent as Stationery } from 'assets/svg/stationery.svg';
+// import { ReactComponent as Print } from 'assets/svg/print.svg';
+// import { ReactComponent as OilSpill } from 'assets/svg/oil-spill.svg';
 import { ReactComponent as Gradhat } from 'assets/svg/gradhat.svg';
 import { ReactComponent as Idea } from 'assets/svg/idea.svg';
+
+import Paper from 'assets/img/paper.png';
+import Stationery from 'assets/img/stationery.png';
+import Print from 'assets/img/printing.png';
+import OilSpill from 'assets/img/oilspill.png';
 
 const Home = props => {
   return (
@@ -24,7 +29,7 @@ const Home = props => {
               </h5>
             </div>
             <div className='row justify-content-center'>
-              <div className='col-md-6 col-sm-8 col-10'>
+              <div className='col-md-7 col-sm-8 col-10'>
                 <p className='text text--sm c-off-dark text-center'>
                   Established in 1992, Vista International Ltd has evolved from
                   being a trading company into one of the largest manufacturers
@@ -52,8 +57,8 @@ const Home = props => {
                   color='purple'
                   title='Paper'
                   subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-                  link='#'
-                  icon={<Paper />}
+                  link='explore'
+                  icon={Paper}
                 />
               </div>
               <div className='col-lg-3 col-md-4 col-sm-6 mb-5'>
@@ -61,17 +66,17 @@ const Home = props => {
                   color='green'
                   title='Stationery'
                   subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-                  link='#'
-                  icon={<Stationery />}
+                  link='explore'
+                  icon={Stationery}
                 />
               </div>
               <div className='col-lg-3 col-md-4 col-sm-6 mb-5'>
                 <Card.Product
                   color='yellow'
-                  title='Printing and Packaging'
+                  title='Printing & Packaging'
                   subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-                  link='#'
-                  icon={<Print />}
+                  link='explore'
+                  icon={Print}
                 />
               </div>
               <div className='col-lg-3 col-md-4 col-sm-6 mb-5'>
@@ -79,8 +84,8 @@ const Home = props => {
                   color='red'
                   title='Agrochemicals'
                   subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-                  link='#'
-                  icon={<OilSpill />}
+                  link='explore'
+                  icon={OilSpill}
                 />
               </div>
             </div>
