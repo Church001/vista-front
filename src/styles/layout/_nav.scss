@@ -57,18 +57,23 @@
       background: color(green);
       border-bottom-left-radius: 500px;
       border-top-left-radius: 500px;
-      padding: 0.5rem 2rem 0.5rem 3rem;
+      padding: 0.8rem 3rem 0.8rem 3rem;
       position: absolute;
       right: 0;
       top: 50%;
+      color: white;
       transform: translateY(-50%);
+      a {
+        color: white;
+        font-size: 12px;
+      }
     }
   }
 
   &__link {
     &:link,
     &:visited {
-      color: color(white);
+      color: rgba(color(white), 0.6);
       cursor: pointer;
       display: inline-block;
       font-size: 1.5rem;
@@ -80,7 +85,7 @@
 
     &:hover,
     &.active {
-      opacity: 0.7;
+      color: rgba(color(white), 1);
     }
   }
 }
