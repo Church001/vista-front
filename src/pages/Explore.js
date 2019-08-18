@@ -1,5 +1,8 @@
 import React from 'react';
 import { Card, Hero, SocialLinks, Wrapper } from 'components';
+import { Button } from 'reactstrap';
+import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
+import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
 
 const Explore = props => {
   return (
@@ -8,6 +11,16 @@ const Explore = props => {
       <SocialLinks alternate />
 
       <section className='section section--wo section--wo--p'>
+        <PurpleLeft
+          width={530}
+          height={802}
+          className='symbol--right hide-for-small-only'
+        />
+        <PurpleRight
+          width={530}
+          height={802}
+          className='symbol--left hide-for-small-only'
+        />
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
@@ -91,39 +104,12 @@ const Explore = props => {
                 }
               />
             </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
-              <Card.Explore
-                img={'https://picsum.photos/200'}
-                text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-                }
-              />
-            </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
-              <Card.Explore
-                img={'https://picsum.photos/200'}
-                text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-                }
-              />
-            </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
-              <Card.Explore
-                img={'https://picsum.photos/200'}
-                text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-                }
-              />
-            </div>
+          </div>
 
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
-              <Card.Explore
-                img={'https://picsum.photos/200'}
-                text={
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-                }
-              />
-            </div>
+          <div className='d-flex justify-content-center mt-40'>
+            <Button className='btn__purple btn--rounded btn--lg'>
+              LOAD MORE
+            </Button>
           </div>
         </div>
       </section>

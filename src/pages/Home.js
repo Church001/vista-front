@@ -6,6 +6,10 @@ import { Card, Hero, SocialLinks, Wrapper } from 'components';
 // import { ReactComponent as OilSpill } from 'assets/svg/oil-spill.svg';
 import { ReactComponent as Gradhat } from 'assets/svg/gradhat.svg';
 import { ReactComponent as Idea } from 'assets/svg/idea.svg';
+import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
+import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
+import { ReactComponent as GreenLeft } from 'assets/svg/green-left.svg';
+import { ReactComponent as GreenRight } from 'assets/svg/green-right.svg';
 
 import Paper from 'assets/img/paper.png';
 import Stationery from 'assets/img/stationery.png';
@@ -18,6 +22,16 @@ const Home = props => {
       <Hero />
       <SocialLinks alternate />
       <section className='section section--wo section--wo--p'>
+        <PurpleLeft
+          width={530}
+          height={802}
+          className='symbol--right hide-for-small-only'
+        />
+        <PurpleRight
+          width={530}
+          height={802}
+          className='symbol--left hide-for-small-only'
+        />
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
@@ -51,7 +65,7 @@ const Home = props => {
                 Some of our products that we offer
               </h5>
             </div>
-            <div className='row'>
+            <div className='row pt-10'>
               <div className='col-lg-3 col-md-4 col-sm-6 mb-5'>
                 <Card.Product
                   color='purple'
@@ -105,11 +119,11 @@ const Home = props => {
               </h5>
             </div>
 
-            <div className='row justify-content-center'>
+            <div className='row justify-content-center pt-10'>
               <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
                 <Card.Service
                   img={'https://picsum.photos/200'}
-                  title='MANUFACTORING'
+                  title='MANUFACTURING'
                   subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
                   link='#'
                 />
@@ -136,6 +150,16 @@ const Home = props => {
       </section>
 
       <section className='section section--wo section--wo--g'>
+        <GreenLeft
+          width={530}
+          height={802}
+          className='symbol--right hide-for-small-only'
+        />
+        <GreenRight
+          width={530}
+          height={802}
+          className='symbol--left hide-for-small-only'
+        />
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header more'>
@@ -145,7 +169,7 @@ const Home = props => {
                 leadership to all
               </h5>
             </div>
-            <div className='row justify-content-center'>
+            <div className='row justify-content-center pt-10'>
               <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
                 <Card.CSR
                   color='yellow'
