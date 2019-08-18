@@ -1,16 +1,37 @@
 .section {
   padding: 10rem 0;
-  &--wo {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    &--p {
-      background-image: url('../assets/img/purple-objects.png');
-    }
 
-    &--g {
-      background-image: url('../assets/img/green-objects.png');
-    }
+  .symbol--left,
+  .symbol--right {
+    position: absolute;
+    top: 10%;
+    z-index: -99999;
+
+    // @include breakpoint(small only) {
+    //   width: rem-calc(130);
+    //   height: rem-calc(402);
+    // }
+  }
+
+  .symbol--left {
+    left: -310px;
+  }
+  .symbol--right {
+    right: -310px;
+  }
+
+  &--wo {
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    position: relative;
+    // &--p {
+    //   background-image: url('../assets/img/purple-objects.png');
+    // }
+
+    // &--g {
+    //   background-image: url('../assets/img/green-objects.png');
+    // }
   }
 
   &--pbg {
@@ -19,7 +40,7 @@
 
   &__sub {
     &:not(:last-child) {
-      margin-bottom: 12rem;
+      margin-bottom: 8rem;
     }
   }
 
