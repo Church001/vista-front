@@ -23,13 +23,13 @@ const Home = props => {
       <SocialLinks alternate />
       <section className='section section--wo section--wo--p'>
         <PurpleLeft
-          width={530}
-          height={802}
+          width={230}
+          height={502}
           className='symbol--right hide-for-small-only'
         />
         <PurpleRight
-          width={530}
-          height={802}
+          width={230}
+          height={502}
           className='symbol--left hide-for-small-only'
         />
         <div className='container-fluid'>
@@ -151,13 +151,13 @@ const Home = props => {
 
       <section className='section section--wo section--wo--g'>
         <GreenLeft
-          width={530}
-          height={802}
+          width={230}
+          height={502}
           className='symbol--right hide-for-small-only'
         />
         <GreenRight
-          width={530}
-          height={802}
+          width={230}
+          height={502}
           className='symbol--left hide-for-small-only'
         />
         <div className='container-fluid'>
