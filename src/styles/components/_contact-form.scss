@@ -5,6 +5,13 @@
   &__title {
     margin-bottom: 5rem;
     width: 330px;
+    @include respond('sm') {
+      width: auto;
+    }
+
+    @include respond('xs') {
+      width: auto;
+    }
   }
 
   &__info {

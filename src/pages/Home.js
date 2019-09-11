@@ -16,6 +16,10 @@ import Stationery from 'assets/img/stationery.png';
 import Print from 'assets/img/printing.png';
 import OilSpill from 'assets/img/oilspill.png';
 
+import Distribution from 'assets/img/distribution.png';
+import Manufacture from 'assets/img/manufacturing.png';
+import Trading from 'assets/img/trading.jpeg';
+
 const Home = props => {
   return (
     <Wrapper>
@@ -35,8 +39,8 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-purple fw-semi text-center'>
-                ABOUT US
+              <h4 className='text text--xs c-purple fw-semi text-center home'>
+                The Vista Advantage
               </h4>
               <h5 className='text text--lg text-center mb-0'>
                 What is Vista International
@@ -45,12 +49,12 @@ const Home = props => {
             <div className='row justify-content-center'>
               <div className='col-md-7 col-sm-8 col-10'>
                 <p className='text text--sm c-off-dark text-center'>
-                  Established in 1992, Vista International Ltd has evolved from
-                  being a trading company into one of the largest manufacturers
-                  of Education and office stationery products, distributors of
-                  paper and Board from the topmost companies of the world,
-                  Printing consumables and chemicals, Printing
-                  Equipment’s,Machinery and Argo chemicals
+                  We started out as a trading company in 1982 and throughout our
+                  evolution to one of the largest manufacturers and distributors
+                  of paper, stationery, printing equipment and agrochemical
+                  products in West Africa, Vista International Ltd has been
+                  committed to providing you with superior quality and a world
+                  class experience in our products.
                 </p>
               </div>
             </div>
@@ -58,8 +62,8 @@ const Home = props => {
 
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-green fw-semi text-center'>
-                PRODUCTS
+              <h4 className='text text--xs c-green fw-semi text-center home'>
+                World class products just for you
               </h4>
               <h5 className='text text--lg text-center mb-0'>
                 Some of our products that we offer
@@ -70,8 +74,8 @@ const Home = props => {
                 <Card.Product
                   color='purple'
                   title='Paper'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-                  link='explore'
+                  subtitle='Enjoy seamless writing, printing & everything in between with our top-grade papers, perfect for all your needs!'
+                  link='paper'
                   icon={Paper}
                 />
               </div>
@@ -79,8 +83,8 @@ const Home = props => {
                 <Card.Product
                   color='green'
                   title='Stationery'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-                  link='explore'
+                  subtitle='Ready to note that idea down or get back to school? Explore our exciting stationery for a smooth-sailing experience!'
+                  link='stationery'
                   icon={Stationery}
                 />
               </div>
@@ -88,8 +92,8 @@ const Home = props => {
                 <Card.Product
                   color='yellow'
                   title='Printing & Packaging'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-                  link='explore'
+                  subtitle='Look no further than our line of products for superior quality printing consumables and light packaging!'
+                  link='print'
                   icon={Print}
                 />
               </div>
@@ -97,8 +101,8 @@ const Home = props => {
                 <Card.Product
                   color='red'
                   title='Agrochemicals'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-                  link='explore'
+                  subtitle='Get rid of all those pesky pests and increase your productivity with our highly effective herbicides & insecticides.'
+                  link='agrochemical'
                   icon={OilSpill}
                 />
               </div>
@@ -111,8 +115,8 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-yellow fw-semi text-center'>
-                OUR SERVICES
+              <h4 className='text text--xs c-yellow fw-semi text-center home'>
+                Our top-notch services
               </h4>
               <h5 className='text text--lg text-center mb-0'>
                 Take a look at our amazing services
@@ -122,25 +126,25 @@ const Home = props => {
             <div className='row justify-content-center pt-10'>
               <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
                 <Card.Service
-                  img={'https://picsum.photos/200'}
+                  img={Manufacture}
                   title='MANUFACTURING'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                  subtitle='Raw materials sourced from world class producers to create and deliver only the best'
                   link='#'
                 />
               </div>
               <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
                 <Card.Service
-                  img={'https://picsum.photos/200'}
+                  img={Distribution}
                   title='DISTRIBUTION'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                  subtitle='Quality products chosen and distributed to serve your discerning taste.'
                   link='#'
                 />
               </div>
               <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
                 <Card.Service
-                  img={'https://picsum.photos/200'}
+                  img={Trading}
                   title='TRADING'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                  subtitle='Top-grade bulk materials for industrial use.'
                   link='#'
                 />
               </div>
@@ -163,10 +167,12 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header more'>
-              <h4 className='text text--xs c-red fw-semi text-center'>CSR</h4>
+              <h4 className='text text--xs c-red fw-semi text-center home'>
+                What we give back
+              </h4>
               <h5 className='w-50 text text--lg text-center mb-0'>
-                Driven by a mission to guide, support and provide thought
-                leadership to all
+                Driven by a mission to guide, support and create enduring
+                partnerships for sustainable development in our community.
               </h5>
             </div>
             <div className='row justify-content-center pt-10'>
@@ -174,7 +180,7 @@ const Home = props => {
                 <Card.CSR
                   color='yellow'
                   title='EMPOWERING EDUCATION'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                  subtitle='We execute initiatives and provide support to education-focused NGOs to increase access to quality education in Nigeria'
                   number='01'
                   icon={<Gradhat />}
                 />
@@ -183,7 +189,7 @@ const Home = props => {
                 <Card.CSR
                   color='green'
                   title='COMMUNITY DEVELOPMENT'
-                  subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                  subtitle='We sponsor and associate with programs designed to generate positive change in our communities.'
                   number='02'
                   icon={<Idea />}
                 />

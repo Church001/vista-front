@@ -34,6 +34,13 @@
 
   &__copyright {
     text-align: right;
+    @include respond('sm') {
+      text-align: left;
+    }
+
+    @include respond('xs') {
+      text-align: left;
+    }
     span {
       margin-right: 1rem;
     }
