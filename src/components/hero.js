@@ -6,6 +6,11 @@ import cx from 'classnames';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
 
+import Paper from 'assets/img/paper-ban.png';
+// import Stationery from 'assets/img/stationery.jpg';
+import Print from 'assets/img/printing-packaging.png';
+import Agro from 'assets/img/agrochemicals.jpg';
+
 const settings = {
   dots: false,
   arrows: false,
@@ -19,7 +24,7 @@ const Slide = ({ btn, img, subtitle, title }) => (
   <div className='hero__slide' style={{ backgroundImage: `url(${img})` }}>
     <div className='overlay'></div>
     <div className='container'>
-      <div className='col-md-6'>
+      <div className='col-md-7'>
         <h3 className='title text text--sm c-white fw-regular'>{title}</h3>
         <h4 className='subtitle text text--xl c-white fw-light'>{subtitle}</h4>
 
@@ -108,11 +113,22 @@ Hero.propTypes = {
 Hero.defaultProps = {
   slides: [
     {
-      id: 'ra',
-      img: 'https://picsum.photos/600',
-      title: 'Manufacturing',
+      id: 'ag',
+      img: Agro,
+      title: 'VISTA INTERNATIONAL',
       subtitle:
-        'The best in paper, stationery, printing & agrochemical products',
+        'Your source for world-class paper, stationery, printing & agrochemical products',
+      btn: {
+        title: 'LEARN MORE',
+        link: '#'
+      }
+    },
+    {
+      id: 'ra',
+      img: Print,
+      title: 'OFFICE EVERYTHING',
+      subtitle:
+        'Trusted companion for superior quality stationery, furniture, technology and everything for your office',
       btn: {
         title: 'LEARN MORE',
         link: '#'
@@ -120,19 +136,9 @@ Hero.defaultProps = {
     },
     {
       id: 'nd',
-      img: 'https://picsum.photos/600',
-      title: 'DISTRIBUTION',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      btn: {
-        title: 'LEARN MORE',
-        link: '#'
-      }
-    },
-    {
-      id: 'om',
-      img: 'https://picsum.photos/600',
-      title: 'TRADING',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      img: Paper,
+      title: 'VISTA INITIATIVES',
+      subtitle: 'What we give back to the community',
       btn: {
         title: 'LEARN MORE',
         link: '#'
