@@ -21,7 +21,7 @@ const Paper = props => {
           height={502}
           className='symbol--left hide-for-small-only'
         />
-        <div className='container-fluid'>
+        <div className='container'>
           <div className='section__sub'>
             <div className='section__header'>
               <h4 className='text text--lg text-center'>
@@ -39,7 +39,7 @@ const Paper = props => {
           </div>
 
           <div className='row'>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
@@ -48,7 +48,7 @@ const Paper = props => {
               />
             </div>
 
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
@@ -56,7 +56,7 @@ const Paper = props => {
                 }
               />
             </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
@@ -64,7 +64,7 @@ const Paper = props => {
                 }
               />
             </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
@@ -72,7 +72,7 @@ const Paper = props => {
                 }
               />
             </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
@@ -80,7 +80,7 @@ const Paper = props => {
                 }
               />
             </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
@@ -88,7 +88,7 @@ const Paper = props => {
                 }
               />
             </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
@@ -96,7 +96,7 @@ const Paper = props => {
                 }
               />
             </div>
-            <div className='col-xl-3  col-md-4 col-sm-6 mb-4'>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Explore
                 img={'https://picsum.photos/200'}
                 text={
