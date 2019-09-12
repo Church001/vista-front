@@ -40,10 +40,10 @@ const Home = props => {
           <div className='section__sub'>
             <div className='section__header'>
               <h4 className='text text--xs c-purple fw-semi text-center home'>
-                The Vista Advantage
+                About Us
               </h4>
               <h5 className='text text--lg text-center mb-0'>
-                What is Vista International
+                The Vista Advantage
               </h5>
             </div>
             <div className='row justify-content-center'>
@@ -63,10 +63,10 @@ const Home = props => {
           <div className='section__sub'>
             <div className='section__header'>
               <h4 className='text text--xs c-green fw-semi text-center home'>
-                World class products just for you
+                Our Products
               </h4>
               <h5 className='text text--lg text-center mb-0'>
-                Some of our products that we offer
+                World class products just for you
               </h5>
             </div>
             <div className='row pt-10'>
@@ -116,10 +116,10 @@ const Home = props => {
           <div className='section__sub'>
             <div className='section__header'>
               <h4 className='text text--xs c-yellow fw-semi text-center home'>
-                Our top-notch services
+                Our services
               </h4>
               <h5 className='text text--lg text-center mb-0'>
-                Take a look at our amazing services
+                Enjoy our top notch services
               </h5>
             </div>
 
@@ -171,8 +171,7 @@ const Home = props => {
                 What we give back
               </h4>
               <h5 className='w-50 text text--lg text-center mb-0'>
-                Driven by a mission to guide, support and create enduring
-                partnerships for sustainable development in our community.
+                Driven by a mission for sustainable development
               </h5>
             </div>
             <div className='row justify-content-center pt-10'>

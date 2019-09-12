@@ -23,13 +23,13 @@ const Location = props => {
           <div className='section__sub'>
             <div className='section__header'>
               <h4 className='text text--lg text-center'>
-                Explore some of our locations
+                Find us at your location
               </h4>
               <div className='row justify-content-center'>
                 <div className='col-md-9 col-sm-8 col-10'>
                   <p className='text text--sm c-off-dark text-center'>
-                    Look no further than our line of products for superior
-                    quality printing consumables and light packaging!
+                    We're in every major city in Nigeria, so find us around you
+                    and let us know what you need!
                   </p>
                 </div>
               </div>
