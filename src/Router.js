@@ -9,6 +9,7 @@ const Print = lazy(() => import('pages/Print'));
 const Paper = lazy(() => import('pages/Paper'));
 const Stationery = lazy(() => import('pages/Stationery'));
 const Agrochemical = lazy(() => import('pages/Agrochemical'));
+const Locations = lazy(() => import('pages/Locations'));
 
 const Scroll = props => {
   useEffect(() => {
@@ -76,6 +77,14 @@ class RouterComponent extends React.Component {
               render={props => (
                 <Suspense fallback={<Loader />}>
                   <Agrochemical {...props} />
+                </Suspense>
+              )}
+            />
+            <Route
+              path='/location'
+              render={props => (
+                <Suspense fallback={<Loader />}>
+                  <Locations {...props} />
                 </Suspense>
               )}
             />

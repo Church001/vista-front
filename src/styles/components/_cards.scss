@@ -6,6 +6,26 @@
   height: 100%;
 }
 
+.location-card {
+  padding: 20px;
+  &__header {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 20px;
+    color: color(offDark);
+  }
+  &__address {
+    min-height: 100px;
+  }
+  &__tell {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: color(lightPurple);
+  }
+}
+
 .csr-card {
   &__body {
     align-items: center;
