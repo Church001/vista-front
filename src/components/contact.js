@@ -12,7 +12,7 @@ export const ContactForm = () => {
         <div className='row'>
           <div className='col-md-6 mb-4 mb-md-0'>
             <h1 className='cf__title text text--xl c-white fw-light'>
-              How to contact us for what you need?
+              Let us know what you need!
             </h1>
 
             <div className='cf__info'>

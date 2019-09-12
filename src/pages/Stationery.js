@@ -25,7 +25,7 @@ const Stationery = props => {
           <div className='section__sub'>
             <div className='section__header'>
               <h4 className='text text--lg text-center'>
-                Explore our items statonery
+                Exciting stationery for you!
               </h4>
               <div className='row justify-content-center'>
                 <div className='col-md-9 col-sm-8 col-10'>
