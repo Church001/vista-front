@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export const ServiceCard = props => {
   return (
@@ -16,9 +16,9 @@ export const ServiceCard = props => {
           {props.subtitle}
         </h6>
 
-        <Link className='link text text--sm c-off-dark' to={props.link}>
+        {/* <Link className='link text text--sm c-off-dark' to={props.link}>
           LEARN MORE
-        </Link>
+  </Link> */}
       </div>
     </div>
   );

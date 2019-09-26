@@ -6,7 +6,7 @@ import cx from 'classnames';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
 
-import Paper from 'assets/img/paper-ban.png';
+import Paper from 'assets/img/new-paper.jpg';
 // import Stationery from 'assets/img/stationery.jpg';
 import Print from 'assets/img/printing-packaging.png';
 import Agro from 'assets/img/agrochemicals.jpg';
@@ -114,7 +114,7 @@ Hero.defaultProps = {
   slides: [
     {
       id: 'ag',
-      img: Agro,
+      img: Paper,
       title: 'VISTA INTERNATIONAL',
       subtitle:
         'Your source for world-class paper, stationery, printing & agrochemical products',
@@ -136,7 +136,7 @@ Hero.defaultProps = {
     },
     {
       id: 'nd',
-      img: Paper,
+      img: Agro,
       title: 'VISTA INITIATIVES',
       subtitle: 'What we give back to the community',
       btn: {

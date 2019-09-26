@@ -49,7 +49,7 @@ const Home = props => {
             <div className='row justify-content-center'>
               <div className='col-md-7 col-sm-8 col-10'>
                 <p className='text text--sm c-off-dark text-center'>
-                  We started out as a trading company in 1982 and throughout our
+                  We started out as a trading company in 1992 and throughout our
                   evolution to one of the largest manufacturers and distributors
                   of paper, stationery, printing equipment and agrochemical
                   products in West Africa, Vista International Ltd has been
@@ -74,7 +74,7 @@ const Home = props => {
                 <Card.Product
                   color='purple'
                   title='Paper'
-                  subtitle='Enjoy seamless writing, printing & everything in between with our top-grade papers, perfect for all your needs!'
+                  subtitle='Enjoy seamless writing, printing & everything in between with our top quality papers, perfect for all your needs!'
                   link='paper'
                   icon={Paper}
                 />
@@ -92,7 +92,7 @@ const Home = props => {
                 <Card.Product
                   color='yellow'
                   title='Printing & Packaging'
-                  subtitle='Look no further than our line of products for superior quality printing consumables and light packaging!'
+                  subtitle='Look no further for superior quality printing consumables and equipment. Our light packaging also offers you state of the art solutions for your requirements!'
                   link='print'
                   icon={Print}
                 />
@@ -128,8 +128,7 @@ const Home = props => {
                 <Card.Service
                   img={Manufacture}
                   title='MANUFACTURING'
-                  subtitle='Raw materials sourced from world class producers to create and deliver only the best'
-                  link='#'
+                  subtitle='World class quality stationery for you such as Exercise Books, Hardcover books, Spiral Books, Sketch Pads and more'
                 />
               </div>
               <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
@@ -137,15 +136,13 @@ const Home = props => {
                   img={Distribution}
                   title='DISTRIBUTION'
                   subtitle='Quality products chosen and distributed to serve your discerning taste.'
-                  link='#'
                 />
               </div>
               <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
                 <Card.Service
                   img={Trading}
                   title='TRADING'
-                  subtitle='Top-grade bulk materials for industrial use.'
-                  link='#'
+                  subtitle='Raw materials sourced from world class producers in bulk for industrial use'
                 />
               </div>
             </div>
