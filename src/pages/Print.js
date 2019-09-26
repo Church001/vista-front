@@ -25,13 +25,14 @@ const Print = props => {
           <div className='section__sub'>
             <div className='section__header'>
               <h4 className='text text--lg text-center'>
-                Enjoy superior printing & packaging!
+                Enjoy superior printing consumables & light packaging!
               </h4>
               <div className='row justify-content-center'>
                 <div className='col-md-9 col-sm-8 col-10'>
                   <p className='text text--sm c-off-dark text-center'>
-                    Look no further than our line of products for superior
-                    quality printing consumables and light packaging!
+                    Look no further for superior quality printing consumables
+                    and equipment. Our light packaging also offers you state of
+                    the art solutions for your requirements!
                   </p>
                 </div>
               </div>

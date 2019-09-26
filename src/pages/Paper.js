@@ -31,7 +31,7 @@ const Paper = props => {
                 <div className='col-md-9 col-sm-8 col-10'>
                   <p className='text text--sm c-off-dark text-center'>
                     Enjoy seamless writing, printing & everything in between
-                    with our top-grade papers, perfect for all your needs
+                    with our top quality papers, perfect for all your needs
                   </p>
                 </div>
               </div>
