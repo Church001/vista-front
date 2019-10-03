@@ -23,7 +23,8 @@ export const ContactForm = () => {
 
                 <div className='texts'>
                   <p className='text c-white mb-0'>
-                    27b Isaac John Street Ikeja, GRA Lagos.
+                    22EB, Opposite Aswani Market, Osolo Way, Aswani-Oshodi
+                    Industrial Scheme, Isolo, Lagos.
                   </p>
                 </div>
               </div>
@@ -34,14 +35,17 @@ export const ContactForm = () => {
                 </div>
 
                 <div className='texts'>
-                  <a className='text c-white' href='mailto:sales@pts.com'>
-                    sales@pts.com
+                  <a
+                    className='text c-white'
+                    href='mailto:sales.ng@vistaafrica.net'
+                  >
+                    sales.ng@vistaafrica.net
                   </a>
                   <a
                     className='text c-white'
-                    href='mailto:technicalservices@pts.com'
+                    href='mailto:info.ng@vistaafrica.net'
                   >
-                    technicalservices@pts.com
+                    info.ng@vistaafrica.net
                   </a>
                 </div>
               </div>
@@ -52,8 +56,15 @@ export const ContactForm = () => {
                 </div>
 
                 <div className='texts'>
-                  <p className='text c-white'>Sales : (081) 508 844 93</p>
-                  <p className='text c-white'>Technical : (081) 508 844 96</p>
+                  <p className='text c-white'>
+                    Sales : +234 816 911 0000 / 815 211 0000
+                  </p>
+                  <p className='text c-white'>
+                    Technical : +234 810 452 1818 / 816 911 0000
+                  </p>
+                  <p className='text c-white'>
+                    Toll Free : 0800 847 8264 / 0700 8478 27273
+                  </p>
                 </div>
               </div>
             </div>

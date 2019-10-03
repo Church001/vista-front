@@ -39,7 +39,7 @@ const Location = props => {
           <div className='row'>
             <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Location
-                text={'Abuja Address'}
+                text={'Abuja Branch'}
                 ntext={
                   'Plot 764 Cad Zone, C-16, Idu Industrial Area, Near Larfarge Plant Abuja.'
                 }
