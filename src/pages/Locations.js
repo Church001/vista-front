@@ -3,6 +3,7 @@ import { Card, Wrapper } from 'components';
 // import { Button } from 'reactstrap';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
 import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
+import Branch from 'assets/img/slider-img.jpg';
 
 const Location = props => {
   return (
@@ -39,7 +40,16 @@ const Location = props => {
           <div className='row'>
             <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Location
-                text={'Abuja Branch'}
+                text={'Lagos'}
+                ntext={
+                  '2EB, Opposite Aswani Market, Osolo Way, Aswani-Oshodi Industrial Scheme, Isolo, Lagos.'
+                }
+                otext={'Tel: +2348169110000'}
+              />
+            </div>
+            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
+              <Card.Location
+                text={'Abuja'}
                 ntext={
                   'Plot 764 Cad Zone, C-16, Idu Industrial Area, Near Larfarge Plant Abuja.'
                 }
@@ -48,7 +58,7 @@ const Location = props => {
             </div>
             <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Location
-                text={'Kaduna Branch'}
+                text={'Kaduna'}
                 ntext={
                   'I5 Inuwa Abdulkadir Road, Industrial Estate, Kaduna South, Kaduna.'
                 }
@@ -57,7 +67,7 @@ const Location = props => {
             </div>
             <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Location
-                text={'Port Harcourt Branch'}
+                text={'Port Harcourt'}
                 ntext={
                   '270, Trans Amadi Industrial Layout, Triana Ltd Compound Near LG Shop, Opp Mainstreet Bank, PHC.'
                 }
@@ -66,7 +76,7 @@ const Location = props => {
             </div>
             <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Location
-                text={'Ibadan Branch'}
+                text={'Ibadan'}
                 ntext={
                   '8, Ajia Street, Behind Capital Building, Off Ring Road, Ibadan.'
                 }
@@ -75,7 +85,7 @@ const Location = props => {
             </div>
             <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Location
-                text={'Maiduguri Branch'}
+                text={'Maiduguri'}
                 ntext={
                   'Former Leventis Supermarket, Opp Ramat Shopping Plaza, Maiduguri, Borno'
                 }
@@ -84,10 +94,16 @@ const Location = props => {
             </div>
             <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
               <Card.Location
-                text={'Kano Branch'}
+                text={'Kano'}
                 ntext={'Kundial Road, Bompal Industrial Layout, Bompal, Kano.'}
                 otext={'Tel: +2348150865735'}
               />
+            </div>
+          </div>
+
+          <div className='row'>
+            <div className='col-xl-12'>
+              <img className='map__image' src={Branch} />
             </div>
           </div>
         </div>

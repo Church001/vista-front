@@ -96,6 +96,12 @@ export const Nav = props => {
 
             <NavItem className='nav__item'>
               <NavLink className='nav__link' to='#'>
+                Our Services
+              </NavLink>
+            </NavItem>
+
+            <NavItem className='nav__item'>
+              <NavLink className='nav__link' to='#'>
                 Our Products
               </NavLink>
             </NavItem>
