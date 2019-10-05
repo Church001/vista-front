@@ -38,4 +38,7 @@ body {
 .map {
   height: 700px;
   background-color: color(offDark);
+  &__image {
+    width: 100%;
+  }
 }

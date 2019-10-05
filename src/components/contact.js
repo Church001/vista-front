@@ -23,7 +23,7 @@ export const ContactForm = () => {
 
                 <div className='texts'>
                   <p className='text c-white mb-0'>
-                    22EB, Opposite Aswani Market, Osolo Way, Aswani-Oshodi
+                    2EB, Opposite Aswani Market, Osolo Way, Aswani-Oshodi
                     Industrial Scheme, Isolo, Lagos.
                   </p>
                 </div>
@@ -57,10 +57,10 @@ export const ContactForm = () => {
 
                 <div className='texts'>
                   <p className='text c-white'>
-                    Sales : +234 816 911 0000 / 815 211 0000
+                    Sales : +234 (0) 816 911 0000 / 815 211 0000
                   </p>
                   <p className='text c-white'>
-                    Technical : +234 810 452 1818 / 816 911 0000
+                    Technical : +234 (0) 810 452 1818 / 816 911 0000
                   </p>
                   <p className='text c-white'>
                     Toll Free : 0800 847 8264 / 0700 8478 27273
