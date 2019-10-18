@@ -39,7 +39,7 @@ export class Maps extends React.Component {
         google={this.props.google}
         zoom={8}
         style={mapStyles}
-        initialCenter={{ lat: 47.444, lng: -122.176 }}
+        initialCenter={{ lat: 9.082, lng: 8.6753 }}
       >
         {this.variousStores()}
       </Map>
