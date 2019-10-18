@@ -25,7 +25,8 @@ const Home = props => {
     <Wrapper>
       <Hero />
       <SocialLinks alternate />
-      <section className='section section--wo section--wo--p'>
+
+      <section className='section section--wo section--wo--p' id='about'>
         <PurpleLeft
           width={230}
           height={502}
@@ -59,6 +60,43 @@ const Home = props => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className='section section--wo section--wo--p' id='products'>
+        <PurpleLeft
+          width={230}
+          height={502}
+          className='symbol--right hide-for-small-only'
+        />
+        <PurpleRight
+          width={230}
+          height={502}
+          className='symbol--left hide-for-small-only'
+        />
+        <div className='container-fluid'>
+          {/* <div className='section__sub'>
+            <div className='section__header'>
+              <h4 className='text text--xs c-purple fw-semi text-center home'>
+                About Us
+              </h4>
+              <h5 className='text text--lg text-center mb-0'>
+                The Vista Advantage
+              </h5>
+            </div>
+            <div className='row justify-content-center'>
+              <div className='col-md-7 col-sm-8 col-10'>
+                <p className='text text--sm c-off-dark text-center'>
+                  We started out as a trading company in 1992 and throughout our
+                  evolution to one of the largest manufacturers and distributors
+                  of paper, stationery, printing equipment and agrochemical
+                  products in West Africa, Vista International Ltd has been
+                  committed to providing you with superior quality and a world
+                  class experience in our products.
+                </p>
+              </div>
+            </div>
+          </div> */}
 
           <div className='section__sub'>
             <div className='section__header'>
@@ -111,7 +149,7 @@ const Home = props => {
         </div>
       </section>
 
-      <section className='section section--pbg'>
+      <section className='section section--pbg' id='services'>
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
