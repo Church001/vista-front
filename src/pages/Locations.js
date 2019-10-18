@@ -4,11 +4,14 @@ import { Card, Wrapper } from 'components';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
 import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
 import Branch from 'assets/img/slider-img.jpg';
+import Maps from '../components/maps';
 
 const Location = props => {
   return (
     <Wrapper>
-      <div className='map'></div>
+      <div className='map'>
+        <Maps />
+      </div>
       <section className='section section--wo section--wo--p'>
         <PurpleLeft
           width={230}
