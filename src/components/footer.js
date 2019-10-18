@@ -17,7 +17,6 @@ export const Footer = () => {
                   Our Products
                 </a>
               </li>
-
               <li className='footer__menu__item'>
                 <a href='#' className='footer__menu__link text c-off-dark'>
                   Contact Us
