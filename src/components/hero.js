@@ -14,6 +14,9 @@ import Agro from 'assets/img/agrochemicals.jpg';
 import axios from 'axios';
 import api from '../utils/api';
 
+let slidess = [];
+let newSlides = [];
+
 const settings = {
   dots: false,
   arrows: false,
@@ -23,24 +26,6 @@ const settings = {
   slidesToScroll: 1
 };
 
-const slideObjectCreator = something => {
-  let result = [];
-  something.map(onething => {
-    let obj = {
-      btn: {
-        title: 'LEARN MORE',
-        link: '#'
-      }
-    };
-    obj.img = onething.image.url;
-    obj.id = onething._id;
-    obj.title = onething.title;
-    obj.subtitle = onething.description;
-  });
-  return result;
-};
-
-let slidess = [];
 const Slide = ({ btn, img, subtitle, title }) => (
   <div className='hero__slide' style={{ backgroundImage: `url(${img})` }}>
     <div className='overlay'></div>
@@ -59,16 +44,18 @@ const Slide = ({ btn, img, subtitle, title }) => (
   </div>
 );
 
-export const Hero = ({ slides }) => {
+export const Hero = ({ slidess }) => {
   const [active, setActive] = useState(0);
   const [sliders, setSlides] = useState([]);
+  console.log('SLIDER VALUES', sliders);
 
   useEffect(() => {
     axios
       .get(api.SLIDERS)
       .then(res => {
         slidess = res.data[0].slides;
-        setSlides(res.data[0].slides);
+        console.log(slidess);
+        // setSlides(res.data[0].slides);
         slideObjectCreator(slidess);
       })
       .catch(err => {
@@ -77,36 +64,85 @@ export const Hero = ({ slides }) => {
   }, []);
 
   let slideRef;
+
+  const slideObjectCreator = something => {
+    let result = [];
+    something.map(onething => {
+      let obj = {
+        btn: {
+          title: 'LEARN MORE',
+          link: '#'
+        }
+      };
+      obj.img = api.BASE_URL + onething.image.url;
+      obj.id = onething._id;
+      obj.title = onething.title;
+      obj.subtitle = onething.description;
+      result.push(obj);
+    });
+    setSlides(result);
+  };
+
   return (
     <div className='hero'>
-      <Slider
-        {...settings}
-        afterChange={index => setActive(index)}
-        ref={slider => {
-          slideRef = slider;
-        }}
-      >
-        {slides.map(slide => (
-          <Slide key={slide.id} {...slide} />
-        ))}
-      </Slider>
-      <div className='hero__controls'>
-        <div className='hero__controls__top'>
-          <div className='pills'>
-            {slideObjectCreator(slidess).map((slide, index) => (
+      {sliders && (
+        <Slider
+          {...settings}
+          afterChange={index => setActive(index)}
+          ref={slider => {
+            slideRef = slider;
+          }}
+        >
+          {sliders.map(slide => {
+            return (
               <div
-                onClick={() => slideRef.slickGoTo(index)}
                 key={slide.id}
-                style={{
-                  width: `${100 / slideObjectCreator(slidess).length}%`
-                }}
-                className={cx('pill', {
-                  active: index === active
-                })}
-              ></div>
-            ))}
+                className='hero__slide'
+                style={{ backgroundImage: `url(${slide.img})` }}
+              >
+                <div className='overlay'></div>
+                <div className='container'>
+                  <div className='col-md-7'>
+                    <h3 className='title text text--sm c-white fw-regular'>
+                      {slide.title}
+                    </h3>
+                    <h4 className='subtitle text text--xl c-white fw-light'>
+                      {slide.subtitle}
+                    </h4>
+                    {slide.btn && slide.btn.title ? (
+                      <Link
+                        to={slide.btn.link}
+                        className='btn btn__white btn--rounded btn--lg'
+                      >
+                        {slide.btn.title}
+                      </Link>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </Slider>
+      )}
+      <div className='hero__controls'>
+        {sliders && (
+          <div className='hero__controls__top'>
+            <div className='pills'>
+              {sliders.map((slide, index) => (
+                <div
+                  onClick={() => slideRef.slickGoTo(index)}
+                  key={slide.id}
+                  style={{
+                    width: `${100 / sliders.length}%`
+                  }}
+                  className={cx('pill', {
+                    active: index === active
+                  })}
+                ></div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div className='hero__controls__bottom'>
           <LeftArrow
             height={24}
@@ -114,17 +150,19 @@ export const Hero = ({ slides }) => {
             style={{ cursor: 'pointer' }}
             width={24}
           />
-          <div className='dots'>
-            {slides.map((slide, index) => (
-              <div
-                onClick={() => slideRef.slickGoTo(index)}
-                key={slide.id}
-                className={cx('dot', {
-                  active: index === active
-                })}
-              ></div>
-            ))}
-          </div>
+          {sliders && (
+            <div className='dots'>
+              {sliders.map((slide, index) => (
+                <div
+                  onClick={() => slideRef.slickGoTo(index)}
+                  key={slide.id}
+                  className={cx('dot', {
+                    active: index === active
+                  })}
+                ></div>
+              ))}
+            </div>
+          )}
           <RightArrow
             height={24}
             onClick={() => slideRef.slickNext()}
@@ -144,43 +182,44 @@ Slide.propTypes = {
   title: PropTypes.string
 };
 
-Hero.propTypes = {
-  slides: PropTypes.array
-};
+// Hero.propTypes = {
+//   slides: PropTypes.array
+// };
 
-Hero.defaultProps = {
-  slides: [
-    {
-      id: 'ag',
-      img: Paper,
-      title: 'VISTA INTERNATIONAL',
-      subtitle:
-        'Your source for world-class paper, stationery, printing & agrochemical products',
-      btn: {
-        title: 'LEARN MORE',
-        link: '#'
-      }
-    },
-    {
-      id: 'ra',
-      img: Print,
-      title: 'OFFICE EVERYTHING',
-      subtitle:
-        'Trusted companion for superior quality stationery, furniture, technology and everything for your office',
-      btn: {
-        title: 'LEARN MORE',
-        link: '#'
-      }
-    },
-    {
-      id: 'nd',
-      img: Agro,
-      title: 'VISTA INITIATIVES',
-      subtitle: 'What we give back to the community',
-      btn: {
-        title: 'LEARN MORE',
-        link: '#'
-      }
-    }
-  ]
-};
+// Hero.defaultProps = {
+// slides:
+// [
+//   {
+//     id: 'ag',
+//     // img: Paper,
+//     title: 'VISTA INTERNATIONAL',
+//     subtitle:
+//       'Your source for world-class paper, stationery, printing & agrochemical products',
+//     btn: {
+//       title: 'LEARN MORE',
+//       link: '#'
+//     }
+//   },
+//   {
+//     id: 'ra',
+//     // img: Print,
+//     title: 'OFFICE EVERYTHING',
+//     subtitle:
+//       'Trusted companion for superior quality stationery, furniture, technology and everything for your office',
+//     btn: {
+//       title: 'LEARN MORE',
+//       link: '#'
+//     }
+//   },
+//   {
+//     id: 'nd',
+//     // img: Agro,
+//     title: 'VISTA INITIATIVES',
+//     subtitle: 'What we give back to the community',
+//     btn: {
+//       title: 'LEARN MORE',
+//       link: '#'
+//     }
+//   }
+// ]
+// };

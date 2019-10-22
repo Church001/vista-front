@@ -38,6 +38,7 @@
   &__brand {
     img {
       height: 4.5rem;
+      margin-right: 3rem;
     }
   }
 
@@ -50,7 +51,8 @@
     display: inline-block;
 
     &:not(:last-child) {
-      margin-right: 5rem;
+      margin-right: 3rem;
+      margin-left: 2rem;
     }
 
     &.special {
