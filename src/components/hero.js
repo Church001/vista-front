@@ -6,16 +6,13 @@ import cx from 'classnames';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
 
-import Paper from 'assets/img/new-paper.jpg';
+// import Paper from 'assets/img/new-paper.jpg';
 // import Stationery from 'assets/img/stationery.jpg';
-import Print from 'assets/img/printing-packaging.png';
-import Agro from 'assets/img/agrochemicals.jpg';
+// import Print from 'assets/img/printing-packaging.png';
+// import Agro from 'assets/img/agrochemicals.jpg';
 
 import axios from 'axios';
 import api from '../utils/api';
-
-let slidess = [];
-let newSlides = [];
 
 const settings = {
   dots: false,
@@ -47,15 +44,12 @@ const Slide = ({ btn, img, subtitle, title }) => (
 export const Hero = ({ slidess }) => {
   const [active, setActive] = useState(0);
   const [sliders, setSlides] = useState([]);
-  console.log('SLIDER VALUES', sliders);
 
   useEffect(() => {
     axios
       .get(api.SLIDERS)
       .then(res => {
         slidess = res.data[0].slides;
-        console.log(slidess);
-        // setSlides(res.data[0].slides);
         slideObjectCreator(slidess);
       })
       .catch(err => {
@@ -181,45 +175,3 @@ Slide.propTypes = {
   subtitle: PropTypes.string,
   title: PropTypes.string
 };
-
-// Hero.propTypes = {
-//   slides: PropTypes.array
-// };
-
-// Hero.defaultProps = {
-// slides:
-// [
-//   {
-//     id: 'ag',
-//     // img: Paper,
-//     title: 'VISTA INTERNATIONAL',
-//     subtitle:
-//       'Your source for world-class paper, stationery, printing & agrochemical products',
-//     btn: {
-//       title: 'LEARN MORE',
-//       link: '#'
-//     }
-//   },
-//   {
-//     id: 'ra',
-//     // img: Print,
-//     title: 'OFFICE EVERYTHING',
-//     subtitle:
-//       'Trusted companion for superior quality stationery, furniture, technology and everything for your office',
-//     btn: {
-//       title: 'LEARN MORE',
-//       link: '#'
-//     }
-//   },
-//   {
-//     id: 'nd',
-//     // img: Agro,
-//     title: 'VISTA INITIATIVES',
-//     subtitle: 'What we give back to the community',
-//     btn: {
-//       title: 'LEARN MORE',
-//       link: '#'
-//     }
-//   }
-// ]
-// };

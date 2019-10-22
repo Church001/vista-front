@@ -5,20 +5,11 @@ import { Card, Hero, SocialLinks, Wrapper } from 'components';
 // import { ReactComponent as Print } from 'assets/svg/print.svg';
 // import { ReactComponent as OilSpill } from 'assets/svg/oil-spill.svg';
 import { ReactComponent as Gradhat } from 'assets/svg/gradhat.svg';
-import { ReactComponent as Idea } from 'assets/svg/idea.svg';
+// import { ReactComponent as Idea } from 'assets/svg/idea.svg';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
 import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
 import { ReactComponent as GreenLeft } from 'assets/svg/green-left.svg';
 import { ReactComponent as GreenRight } from 'assets/svg/green-right.svg';
-
-import Paper from 'assets/img/paper.png';
-import Stationery from 'assets/img/stationery.png';
-import Print from 'assets/img/printing.png';
-import OilSpill from 'assets/img/oilspill.png';
-
-import Distribution from 'assets/img/distribution.png';
-import Manufacture from 'assets/img/manufacturing.png';
-import Trading from 'assets/img/trading.jpeg';
 import axios from 'axios';
 import api from '../utils/api';
 
@@ -72,34 +63,6 @@ const Home = props => {
       })
       .catch(err => console.log(err));
   }, []);
-
-  const getImage = val => {
-    if (val === 'DISTRIBUTION') {
-      return Distribution;
-    }
-    if (val === 'TRADING') {
-      return Trading;
-    }
-    if (val === 'MANUFACTURING') {
-      return Manufacture;
-    }
-  };
-
-  const getIcon = val => {
-    //for product icons
-    if (val === 'Stationery') {
-      return Stationery;
-    }
-    if (val === 'Printing & Packaging') {
-      return Print;
-    }
-    if (val === 'Paper') {
-      return Paper;
-    }
-    if (val === 'Agrochemicals') {
-      return OilSpill;
-    }
-  };
 
   const getLinks = val => {
     if (val === 'Stationery') {
@@ -212,6 +175,7 @@ const Home = props => {
               {/* <div className='col-lg-3 col-md-4 col-sm-6 mb-5'> */}
               {productss.products
                 ? productss.products.map(product => {
+                    let image = api.BASE_URL + product.feature_image.url;
                     return (
                       <div
                         key={product.id}
@@ -222,7 +186,7 @@ const Home = props => {
                           title={product.title}
                           subtitle={product.description}
                           link={getLinks(product.title)}
-                          icon={getIcon(product.title)}
+                          icon={image}
                         />
                       </div>
                     );
@@ -267,13 +231,14 @@ const Home = props => {
             <div className='row justify-content-center pt-10'>
               {servicess.servicetypes
                 ? servicess.servicetypes.map(serve => {
+                    let image = api.BASE_URL + serve.feature_image.url;
                     return (
                       <div
                         key={serve._id}
                         className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'
                       >
                         <Card.Service
-                          img={getImage(serve.title)}
+                          img={image}
                           title={serve.title}
                           subtitle={serve.description}
                         />
