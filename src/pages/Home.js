@@ -28,6 +28,7 @@ let abouts = [];
 let whatWeGives = [];
 const falseProductsLoading = ['1', '2', '3', '4'];
 const falseServicesLoading = ['1', '2', '3'];
+const falseWhatWeGive = ['1', '2'];
 
 const Home = props => {
   const [products, setProducts] = useState([]);
@@ -39,9 +40,9 @@ const Home = props => {
     axios
       .get(api.WHAT_WE_GIVE_BACK_URL)
       .then(res => {
-        console.log('WHAT WE DO', res.data);
+        // console.log('WHAT WE DO', res.data);
         whatWeGives = res.data[0];
-        console.log('WHAT WE DO', whatWeGives.givebacks);
+        // console.log('WHAT WE DO', whatWeGives.givebacks);
         // setWhatWeGive(whatWeGives);
       })
       .catch(err => console.log(err));
@@ -126,6 +127,15 @@ const Home = props => {
     }
     if (val === 'Agrochemicals') {
       return 'agrochemical';
+    }
+  };
+
+  const colorChange = val => {
+    if (val === 'EMPOWERING EDUCATION') {
+      return { color: 'yellow', number: '1' };
+    }
+    if (val === 'COMMUNITY DEVELOPMENT') {
+      return { color: 'green', number: '2' };
     }
   };
 
@@ -333,26 +343,33 @@ const Home = props => {
               )}
             </div>
             <div className='row justify-content-center pt-10'>
-              {whatWeGives.givebacks ? (
-                whatWeGives.givebacks.map(giveback => {
-                  console.log('CONSOLED GIVEBACKS', giveback);
-                  return (
-                    <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
-                      <Card.CSR
-                        color='yellow'
-                        title={giveback.title}
-                        subtitle={giveback.description}
-                        number='01'
-                        icon={<Gradhat />}
-                      />
-                    </div>
-                  );
-                })
-              ) : (
-                <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
-                  <Card.CSRCardLoading />
-                </div>
-              )}
+              {whatWeGives.givebacks
+                ? whatWeGives.givebacks.map(giveback => {
+                    return (
+                      <div
+                        key={giveback.id}
+                        className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'
+                      >
+                        <Card.CSR
+                          color={colorChange(giveback.title).color}
+                          title={giveback.title}
+                          subtitle={giveback.description}
+                          number={colorChange(giveback.title).number}
+                          icon={<Gradhat />}
+                        />
+                      </div>
+                    );
+                  })
+                : falseWhatWeGive.map(falswWhat => {
+                    return (
+                      <div
+                        key={falswWhat}
+                        className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'
+                      >
+                        <Card.CSRCardLoading />
+                      </div>
+                    );
+                  })}
             </div>
           </div>
         </div>
