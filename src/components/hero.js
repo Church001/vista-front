@@ -26,8 +26,17 @@ const settings = {
 const slideObjectCreator = something => {
   let result = [];
   something.map(onething => {
-    let obj = {};
-    console.log(onething);
+    let obj = {
+      btn: {
+        title: 'LEARN MORE',
+        link: '#'
+      }
+    };
+    obj.img = onething.image.url;
+    obj.id = onething._id;
+    obj.title = onething.title;
+    obj.subtitle = onething.description;
+    console.log(obj);
   });
   return result;
 };
@@ -59,7 +68,6 @@ export const Hero = ({ slides }) => {
     axios
       .get(api.SLIDERS)
       .then(res => {
-        console.log(res.data[0].slides);
         slidess = res.data[0].slides;
         setSlides(res.data[0].slides);
         slideObjectCreator(slidess);
@@ -86,11 +94,13 @@ export const Hero = ({ slides }) => {
       <div className='hero__controls'>
         <div className='hero__controls__top'>
           <div className='pills'>
-            {slides.map((slide, index) => (
+            {slideObjectCreator(slidess).map((slide, index) => (
               <div
                 onClick={() => slideRef.slickGoTo(index)}
                 key={slide.id}
-                style={{ width: `${100 / slides.length}%` }}
+                style={{
+                  width: `${100 / slideObjectCreator(slidess).length}%`
+                }}
                 className={cx('pill', {
                   active: index === active
                 })}
