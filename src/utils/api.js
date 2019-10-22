@@ -18,7 +18,8 @@ export default {
   PRODUCT_CATEGORY_URL,
   CONTACTS_URL,
   WHAT_WE_GIVE_BACK_URL,
-  SLIDERS
+  SLIDERS,
+  BASE_URL
 };
 
 // https://vistabiz-cms.herokuapp.com/sliders

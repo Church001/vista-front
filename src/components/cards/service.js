@@ -28,7 +28,7 @@ export const ServiceCardLoading = props => {
   return (
     <div className='card service-card'>
       <div className='service-card__body'>
-        <h5 className='title text text--xs fw-semi text-center' />
+        <div className='title text text--xs fw-semi text-center' />
         <h6 className='subtitle text text--xs c-off-dark text-center'>
           loading...
         </h6>
