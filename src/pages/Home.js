@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Hero, SocialLinks, Wrapper } from 'components';
-// import { ReactComponent as Paper } from 'assets/svg/paper.svg';
-// import { ReactComponent as Stationery } from 'assets/svg/stationery.svg';
-// import { ReactComponent as Print } from 'assets/svg/print.svg';
-// import { ReactComponent as OilSpill } from 'assets/svg/oil-spill.svg';
 import { ReactComponent as Gradhat } from 'assets/svg/gradhat.svg';
-// import { ReactComponent as Idea } from 'assets/svg/idea.svg';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
 import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
 import { ReactComponent as GreenLeft } from 'assets/svg/green-left.svg';
@@ -21,12 +16,10 @@ const falseProductsLoading = ['1', '2', '3', '4'];
 const falseServicesLoading = ['1', '2', '3'];
 const falseWhatWeGive = ['1', '2'];
 
-const Home = props => {
+const Home = () => {
   const [products, setProducts] = useState([]);
   const [services, setServices] = useState(null);
   const [about, setAbout] = useState([]);
-  const [whatWeGive, setWhatWeGive] = useState([]);
-  const [slides, setSlides] = useState([]);
 
   useEffect(() => {
     axios
