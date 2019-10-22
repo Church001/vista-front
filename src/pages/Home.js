@@ -35,15 +35,13 @@ const Home = props => {
   const [services, setServices] = useState(null);
   const [about, setAbout] = useState([]);
   const [whatWeGive, setWhatWeGive] = useState([]);
+  const [slides, setSlides] = useState([]);
 
   useEffect(() => {
     axios
       .get(api.WHAT_WE_GIVE_BACK_URL)
       .then(res => {
-        // console.log('WHAT WE DO', res.data);
         whatWeGives = res.data[0];
-        // console.log('WHAT WE DO', whatWeGives.givebacks);
-        // setWhatWeGive(whatWeGives);
       })
       .catch(err => console.log(err));
 
@@ -72,18 +70,6 @@ const Home = props => {
         servicess = servicess[0]; //NOTE: This is a useless move, I made it because my code works
         setServices(servicess);
       })
-      .catch(err => console.log(err));
-
-    axios
-      .get(api.CONTACTS_URL)
-      .then(res => {
-        console.log('CONTACT', res.data[0]);
-      })
-      .catch(err => console.log(err));
-
-    axios
-      .get(api.SLIDERS)
-      .then(res => console.log('SLIDERS', res.data[0].slides))
       .catch(err => console.log(err));
   }, []);
 

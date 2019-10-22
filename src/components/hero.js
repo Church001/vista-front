@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
@@ -11,6 +11,9 @@ import Paper from 'assets/img/new-paper.jpg';
 import Print from 'assets/img/printing-packaging.png';
 import Agro from 'assets/img/agrochemicals.jpg';
 
+import axios from 'axios';
+import api from '../utils/api';
+
 const settings = {
   dots: false,
   arrows: false,
@@ -20,6 +23,16 @@ const settings = {
   slidesToScroll: 1
 };
 
+const slideObjectCreator = something => {
+  let result = [];
+  something.map(onething => {
+    let obj = {};
+    console.log(onething);
+  });
+  return result;
+};
+
+let slidess = [];
 const Slide = ({ btn, img, subtitle, title }) => (
   <div className='hero__slide' style={{ backgroundImage: `url(${img})` }}>
     <div className='overlay'></div>
@@ -40,6 +53,22 @@ const Slide = ({ btn, img, subtitle, title }) => (
 
 export const Hero = ({ slides }) => {
   const [active, setActive] = useState(0);
+  const [sliders, setSlides] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(api.SLIDERS)
+      .then(res => {
+        console.log(res.data[0].slides);
+        slidess = res.data[0].slides;
+        setSlides(res.data[0].slides);
+        slideObjectCreator(slidess);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
   let slideRef;
   return (
     <div className='hero'>

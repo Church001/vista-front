@@ -24,8 +24,6 @@ export const ContactForm = () => {
       .then(res => {
         contactDetail = res.data[0];
         setContact(res.data[0]);
-        console.log(contactDetail);
-        console.log(contact);
       })
       .catch(err => {
         console.log(err);
