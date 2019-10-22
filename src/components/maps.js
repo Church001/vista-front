@@ -28,6 +28,7 @@ export class Maps extends React.Component {
     return this.state.stores.map(store => {
       return (
         <Marker
+          key={store.latitude}
           position={{
             lat: store.latitude,
             lng: store.longitude

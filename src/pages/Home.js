@@ -25,10 +25,13 @@ import api from '../utils/api';
 let servicess = [];
 let productss = [];
 let abouts = [];
+let whatWeGives = [];
+const falseProductsLoading = ['1', '2', '3', '4'];
+const falseServicesLoading = ['1', '2', '3'];
 
 const Home = props => {
   const [products, setProducts] = useState([]);
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState(null);
   const [about, setAbout] = useState([]);
   const [whatWeGive, setWhatWeGive] = useState([]);
 
@@ -36,15 +39,17 @@ const Home = props => {
     axios
       .get(api.WHAT_WE_GIVE_BACK_URL)
       .then(res => {
-        console.log('WHAT WE DO', res.data[0].givebacks);
-        setWhatWeGive(res.data[0].givebacks);
+        console.log('WHAT WE DO', res.data[0]);
+        whatWeGives = res.data[0].givebacks;
+        // setWhatWeGive(whatWeGives);
       })
       .catch(err => console.log(err));
 
     axios
       .get(api.ABOUT_URL)
       .then(res => {
-        abouts = res.data[0];
+        abouts = res.data;
+        abouts = abouts[0];
         setAbout(abouts);
       })
       .catch(err => console.log(err));
@@ -52,8 +57,8 @@ const Home = props => {
     axios
       .get(api.PRODUCT_CATEGORY_URL)
       .then(res => {
-        productss = res.data[0];
-        console.log('PRODUCT CATEGORY', productss.products);
+        productss = res.data;
+        productss = res.data[0]; //NOTE: This is a useless move, I made it because my code works
         setProducts(productss);
       })
       .catch(err => console.log(err));
@@ -61,8 +66,8 @@ const Home = props => {
     axios
       .get(api.SERVICE_URL)
       .then(res => {
-        console.log('SERVICES ', res.data[0]);
-        servicess = res.data[0];
+        servicess = res.data;
+        servicess = servicess[0]; //NOTE: This is a useless move, I made it because my code works
         setServices(servicess);
       })
       .catch(err => console.log(err));
@@ -78,8 +83,6 @@ const Home = props => {
       .get(api.SLIDERS)
       .then(res => console.log('SLIDERS', res.data[0].slides))
       .catch(err => console.log(err));
-
-    // return () => {};
   }, []);
 
   const getImage = val => {
@@ -94,10 +97,34 @@ const Home = props => {
     }
   };
 
-  const looper = numb => {
-    let i;
-    for (i = 0; i < numb - 1; i++) {
-      return <Card.ServiceLoading />;
+  const getIcon = val => {
+    //for product icons
+    if (val === 'Stationery') {
+      return Stationery;
+    }
+    if (val === 'Printing & Packaging') {
+      return Print;
+    }
+    if (val === 'Paper') {
+      return Paper;
+    }
+    if (val === 'Agrochemicals') {
+      return OilSpill;
+    }
+  };
+
+  const getLinks = val => {
+    if (val === 'Stationery') {
+      return 'stationery';
+    }
+    if (val === 'Printing & Packaging') {
+      return 'print';
+    }
+    if (val === 'Paper') {
+      return 'paper';
+    }
+    if (val === 'Agrochemicals') {
+      return 'agrochemical';
     }
   };
 
@@ -119,7 +146,7 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
-              {abouts ? (
+              {abouts.heading ? (
                 <h4 className='text text--xs c-purple fw-semi text-center home'>
                   About Us
                 </h4>
@@ -128,7 +155,7 @@ const Home = props => {
                   loading...
                 </h4>
               )}
-              {abouts ? (
+              {abouts.heading ? (
                 <h5 className='text text--lg text-center mb-0'>
                   {abouts.heading}
                 </h5>
@@ -138,7 +165,7 @@ const Home = props => {
             </div>
             <div className='row justify-content-center'>
               <div className='col-md-7 col-sm-8 col-10'>
-                {abouts ? (
+                {abouts.description ? (
                   <p className='text text--sm c-off-dark text-center'>
                     {abouts.description}
                   </p>
@@ -188,7 +215,6 @@ const Home = props => {
               {/* <div className='col-lg-3 col-md-4 col-sm-6 mb-5'> */}
               {productss.products
                 ? productss.products.map(product => {
-                    console.log(product);
                     return (
                       <div
                         key={product.id}
@@ -198,17 +224,22 @@ const Home = props => {
                           color='green'
                           title={product.title}
                           subtitle={product.description}
-                          link='stationery'
-                          icon={Stationery}
+                          link={getLinks(product.title)}
+                          icon={getIcon(product.title)}
                         />
                       </div>
                     );
                   })
-                : // <Card.ProductLoading
-                  //   color='purple'
-                  // />
-                  ''}
-              {/* // </div> */}
+                : falseProductsLoading.map(fal => {
+                    return (
+                      <div
+                        key={fal}
+                        className='col-lg-3 col-md-4 col-sm-6 mb-5'
+                      >
+                        <Card.ProductLoading color='purple' />
+                      </div>
+                    );
+                  })}
             </div>
           </div>
         </div>
@@ -239,7 +270,6 @@ const Home = props => {
             <div className='row justify-content-center pt-10'>
               {servicess.servicetypes
                 ? servicess.servicetypes.map(serve => {
-                    console.log(serve);
                     return (
                       <div
                         key={serve._id}
@@ -253,7 +283,16 @@ const Home = props => {
                       </div>
                     );
                   })
-                : looper()}
+                : falseServicesLoading.map(serv => {
+                    return (
+                      <div
+                        key={serv}
+                        className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'
+                      >
+                        <Card.ServiceLoading />
+                      </div>
+                    );
+                  })}
             </div>
           </div>
         </div>
@@ -273,12 +312,27 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header more'>
-              <h4 className='text text--xs c-red fw-semi text-center home'>
-                What we give back
-              </h4>
-              <h5 className='w-50 text text--lg text-center mb-0'>
-                Driven by a mission for sustainable development
-              </h5>
+              {/* { whatWeGives 
+                ?
+                <h4 className='text text--xs c-red fw-semi text-center home'>
+                  What we give back
+                </h4>
+                :
+                <h4 className='text text--xs c-red fw-semi text-center home'>
+                  loading...
+                </h4>
+              }
+              {
+                whatWeGives 
+                ?
+                <h5 className='w-50 text text--lg text-center mb-0'>
+                  {whatWeGives}
+                </h5>
+                :
+                <h5 className='w-50 text text--lg text-center mb-0'>
+                  loading...
+                </h5>
+              } */}
             </div>
             <div className='row justify-content-center pt-10'>
               <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
