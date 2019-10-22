@@ -32,3 +32,17 @@ ProductCard.propTypes = {
   subtitle: PropTypes.string,
   title: PropTypes.string
 };
+
+export const ProductCardLoading = ({ color, icon, link, subtitle, title }) => {
+  return (
+    <div className={`card product-card product-card--c-${color}`}>
+      <div className='product-card__body'>
+        <div className='header'>
+          <div className='product-card__icon'>
+            <h3>Loading...</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

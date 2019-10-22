@@ -6,16 +6,24 @@ export class Maps extends React.Component {
     super(props);
     this.state = {
       stores: [
-        { lat: 47.49855629475769, lng: -122.14184416996333 },
-        { latitude: 47.359423, longitude: -122.021071 },
-        { latitude: 47.2052192687988, longitude: -121.988426208496 },
-        { latitude: 47.6307081, longitude: -122.1434325 },
-        { latitude: 47.3084488, longitude: -122.2140121 },
-        { latitude: 47.5524695, longitude: -122.0425407 }
+        { latitude: 9.037831, longitude: 7.383967 }, //Abuja
+        { latitude: 6.537404, longitude: 3.332335 }, //Lagos
+        { latitude: 4.815417, longitude: 7.049736 }, //PH
+        { latitude: 7.361452, longitude: 3.869656 }, //Ibadan
+        { latitude: 11.84588, longitude: 13.143745 }, //Maiduguri
+        { latitude: 12.014434, longitude: 8.572272 }, //Kano
+        { latitude: 10.444833, longitude: 7.400554 } //Kaduna
       ]
     };
   }
 
+  // 9.037831, 7.383967 Abuja
+  // 6.537404, 3.332726 Lagos
+  // 4.815417, 7.049736 PH
+  // 7.361452, 3.869656 Ibadan
+  // 11.845880, 13.143745 Maiduguri
+  // 12.014434, 8.572272 Kano
+  // 10.444833, 7.400554 Kaduna
   variousStores = () => {
     return this.state.stores.map(store => {
       return (
@@ -39,7 +47,7 @@ export class Maps extends React.Component {
         google={this.props.google}
         zoom={8}
         style={mapStyles}
-        initialCenter={{ lat: 9.082, lng: 8.6753 }}
+        initialCenter={{ lat: 9, lng: 8.6 }}
       >
         {this.variousStores()}
       </Map>

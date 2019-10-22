@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Hero, SocialLinks, Wrapper } from 'components';
 // import { ReactComponent as Paper } from 'assets/svg/paper.svg';
 // import { ReactComponent as Stationery } from 'assets/svg/stationery.svg';
@@ -19,13 +19,92 @@ import OilSpill from 'assets/img/oilspill.png';
 import Distribution from 'assets/img/distribution.png';
 import Manufacture from 'assets/img/manufacturing.png';
 import Trading from 'assets/img/trading.jpeg';
+import axios from 'axios';
+import api from '../utils/api';
+
+let servicess = [];
+let productss = [];
+let abouts = [];
 
 const Home = props => {
+  const [products, setProducts] = useState([]);
+  const [services, setServices] = useState([]);
+  const [about, setAbout] = useState([]);
+  const [whatWeGive, setWhatWeGive] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(api.WHAT_WE_GIVE_BACK_URL)
+      .then(res => {
+        console.log('WHAT WE DO', res.data[0].givebacks);
+        setWhatWeGive(res.data[0].givebacks);
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .get(api.ABOUT_URL)
+      .then(res => {
+        abouts = res.data[0];
+        setAbout(abouts);
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .get(api.PRODUCT_CATEGORY_URL)
+      .then(res => {
+        productss = res.data[0];
+        console.log('PRODUCT CATEGORY', productss.products);
+        setProducts(productss);
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .get(api.SERVICE_URL)
+      .then(res => {
+        console.log('SERVICES ', res.data[0]);
+        servicess = res.data[0];
+        setServices(servicess);
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .get(api.CONTACTS_URL)
+      .then(res => {
+        console.log('CONTACT', res.data[0]);
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .get(api.SLIDERS)
+      .then(res => console.log('SLIDERS', res.data[0].slides))
+      .catch(err => console.log(err));
+
+    // return () => {};
+  }, []);
+
+  const getImage = val => {
+    if (val === 'DISTRIBUTION') {
+      return Distribution;
+    }
+    if (val === 'TRADING') {
+      return Trading;
+    }
+    if (val === 'MANUFACTURING') {
+      return Manufacture;
+    }
+  };
+
+  const looper = numb => {
+    let i;
+    for (i = 0; i < numb - 1; i++) {
+      return <Card.ServiceLoading />;
+    }
+  };
+
   return (
     <Wrapper>
       <Hero />
       <SocialLinks alternate />
-
       <section className='section section--wo section--wo--p' id='about'>
         <PurpleLeft
           width={230}
@@ -40,23 +119,34 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-purple fw-semi text-center home'>
-                About Us
-              </h4>
-              <h5 className='text text--lg text-center mb-0'>
-                The Vista Advantage
-              </h5>
+              {abouts ? (
+                <h4 className='text text--xs c-purple fw-semi text-center home'>
+                  About Us
+                </h4>
+              ) : (
+                <h4 className='text text--xs c-purple fw-semi text-center home'>
+                  loading...
+                </h4>
+              )}
+              {abouts ? (
+                <h5 className='text text--lg text-center mb-0'>
+                  {abouts.heading}
+                </h5>
+              ) : (
+                <h5 className='text text--lg text-center mb-0'>loading...</h5>
+              )}
             </div>
             <div className='row justify-content-center'>
               <div className='col-md-7 col-sm-8 col-10'>
-                <p className='text text--sm c-off-dark text-center'>
-                  We started out as a trading company in 1992 and throughout our
-                  evolution to one of the largest manufacturers and distributors
-                  of paper, stationery, printing equipment and agrochemical
-                  products in West Africa, Vista International Ltd has been
-                  committed to providing you with superior quality and a world
-                  class experience in our products.
-                </p>
+                {abouts ? (
+                  <p className='text text--sm c-off-dark text-center'>
+                    {abouts.description}
+                  </p>
+                ) : (
+                  <p className='text text--sm c-off-dark text-center'>
+                    loading...
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -75,75 +165,50 @@ const Home = props => {
           className='symbol--left hide-for-small-only'
         />
         <div className='container-fluid'>
-          {/* <div className='section__sub'>
-            <div className='section__header'>
-              <h4 className='text text--xs c-purple fw-semi text-center home'>
-                About Us
-              </h4>
-              <h5 className='text text--lg text-center mb-0'>
-                The Vista Advantage
-              </h5>
-            </div>
-            <div className='row justify-content-center'>
-              <div className='col-md-7 col-sm-8 col-10'>
-                <p className='text text--sm c-off-dark text-center'>
-                  We started out as a trading company in 1992 and throughout our
-                  evolution to one of the largest manufacturers and distributors
-                  of paper, stationery, printing equipment and agrochemical
-                  products in West Africa, Vista International Ltd has been
-                  committed to providing you with superior quality and a world
-                  class experience in our products.
-                </p>
-              </div>
-            </div>
-          </div> */}
-
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-green fw-semi text-center home'>
-                Our Products
-              </h4>
-              <h5 className='text text--lg text-center mb-0'>
-                World class products just for you
-              </h5>
+              {productss.products ? (
+                <h4 className='text text--xs c-green fw-semi text-center home'>
+                  Our Products
+                </h4>
+              ) : (
+                <h4 className='text text--xs c-green fw-semi text-center home'>
+                  loading...
+                </h4>
+              )}
+              {productss.products ? (
+                <h5 className='text text--lg text-center mb-0'>
+                  {productss.heading}
+                </h5>
+              ) : (
+                <h5 className='text text--lg text-center mb-0'>loading...</h5>
+              )}
             </div>
             <div className='row pt-10'>
-              <div className='col-lg-3 col-md-4 col-sm-6 mb-5'>
-                <Card.Product
-                  color='purple'
-                  title='Paper'
-                  subtitle='Enjoy seamless writing, printing & everything in between with our top quality papers, perfect for all your needs!'
-                  link='paper'
-                  icon={Paper}
-                />
-              </div>
-              <div className='col-lg-3 col-md-4 col-sm-6 mb-5'>
-                <Card.Product
-                  color='green'
-                  title='Stationery'
-                  subtitle='Ready to note that idea down or get back to school? Explore our exciting stationery for a smooth-sailing experience!'
-                  link='stationery'
-                  icon={Stationery}
-                />
-              </div>
-              <div className='col-lg-3 col-md-4 col-sm-6 mb-5'>
-                <Card.Product
-                  color='yellow'
-                  title='Printing & Packaging'
-                  subtitle='Look no further for superior quality printing consumables and equipment. Our light packaging also offers you state of the art solutions for your requirements!'
-                  link='print'
-                  icon={Print}
-                />
-              </div>
-              <div className='col-lg-3 col-md-4 col-sm-6 mb-5'>
-                <Card.Product
-                  color='red'
-                  title='Agrochemicals'
-                  subtitle='Get rid of all those pesky pests and increase your productivity with our highly effective herbicides & insecticides.'
-                  link='agrochemical'
-                  icon={OilSpill}
-                />
-              </div>
+              {/* <div className='col-lg-3 col-md-4 col-sm-6 mb-5'> */}
+              {productss.products
+                ? productss.products.map(product => {
+                    console.log(product);
+                    return (
+                      <div
+                        key={product.id}
+                        className='col-lg-3 col-md-4 col-sm-6 mb-5'
+                      >
+                        <Card.Product
+                          color='green'
+                          title={product.title}
+                          subtitle={product.description}
+                          link='stationery'
+                          icon={Stationery}
+                        />
+                      </div>
+                    );
+                  })
+                : // <Card.ProductLoading
+                  //   color='purple'
+                  // />
+                  ''}
+              {/* // </div> */}
             </div>
           </div>
         </div>
@@ -153,36 +218,42 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--xs c-yellow fw-semi text-center home'>
-                Our services
-              </h4>
-              <h5 className='text text--lg text-center mb-0'>
-                Enjoy our top notch services
-              </h5>
+              {servicess.servicetypes ? (
+                <h4 className='text text--xs c-yellow fw-semi text-center home'>
+                  Our services
+                </h4>
+              ) : (
+                <h4 className='text text--xs c-yellow fw-semi text-center home'>
+                  loading....
+                </h4>
+              )}
+              {servicess.servicetypes ? (
+                <h5 className='text text--lg text-center mb-0'>
+                  {servicess.heading}
+                </h5>
+              ) : (
+                <h5 className='text text--lg text-center mb-0'>loading...</h5>
+              )}
             </div>
 
             <div className='row justify-content-center pt-10'>
-              <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
-                <Card.Service
-                  img={Manufacture}
-                  title='MANUFACTURING'
-                  subtitle='World class quality stationery for you such as Exercise Books, Hardcover books, Spiral Books, Sketch Pads and more'
-                />
-              </div>
-              <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
-                <Card.Service
-                  img={Distribution}
-                  title='DISTRIBUTION'
-                  subtitle='Quality products chosen and distributed to serve your discerning taste.'
-                />
-              </div>
-              <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
-                <Card.Service
-                  img={Trading}
-                  title='TRADING'
-                  subtitle='Raw materials sourced from world class producers in bulk for industrial use'
-                />
-              </div>
+              {servicess.servicetypes
+                ? servicess.servicetypes.map(serve => {
+                    console.log(serve);
+                    return (
+                      <div
+                        key={serve._id}
+                        className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'
+                      >
+                        <Card.Service
+                          img={getImage(serve.title)}
+                          title={serve.title}
+                          subtitle={serve.description}
+                        />
+                      </div>
+                    );
+                  })
+                : looper()}
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Label, FormGroup, Input } from 'reactstrap';
 import { SocialLinks } from 'components';
 import { ReactComponent as Mail } from 'assets/svg/mail.svg';
@@ -6,6 +6,12 @@ import { ReactComponent as Marker } from 'assets/svg/marker.svg';
 import { ReactComponent as Phone } from 'assets/svg/phone.svg';
 
 export const ContactForm = () => {
+  const [name, SetName] = useState('');
+
+  const handlerName = e => {
+    console.log(e);
+  };
+
   return (
     <div className='cf'>
       <div className='container'>
@@ -76,7 +82,11 @@ export const ContactForm = () => {
               <Form>
                 <FormGroup>
                   <Label className='form__label'>Name</Label>
-                  <Input className='form__field' />
+                  <Input
+                    className='form__field'
+                    value={name}
+                    onChange={handlerName}
+                  />
                 </FormGroup>
 
                 <FormGroup>
@@ -95,7 +105,10 @@ export const ContactForm = () => {
                 </FormGroup>
 
                 <div className='d-flex justify-content-center'>
-                  <Button className='btn__purple btn--rounded btn--lg'>
+                  <Button
+                    className='btn__purple btn--rounded btn--lg'
+                    onClick={() => alert('PLEALSE')}
+                  >
                     SEND MESSAGE
                   </Button>
                 </div>
