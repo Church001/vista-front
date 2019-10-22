@@ -20,6 +20,25 @@ export const CSRCard = ({ color, icon, number, subtitle, title }) => {
   );
 };
 
+export const CSRCardLoading = () => {
+  return (
+    <div className={'card csr-card csr-card--c-green'}>
+      <div className='csr-card__body'>
+        <h5 className='title text text--sm text-center fw-semi' />
+        <h6 className='subtitle text text--xs text-center c-off-dark'>
+          loading...
+        </h6>
+
+        <div className='csr-card__icon' />
+      </div>
+
+      <div className='csr-card__header'>
+        <span className='text fw-semi c-white' />
+      </div>
+    </div>
+  );
+};
+
 CSRCard.propTypes = {
   color: PropTypes.string,
   icon: PropTypes.node,

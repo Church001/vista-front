@@ -39,8 +39,9 @@ const Home = props => {
     axios
       .get(api.WHAT_WE_GIVE_BACK_URL)
       .then(res => {
-        console.log('WHAT WE DO', res.data[0]);
-        whatWeGives = res.data[0].givebacks;
+        console.log('WHAT WE DO', res.data);
+        whatWeGives = res.data[0];
+        console.log('WHAT WE DO', whatWeGives.givebacks);
         // setWhatWeGive(whatWeGives);
       })
       .catch(err => console.log(err));
@@ -312,47 +313,46 @@ const Home = props => {
         <div className='container-fluid'>
           <div className='section__sub'>
             <div className='section__header more'>
-              {/* { whatWeGives 
-                ?
+              {whatWeGives.givebacks ? (
                 <h4 className='text text--xs c-red fw-semi text-center home'>
                   What we give back
                 </h4>
-                :
+              ) : (
                 <h4 className='text text--xs c-red fw-semi text-center home'>
                   loading...
                 </h4>
-              }
-              {
-                whatWeGives 
-                ?
+              )}
+              {whatWeGives.givebacks ? (
                 <h5 className='w-50 text text--lg text-center mb-0'>
-                  {whatWeGives}
+                  {whatWeGives.heading}
                 </h5>
-                :
+              ) : (
                 <h5 className='w-50 text text--lg text-center mb-0'>
                   loading...
                 </h5>
-              } */}
+              )}
             </div>
             <div className='row justify-content-center pt-10'>
-              <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
-                <Card.CSR
-                  color='yellow'
-                  title='EMPOWERING EDUCATION'
-                  subtitle='We execute initiatives and provide support to education-focused NGOs to increase access to quality education in Nigeria'
-                  number='01'
-                  icon={<Gradhat />}
-                />
-              </div>
-              <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6  mb-5'>
-                <Card.CSR
-                  color='green'
-                  title='COMMUNITY DEVELOPMENT'
-                  subtitle='We sponsor and associate with programs designed to generate positive change in our communities.'
-                  number='02'
-                  icon={<Idea />}
-                />
-              </div>
+              {whatWeGives.givebacks ? (
+                whatWeGives.givebacks.map(giveback => {
+                  console.log('CONSOLED GIVEBACKS', giveback);
+                  return (
+                    <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
+                      <Card.CSR
+                        color='yellow'
+                        title={giveback.title}
+                        subtitle={giveback.description}
+                        number='01'
+                        icon={<Gradhat />}
+                      />
+                    </div>
+                  );
+                })
+              ) : (
+                <div className='col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5'>
+                  <Card.CSRCardLoading />
+                </div>
+              )}
             </div>
           </div>
         </div>

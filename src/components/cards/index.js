@@ -1,4 +1,4 @@
-import { CSRCard } from './csr';
+import { CSRCard, CSRCardLoading } from './csr';
 import { ExploreCard } from './explore';
 import { ProductCard, ProductCardLoading } from './product';
 import { ServiceCard, ServiceCardLoading } from './service';
@@ -19,5 +19,6 @@ export const Card = {
 
   // Loading versions of Cards
   ProductLoading: ProductCardLoading,
-  ServiceLoading: ServiceCardLoading
+  ServiceLoading: ServiceCardLoading,
+  CSRCardLoading: CSRCardLoading
 };
