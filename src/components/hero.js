@@ -36,7 +36,6 @@ const slideObjectCreator = something => {
     obj.id = onething._id;
     obj.title = onething.title;
     obj.subtitle = onething.description;
-    console.log(obj);
   });
   return result;
 };
