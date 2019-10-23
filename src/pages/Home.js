@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Card, Hero, SocialLinks, Wrapper } from 'components';
 import { ReactComponent as Gradhat } from 'assets/svg/gradhat.svg';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
@@ -7,6 +7,7 @@ import { ReactComponent as GreenLeft } from 'assets/svg/green-left.svg';
 import { ReactComponent as GreenRight } from 'assets/svg/green-right.svg';
 import axios from 'axios';
 import api from '../utils/api';
+import GeneralContext from '../context/Context';
 
 let servicess = [];
 let productss = [];
@@ -17,11 +18,13 @@ const falseServicesLoading = ['1', '2', '3'];
 const falseWhatWeGive = ['1', '2'];
 
 const Home = () => {
+  const { state, dispatch } = useContext(GeneralContext);
   const [products, setProducts] = useState([]);
   const [services, setServices] = useState(null);
   const [about, setAbout] = useState([]);
 
   useEffect(() => {
+    console.log('STATE', state);
     axios
       .get(api.WHAT_WE_GIVE_BACK_URL)
       .then(res => {
@@ -178,8 +181,9 @@ const Home = () => {
                           color='green'
                           title={product.title}
                           subtitle={product.description}
-                          link={getLinks(product.title)}
+                          link={'products'}
                           icon={image}
+                          rand={servicess}
                         />
                       </div>
                     );

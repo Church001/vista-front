@@ -88,7 +88,6 @@ export const Hero = ({ slidess }) => {
           }}
         >
           {sliders.map(slide => {
-            console.log(slide.img);
             return (
               <div
                 key={slide.id}

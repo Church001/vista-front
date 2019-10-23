@@ -52,7 +52,7 @@ class RouterComponent extends React.Component {
               path='/products'
               render={props => (
                 <Suspense fallback={<Loader />}>
-                  <Paper {...props} />
+                  <Products {...props} />
                 </Suspense>
               )}
             />
