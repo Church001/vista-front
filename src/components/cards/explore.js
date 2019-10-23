@@ -15,6 +15,17 @@ export const ExploreCard = ({ img, text }) => {
   );
 };
 
+export const ExploreCardLoading = () => {
+  return (
+    <div className='card explore-card'>
+      <div className='explore-card__header' />
+      <div className='explore-card__body'>
+        <p className='text text--xs c-off-dark text-center mb-0'>loading...</p>
+      </div>
+    </div>
+  );
+};
+
 ExploreCard.propTypes = {
   img: PropTypes.string,
   text: PropTypes.string

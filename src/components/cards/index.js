@@ -1,5 +1,5 @@
 import { CSRCard, CSRCardLoading } from './csr';
-import { ExploreCard } from './explore';
+import { ExploreCard, ExploreCardLoading } from './explore';
 import { ProductCard, ProductCardLoading } from './product';
 import { ServiceCard, ServiceCardLoading } from './service';
 import { LocationCard, LocationCardLoading } from './location';
@@ -21,5 +21,6 @@ export const Card = {
   ProductLoading: ProductCardLoading,
   ServiceLoading: ServiceCardLoading,
   CSRCardLoading: CSRCardLoading,
-  LocationLoading: LocationCardLoading
+  LocationLoading: LocationCardLoading,
+  ExploreLoading: ExploreCardLoading
 };
