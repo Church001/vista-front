@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Wrapper } from 'components';
 // import { Button } from 'reactstrap';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
 import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
 import Branch from 'assets/img/slider-img.jpg';
 import Maps from '../components/maps';
+import api from '../utils/api';
+import axios from 'axios';
+
+const falseLocations = ['1', '2', '3', '4', '5', '6', '7'];
 
 const Location = props => {
+  const [locations, setLocations] = useState([]);
+  useEffect(() => {
+    axios
+      .get(api.LOCATONS)
+      .then(res => {
+        console.log(res.data[0].cities);
+        setLocations(res.data[0]);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <Wrapper>
       <div className='map'>
@@ -26,84 +43,59 @@ const Location = props => {
         <div className='container'>
           <div className='section__sub'>
             <div className='section__header'>
-              <h4 className='text text--lg text-center'>
-                Find us at your location
-              </h4>
+              {locations.heading ? (
+                <h4 className='text text--lg text-center'>
+                  {locations.heading}
+                </h4>
+              ) : (
+                <h4 className='text text--lg text-center'>loading...</h4>
+              )}
               <div className='row justify-content-center'>
-                <div className='col-md-9 col-sm-8 col-10'>
-                  <p className='text text--sm c-off-dark text-center'>
-                    We're in every major city in Nigeria, so find us around you
-                    and let us know what you need!
-                  </p>
-                </div>
+                {locations.description ? (
+                  <div className='col-md-9 col-sm-8 col-10'>
+                    <p className='text text--sm c-off-dark text-center'>
+                      {locations.description}
+                    </p>
+                  </div>
+                ) : (
+                  <div className='col-md-9 col-sm-8 col-10'>
+                    <p className='text text--sm c-off-dark text-center'>
+                      loading...
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
 
           <div className='row'>
-            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
-              <Card.Location
-                text={'Lagos'}
-                ntext={
-                  '2EB, Opposite Aswani Market, Osolo Way, Aswani-Oshodi Industrial Scheme, Isolo, Lagos.'
-                }
-                otext={'Tel: +2348169110000'}
-              />
-            </div>
-            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
-              <Card.Location
-                text={'Abuja'}
-                ntext={
-                  'Plot 764 Cad Zone, C-16, Idu Industrial Area, Near Larfarge Plant Abuja.'
-                }
-                otext={'Tel: +2349053807969'}
-              />
-            </div>
-            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
-              <Card.Location
-                text={'Kaduna'}
-                ntext={
-                  'I5 Inuwa Abdulkadir Road, Industrial Estate, Kaduna South, Kaduna.'
-                }
-                otext={'Tel: +2348126300272'}
-              />
-            </div>
-            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
-              <Card.Location
-                text={'Port Harcourt'}
-                ntext={
-                  '270, Trans Amadi Industrial Layout, Triana Ltd Compound Near LG Shop, Opp Mainstreet Bank, PHC.'
-                }
-                otext={'Tel: +2348126300427'}
-              />
-            </div>
-            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
-              <Card.Location
-                text={'Ibadan'}
-                ntext={
-                  '8, Ajia Street, Behind Capital Building, Off Ring Road, Ibadan.'
-                }
-                otext={'Tel: +2348126300108'}
-              />
-            </div>
-            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
-              <Card.Location
-                text={'Maiduguri'}
-                ntext={
-                  'Former Leventis Supermarket, Opp Ramat Shopping Plaza, Maiduguri, Borno'
-                }
-                otext={'Tel: +2349053807969'}
-              />
-            </div>
-            <div className='col-xl-4 col-md-4 col-sm-6 mb-4'>
-              <Card.Location
-                text={'Kano'}
-                ntext={'Kundial Road, Bompal Industrial Layout, Bompal, Kano.'}
-                otext={'Tel: +2348150865735'}
-              />
-            </div>
+            {locations.cities
+              ? locations.cities.map(city => {
+                  let phone = 'Tel: +' + city.telephone;
+                  return (
+                    <div
+                      key={city.id}
+                      className='col-xl-4 col-md-4 col-sm-6 mb-4'
+                    >
+                      <Card.Location
+                        text={city.name}
+                        ntext={city.address}
+                        otext={phone}
+                      />
+                    </div>
+                  );
+                })
+              : falseLocations.map(falseLocation => {
+                  return (
+                    <div
+                      key={falseLocation}
+                      className='col-xl-4 col-md-4 col-sm-6 mb-4'
+                    >
+                      <Card.LocationLoading />
+                    </div>
+                  );
+                })}
           </div>
-
           <div className='row'>
             <div className='col-xl-12'>
               <img className='map__image' src={Branch} />

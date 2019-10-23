@@ -17,13 +17,6 @@ export class Maps extends React.Component {
     };
   }
 
-  // 9.037831, 7.383967 Abuja
-  // 6.537404, 3.332726 Lagos
-  // 4.815417, 7.049736 PH
-  // 7.361452, 3.869656 Ibadan
-  // 11.845880, 13.143745 Maiduguri
-  // 12.014434, 8.572272 Kano
-  // 10.444833, 7.400554 Kaduna
   variousStores = () => {
     return this.state.stores.map(store => {
       return (

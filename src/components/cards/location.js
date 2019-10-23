@@ -11,6 +11,16 @@ export const LocationCard = ({ text, ntext, otext }) => {
   );
 };
 
+export const LocationCardLoading = () => {
+  return (
+    <div className='card location-card'>
+      <div className='location-card__header' />
+      <div className='location-card__address'>loading...</div>
+      <div className='location-card__tell' />
+    </div>
+  );
+};
+
 LocationCard.propTypes = {
   text: PropTypes.string,
   ntext: PropTypes.string,
