@@ -14,6 +14,8 @@ const SLIDERS = BASE_URL + '/sliders';
 
 const LOCATONS = BASE_URL + '/locations';
 
+const PAPER_URL = BASE_URL + '/products';
+
 export default {
   ABOUT_URL,
   SERVICE_URL,
@@ -22,6 +24,7 @@ export default {
   WHAT_WE_GIVE_BACK_URL,
   SLIDERS,
   LOCATONS,
+  PAPER_URL,
   BASE_URL
 };
 
@@ -32,3 +35,5 @@ export default {
 // https://vistabiz-cms.herokuapp.com/whatwegivebacks
 // https://vistabiz-cms.herokuapp.com/contacts
 // https://vistabiz-cms.herokuapp.com/locations
+
+// https://vistabiz-cms.herokuapp.com/products

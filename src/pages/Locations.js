@@ -16,7 +16,6 @@ const Location = props => {
     axios
       .get(api.LOCATONS)
       .then(res => {
-        console.log(res.data[0].cities);
         setLocations(res.data[0]);
       })
       .catch(err => {

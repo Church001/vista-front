@@ -7,8 +7,8 @@ import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
 import api from '../utils/api';
 import axios from 'axios';
 
-const Paper = props => {
-  const [papers, setPapers] = useState([]);
+const Products = props => {
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
@@ -20,6 +20,7 @@ const Paper = props => {
         console.log(err);
       });
   });
+
   return (
     <Wrapper>
       <Hero />
@@ -131,4 +132,4 @@ const Paper = props => {
     </Wrapper>
   );
 };
-export default Paper;
+export default Products;
