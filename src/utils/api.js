@@ -14,7 +14,7 @@ const SLIDERS = BASE_URL + '/sliders';
 
 const LOCATONS = BASE_URL + '/locations';
 
-const PAPER_URL = BASE_URL + '/products';
+const PRODUCT_URL = BASE_URL + '/products';
 
 export default {
   ABOUT_URL,
@@ -24,7 +24,7 @@ export default {
   WHAT_WE_GIVE_BACK_URL,
   SLIDERS,
   LOCATONS,
-  PAPER_URL,
+  PRODUCT_URL,
   BASE_URL
 };
 

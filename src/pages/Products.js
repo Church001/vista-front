@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Card, Hero, SocialLinks, Wrapper } from 'components';
 import { Button } from 'reactstrap';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
 import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
-
+import GeneralState from '../context/Context';
 import api from '../utils/api';
 import axios from 'axios';
 
 const Products = props => {
+  const { state } = useContext(GeneralState);
   const [products, setProducts] = useState([]);
 
+  console.log('UPDATED STATE', state);
   useEffect(() => {
+    const endpoint = api.PRODUCT_URL + '/' + state.page_id;
+    console.log('CREATED ENDPOINT', endpoint);
     axios
-      .get(api.PAPER_URL)
+      .get(endpoint)
       .then(res => {
-        console.log(res.data);
+        console.log(res);
       })
       .catch(err => {
         console.log(err);

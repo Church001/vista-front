@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow-dark.svg';
+import { SET_CATEGORY_ID } from '../../context/Constants';
+import GeneralState from '../../context/Context';
 
-export const ProductCard = ({ color, icon, link, subtitle, title }) => {
+export const ProductCard = ({ color, icon, link, subtitle, title, id }) => {
+  const { dispatch } = useContext(GeneralState);
+
+  const setID = id => {
+    const payload = id;
+    const type = SET_CATEGORY_ID;
+    dispatch({
+      type,
+      payload
+    });
+  };
+
   return (
     <div className={`card product-card product-card--c-${color}`}>
       <div className='product-card__body'>
@@ -17,7 +30,11 @@ export const ProductCard = ({ color, icon, link, subtitle, title }) => {
           </h6>
         </div>
 
-        <Link className='product-card__link' to={link}>
+        <Link
+          className='product-card__link'
+          onClick={() => setID(id)}
+          to={link}
+        >
           <RightArrow />
         </Link>
       </div>
@@ -30,7 +47,8 @@ ProductCard.propTypes = {
   icon: PropTypes.any,
   link: PropTypes.string,
   subtitle: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  id: PropTypes.string
 };
 
 export const ProductCardLoading = ({ color, icon, link, subtitle, title }) => {

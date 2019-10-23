@@ -60,21 +60,6 @@ const Home = () => {
       .catch(err => console.log(err));
   }, []);
 
-  const getLinks = val => {
-    if (val === 'Stationery') {
-      return 'stationery';
-    }
-    if (val === 'Printing & Packaging') {
-      return 'print';
-    }
-    if (val === 'Paper') {
-      return 'paper';
-    }
-    if (val === 'Agrochemicals') {
-      return 'agrochemical';
-    }
-  };
-
   const colorChange = val => {
     if (val === 'EMPOWERING EDUCATION') {
       return { color: 'yellow', number: '1' };
@@ -183,7 +168,7 @@ const Home = () => {
                           subtitle={product.description}
                           link={'products'}
                           icon={image}
-                          rand={servicess}
+                          id={product.id}
                         />
                       </div>
                     );
