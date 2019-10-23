@@ -16,7 +16,7 @@ const Scroll = props => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [props.location]);
-
+  //
   return props.children;
 };
 
