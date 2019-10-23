@@ -198,7 +198,7 @@ export const ContactForm = () => {
                 <div className='d-flex justify-content-center'>
                   <Button
                     className='btn__purple btn--rounded btn--lg'
-                    onClick={() => alert('PLEALSE')}
+                    // onClick={() => alert('PLEALSE')}
                     disabled={!contactDetail.heading}
                   >
                     SEND MESSAGE

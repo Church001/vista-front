@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import history from './history';
 
 const Home = lazy(() => import('pages/Home'));
-// const Explore = lazy(() => import('pages/Explore'));
-// const Print = lazy(() => import('pages/Print'));
-// const Paper = lazy(() => import('pages/Paper'));
-// const Stationery = lazy(() => import('pages/Stationery'));
-// const Agrochemical = lazy(() => import('pages/Agrochemical'));
 const Locations = lazy(() => import('pages/Locations'));
 const Products = lazy(() => import('pages/Products'));
 
@@ -30,7 +25,19 @@ Scroll.propTypes = {
 
 const ScrollToTop = withRouter(Scroll);
 
-const Loader = () => <div>loading</div>;
+const Loader = () => (
+  <div className='section section--wo section--wo--p'>
+    <div className='container-fluid'>
+      <div className='section__sub'>
+        <div className='section__header'>
+          <h1 className='text text--lg c-black fw-semi text-center home'>
+            loading...
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 class RouterComponent extends React.Component {
   render() {
