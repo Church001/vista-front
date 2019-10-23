@@ -5,10 +5,10 @@ import history from './history';
 
 const Home = lazy(() => import('pages/Home'));
 // const Explore = lazy(() => import('pages/Explore'));
-const Print = lazy(() => import('pages/Print'));
-const Paper = lazy(() => import('pages/Paper'));
-const Stationery = lazy(() => import('pages/Stationery'));
-const Agrochemical = lazy(() => import('pages/Agrochemical'));
+// const Print = lazy(() => import('pages/Print'));
+// const Paper = lazy(() => import('pages/Paper'));
+// const Stationery = lazy(() => import('pages/Stationery'));
+// const Agrochemical = lazy(() => import('pages/Agrochemical'));
 const Locations = lazy(() => import('pages/Locations'));
 const Products = lazy(() => import('pages/Products'));
 
@@ -56,43 +56,6 @@ class RouterComponent extends React.Component {
                 </Suspense>
               )}
             />
-
-            {/*             
-            <Route
-              path='/paper'
-              render={props => (
-                <Suspense fallback={<Loader />}>
-                  <Paper {...props} />
-                </Suspense>
-              )}
-            />
-
-
-            <Route
-              path='/print'
-              render={props => (
-                <Suspense fallback={<Loader />}>
-                  <Print {...props} />
-                </Suspense>
-              )}
-            />
-            <Route
-              path='/stationery'
-              render={props => (
-                <Suspense fallback={<Loader />}>
-                  <Stationery {...props} />
-                </Suspense>
-              )}
-            />
-
-            <Route
-              path='/agrochemical'
-              render={props => (
-                <Suspense fallback={<Loader />}>
-                  <Agrochemical {...props} />
-                </Suspense>
-              )}
-            />
             <Route
               path='/location'
               render={props => (
@@ -100,7 +63,7 @@ class RouterComponent extends React.Component {
                   <Locations {...props} />
                 </Suspense>
               )}
-            /> */}
+            />
           </Switch>
         </ScrollToTop>
       </Router>
