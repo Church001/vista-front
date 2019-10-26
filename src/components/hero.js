@@ -14,8 +14,6 @@ import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
 import axios from 'axios';
 import api from '../utils/api';
 
-const imageURL =
-  'https://vistabiz-cms.herokuapp.com/uploads/2c40288669eb47bf96cf4e45b3fe3aae.jpg';
 const settings = {
   dots: false,
   arrows: false,
@@ -95,7 +93,8 @@ export const Hero = ({ slidess }) => {
               <div
                 key={slide.id}
                 className='hero__slide'
-                style={{ backgroundImage: `url(${imageURL})` }}
+                style={{ backgroundImage: `url(${slide.img})` }}
+                // style={{ backgroundImage: 'https://vistabiz-cms.herokuapp.com/uploads/2c40288669eb47bf96cf4e45b3fe3aae.jpg' }}
               >
                 <div className='overlay'></div>
                 <div className='container'>

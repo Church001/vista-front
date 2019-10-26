@@ -2,7 +2,7 @@ import React from 'react';
 
 const initialState = {
   page_id: '',
-  gollum: ''
+  error: {}
 };
 
 const GeneralState = React.createContext(initialState);

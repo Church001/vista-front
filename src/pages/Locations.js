@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Card, Wrapper } from 'components';
 // import { Button } from 'reactstrap';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
@@ -8,11 +8,25 @@ import Maps from '../components/maps';
 import api from '../utils/api';
 import axios from 'axios';
 import Loader from '../components/loader';
+import GeneralState from 'context/Context';
+import { SET_ERROR } from 'context/Constants';
+import Error from 'components/error';
 
 const falseLocations = ['1', '2', '3', '4', '5', '6', '7'];
 
 const Location = props => {
+  const { state, dispatch } = useContext(GeneralState);
   const [locations, setLocations] = useState([]);
+
+  const errSetter = err => {
+    const error = {};
+    error.msg = err;
+    dispatch({
+      type: SET_ERROR,
+      payload: error
+    });
+  };
+
   useEffect(() => {
     axios
       .get(api.LOCATONS)
@@ -20,92 +34,96 @@ const Location = props => {
         setLocations(res.data[0]);
       })
       .catch(err => {
-        console.log(err);
+        errSetter(err);
       });
   }, []);
 
-  return locations.length !== 0 ? (
-    <Wrapper>
-      <div className='map'>
-        <Maps />
-      </div>
-      <section className='section section--wo section--wo--p'>
-        <PurpleLeft
-          width={230}
-          height={502}
-          className='symbol--right hide-for-small-only'
-        />
-        <PurpleRight
-          width={230}
-          height={502}
-          className='symbol--left hide-for-small-only'
-        />
-        <div className='container'>
-          <div className='section__sub'>
-            <div className='section__header'>
-              {locations.heading ? (
-                <h4 className='text text--lg text-center'>
-                  {locations.heading}
-                </h4>
-              ) : (
-                <h4 className='text text--lg text-center'>loading</h4>
-              )}
-              <div className='row justify-content-center'>
-                {locations.description ? (
-                  <div className='col-md-9 col-sm-8 col-10'>
-                    <p className='text text--sm c-off-dark text-center'>
-                      {locations.description}
-                    </p>
-                  </div>
+  return state.error.msg === undefined ? (
+    locations.length !== 0 ? (
+      <Wrapper>
+        <div className='map'>
+          <Maps />
+        </div>
+        <section className='section section--wo section--wo--p'>
+          <PurpleLeft
+            width={230}
+            height={502}
+            className='symbol--right hide-for-small-only'
+          />
+          <PurpleRight
+            width={230}
+            height={502}
+            className='symbol--left hide-for-small-only'
+          />
+          <div className='container'>
+            <div className='section__sub'>
+              <div className='section__header'>
+                {locations.heading ? (
+                  <h4 className='text text--lg text-center'>
+                    {locations.heading}
+                  </h4>
                 ) : (
-                  <div className='col-md-9 col-sm-8 col-10'>
-                    <p className='text text--sm c-off-dark text-center'>
-                      loading
-                    </p>
-                  </div>
+                  <h4 className='text text--lg text-center'>loading</h4>
                 )}
+                <div className='row justify-content-center'>
+                  {locations.description ? (
+                    <div className='col-md-9 col-sm-8 col-10'>
+                      <p className='text text--sm c-off-dark text-center'>
+                        {locations.description}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className='col-md-9 col-sm-8 col-10'>
+                      <p className='text text--sm c-off-dark text-center'>
+                        loading
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className='row'>
+              {locations.cities
+                ? locations.cities.map(city => {
+                    let phone = 'Tel: +' + city.telephone;
+                    return (
+                      <div
+                        key={city.id}
+                        className='col-xl-4 col-md-4 col-sm-6 mb-4'
+                      >
+                        <Card.Location
+                          text={city.name}
+                          ntext={city.address}
+                          otext={phone}
+                        />
+                      </div>
+                    );
+                  })
+                : falseLocations.map(falseLocation => {
+                    return (
+                      <div
+                        key={falseLocation}
+                        className='col-xl-4 col-md-4 col-sm-6 mb-4'
+                      >
+                        <Card.LocationLoading />
+                      </div>
+                    );
+                  })}
+            </div>
+            <div className='row'>
+              <div className='col-xl-12'>
+                <img className='map__image' src={Branch} />
               </div>
             </div>
           </div>
-
-          <div className='row'>
-            {locations.cities
-              ? locations.cities.map(city => {
-                  let phone = 'Tel: +' + city.telephone;
-                  return (
-                    <div
-                      key={city.id}
-                      className='col-xl-4 col-md-4 col-sm-6 mb-4'
-                    >
-                      <Card.Location
-                        text={city.name}
-                        ntext={city.address}
-                        otext={phone}
-                      />
-                    </div>
-                  );
-                })
-              : falseLocations.map(falseLocation => {
-                  return (
-                    <div
-                      key={falseLocation}
-                      className='col-xl-4 col-md-4 col-sm-6 mb-4'
-                    >
-                      <Card.LocationLoading />
-                    </div>
-                  );
-                })}
-          </div>
-          <div className='row'>
-            <div className='col-xl-12'>
-              <img className='map__image' src={Branch} />
-            </div>
-          </div>
-        </div>
-      </section>
-    </Wrapper>
+        </section>
+      </Wrapper>
+    ) : (
+      <Loader />
+    )
   ) : (
-    <Loader />
+    <Error />
   );
 };
 export default Location;
