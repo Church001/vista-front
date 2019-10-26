@@ -8,9 +8,12 @@ const Error = () => (
           <h1 className='text text--lg c-black fw-semi text-center home'>
             Oops! something seems to be wrong with you network
           </h1>
-          <a className='text text--lg c-blue fw-semi text-center home'>
+          <div
+            onClick={() => window.location.reload}
+            className='text text--lg c-blue fw-semi text-center home'
+          >
             Reload
-          </a>
+          </div>
         </div>
       </div>
     </div>
