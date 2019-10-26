@@ -6,6 +6,7 @@ import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
 import GeneralState from '../context/Context';
 import api from '../utils/api';
 import axios from 'axios';
+import Loader from '../components/loader';
 
 const falseSomething = ['1', '2', '3', '4', '5', '6'];
 
@@ -15,7 +16,7 @@ const Products = props => {
     props.history.goBack();
   }
   const [products, setProducts] = useState({});
-
+  console.log('CONTENT OF PRODUCTS', products.id);
   useEffect(() => {
     const endpoint = api.PRODUCT_URL + '/' + state.page_id;
     axios
@@ -28,8 +29,6 @@ const Products = props => {
           products: res.data.productitems,
           id: res.data.id
         };
-        console.log(res.data);
-        console.log('CREATED DATA', prod);
         setProducts(prod);
       })
       .catch(err => {
@@ -37,7 +36,7 @@ const Products = props => {
       });
   }, []);
 
-  return (
+  return products.id !== undefined ? (
     <Wrapper>
       <Hero />
       <SocialLinks alternate />
@@ -126,19 +125,8 @@ const Products = props => {
         </div>
       </section>
     </Wrapper>
+  ) : (
+    <Loader />
   );
 };
 export default Products;
-
-{
-  /* <div 
-    key={falseOne}
-    className='col-xl-4 col-md-4 col-sm-6 mb-4'>
-    <Card.Explore
-        {
-            img={}
-            text={}
-        }
-    />
-</div> */
-}

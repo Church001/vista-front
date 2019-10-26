@@ -8,6 +8,7 @@ import { ReactComponent as GreenRight } from 'assets/svg/green-right.svg';
 import axios from 'axios';
 import api from '../utils/api';
 import GeneralContext from '../context/Context';
+import Loader from 'components/loader';
 
 let servicess = [];
 let productss = [];
@@ -24,7 +25,6 @@ const Home = () => {
   const [about, setAbout] = useState([]);
 
   useEffect(() => {
-    console.log('STATE', state);
     axios
       .get(api.WHAT_WE_GIVE_BACK_URL)
       .then(res => {
@@ -69,7 +69,9 @@ const Home = () => {
     }
   };
 
-  return (
+  return productss.length == 0 ? (
+    <Loader />
+  ) : (
     <Wrapper>
       <Hero />
       <SocialLinks alternate />
@@ -156,6 +158,7 @@ const Home = () => {
               {/* <div className='col-lg-3 col-md-4 col-sm-6 mb-5'> */}
               {productss.products
                 ? productss.products.map(product => {
+                    // console.log("PRODUCTS HERE", products)
                     let image = api.BASE_URL + product.feature_image.url;
                     return (
                       <div

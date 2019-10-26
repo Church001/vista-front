@@ -6,7 +6,7 @@ import productReducer from './context/Reducer';
 function App() {
   const initialState = useContext(GeneralState);
   const [state, dispatch] = useReducer(productReducer, initialState);
-
+  // console.log("ENTIRE CONTEXT", useReducer(productReducer, initialState))
   return (
     <GeneralState.Provider value={{ state, dispatch }}>
       <Router />

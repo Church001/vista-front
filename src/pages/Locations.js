@@ -7,6 +7,7 @@ import Branch from 'assets/img/slider-img.jpg';
 import Maps from '../components/maps';
 import api from '../utils/api';
 import axios from 'axios';
+import Loader from '../components/loader';
 
 const falseLocations = ['1', '2', '3', '4', '5', '6', '7'];
 
@@ -23,7 +24,7 @@ const Location = props => {
       });
   }, []);
 
-  return (
+  return locations.length !== 0 ? (
     <Wrapper>
       <div className='map'>
         <Maps />
@@ -47,7 +48,7 @@ const Location = props => {
                   {locations.heading}
                 </h4>
               ) : (
-                <h4 className='text text--lg text-center'>loading...</h4>
+                <h4 className='text text--lg text-center'>loading</h4>
               )}
               <div className='row justify-content-center'>
                 {locations.description ? (
@@ -59,7 +60,7 @@ const Location = props => {
                 ) : (
                   <div className='col-md-9 col-sm-8 col-10'>
                     <p className='text text--sm c-off-dark text-center'>
-                      loading...
+                      loading
                     </p>
                   </div>
                 )}
@@ -103,6 +104,8 @@ const Location = props => {
         </div>
       </section>
     </Wrapper>
+  ) : (
+    <Loader />
   );
 };
 export default Location;

@@ -2,16 +2,20 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import { Router, Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import history from './history';
+// import  Loader from "./components/loader";
 
-const Home = lazy(() => import('pages/Home'));
-const Locations = lazy(() => import('pages/Locations'));
-const Products = lazy(() => import('pages/Products'));
+import Home from './pages/Home';
+import Locations from './pages/Locations';
+import Products from './pages/Products';
+// const Home = lazy(() => import('pages/Home'));
+// const Locations = lazy(() => import('pages/Locations'));
+// const Products = lazy(() => import('pages/Products'));
 
 const Scroll = props => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [props.location]);
-  //
+
   return props.children;
 };
 
@@ -25,20 +29,6 @@ Scroll.propTypes = {
 
 const ScrollToTop = withRouter(Scroll);
 
-const Loader = () => (
-  <div className='section section--wo section--wo--p'>
-    <div className='container-fluid'>
-      <div className='section__sub'>
-        <div className='section__header'>
-          <h1 className='text text--lg c-black fw-semi text-center home'>
-            loading...
-          </h1>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 class RouterComponent extends React.Component {
   render() {
     return (
@@ -48,28 +38,32 @@ class RouterComponent extends React.Component {
             <Route
               exact
               path='/'
-              render={props => (
-                <Suspense fallback={<Loader />}>
-                  <Home {...props} />
-                </Suspense>
-              )}
+              // render={props => (
+              //   <Suspense fallback={<Loader />}>
+              //     <Home {...props} />
+              //   </Suspense>
+              // )}
+              component={Home}
             />
-
             <Route
+              exact
               path='/products'
-              render={props => (
-                <Suspense fallback={<Loader />}>
-                  <Products {...props} />
-                </Suspense>
-              )}
+              // render={props => (
+              //   <Suspense fallback={<Loader />}>
+              //     <Products {...props} />
+              //   </Suspense>
+              // )}
+              component={Products}
             />
             <Route
+              exact
               path='/location'
-              render={props => (
-                <Suspense fallback={<Loader />}>
-                  <Locations {...props} />
-                </Suspense>
-              )}
+              // render={props => (
+              //   <Suspense fallback={<Loader />}>
+              //     <Locations {...props} />
+              //   </Suspense>
+              // )}
+              component={Locations}
             />
           </Switch>
         </ScrollToTop>
