@@ -2,11 +2,10 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import { Router, Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import history from './history';
-// import  Loader from "./components/loader";
-
 import Home from './pages/Home';
 import Locations from './pages/Locations';
 import Products from './pages/Products';
+// import  Loader from "./components/loader";
 // const Home = lazy(() => import('pages/Home'));
 // const Locations = lazy(() => import('pages/Locations'));
 // const Products = lazy(() => import('pages/Products'));

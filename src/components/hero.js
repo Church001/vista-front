@@ -93,8 +93,11 @@ export const Hero = ({ slidess }) => {
               <div
                 key={slide.id}
                 className='hero__slide'
-                style={{ backgroundImage: `url(${slide.img})` }}
-                // style={{ backgroundImage: 'https://vistabiz-cms.herokuapp.com/uploads/2c40288669eb47bf96cf4e45b3fe3aae.jpg' }}
+                // style={{ backgroundImage: `url(${slide.img})` }}
+                style={{
+                  backgroundImage:
+                    'https://vistabiz-cms.herokuapp.com/uploads/2c40288669eb47bf96cf4e45b3fe3aae.jpg'
+                }}
               >
                 <div className='overlay'></div>
                 <div className='container'>

@@ -111,7 +111,7 @@ const Products = props => {
             {products.products && products.products.length > 0 ? (
               <div className='row'>
                 {products.products.map(product => {
-                  const image = product.image.url;
+                  const image = api.BASE_URL + product.image.url;
                   return (
                     <div
                       key={product._id}
