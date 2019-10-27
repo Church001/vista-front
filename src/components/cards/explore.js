@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const ExploreCard = ({ img, text }) => {
-  console.log('IMAGES INSIDE PRODUCT', img);
   return (
     <div className='card explore-card'>
       <div

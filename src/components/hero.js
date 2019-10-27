@@ -41,7 +41,9 @@ const Slide = ({ btn, img, subtitle, title }) => (
   </div>
 );
 
-export const Hero = ({ slidess }) => {
+let slidess = [];
+
+export const Hero = ({ slid }) => {
   const [active, setActive] = useState(0);
   const [sliders, setSlides] = useState([]);
 
@@ -89,18 +91,21 @@ export const Hero = ({ slidess }) => {
         >
           {sliders.map(slide => {
             console.log('SLIDER IMAGE', slide.img);
+            const image = slide.img;
             return (
               <div
                 key={slide.id}
                 className='hero__slide'
-                // style={{ backgroundImage: `url(${slide.img})` }}
-                style={{
-                  backgroundImage:
-                    'https://vistabiz-cms.herokuapp.com/uploads/2c40288669eb47bf96cf4e45b3fe3aae.jpg'
-                }}
+                // style={{ backgroundImage: `url(${image})` }}
               >
-                <div className='overlay'></div>
-                <div className='container'>
+                <div
+                  className='overlay'
+                  style={{ backgroundImage: `url(${image})` }}
+                ></div>
+                <div
+                  className='container'
+                  style={{ backgroundImage: `url(${image})` }}
+                >
                   <div className='col-md-7'>
                     <h3 className='title text text--sm c-white fw-regular'>
                       {slide.title}
