@@ -54,7 +54,6 @@ const Products = props => {
       <Wrapper>
         <Hero />
         <SocialLinks alternate />
-
         <section className='section section--wo section--wo--p'>
           <PurpleLeft
             width={230}

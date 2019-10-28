@@ -6,7 +6,7 @@ const Error = () => (
       <div className='section__sub'>
         <div className='section__header'>
           <h1 className='text text--lg c-black fw-semi text-center home'>
-            Oops! something seems to be wrong with you network
+            Oops! something seems to be wrong with your network
           </h1>
           <button
             onClick={() => window.location.reload()}

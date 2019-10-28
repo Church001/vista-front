@@ -16,7 +16,7 @@ import api from '../utils/api';
 
 const settings = {
   dots: false,
-  arrows: false,
+  arrows: true,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
@@ -86,6 +86,7 @@ export const Hero = ({ slid }) => {
           {...settings}
           afterChange={index => setActive(index)}
           ref={slider => {
+            console.log('SLIDER 89', slider);
             slideRef = slider;
           }}
         >
@@ -93,18 +94,14 @@ export const Hero = ({ slid }) => {
             console.log('SLIDER IMAGE', slide.img);
             const image = slide.img;
             return (
-              <div
-                key={slide.id}
-                className='hero__slide'
-                // style={{ backgroundImage: `url(${image})` }}
-              >
+              <div key={slide.id} className='hero__slide'>
                 <div
                   className='overlay'
                   style={{ backgroundImage: `url(${image})` }}
                 ></div>
                 <div
                   className='container'
-                  style={{ backgroundImage: `url(${image})` }}
+                  // style={{ backgroundImage: `url(${image})` }}
                 >
                   <div className='col-md-7'>
                     <h3 className='title text text--sm c-white fw-regular'>

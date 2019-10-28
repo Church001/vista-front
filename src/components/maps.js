@@ -30,6 +30,7 @@ export class Maps extends React.Component {
       );
     });
   };
+
   render() {
     const mapStyles = {
       width: '100%',
@@ -51,4 +52,5 @@ export class Maps extends React.Component {
 
 export default GoogleApiWrapper({
   // apikey:''
+  LoadingContainer: () => <div>{''}</div>
 })(Maps);
