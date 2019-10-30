@@ -13,6 +13,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-slick": "^0.24.0",
+    "react-typical": "^0.1.2",
     "reactstrap": "^8.0.1",
     "regenerator-runtime": "^0.13.3",
     "slick-carousel": "^1.8.1"

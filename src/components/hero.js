@@ -10,6 +10,7 @@ import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
 // import Stationery from 'assets/img/stationery.jpg';
 // import Print from 'assets/img/printing-packaging.png';
 // import Agro from 'assets/img/agrochemicals.jpg';
+import Typical from 'react-typical';
 
 import axios from 'axios';
 import api from '../utils/api';
@@ -18,9 +19,11 @@ const settings = {
   dots: false,
   arrows: true,
   infinite: true,
-  speed: 500,
+  speed: 3000,
   slidesToShow: 1,
-  slidesToScroll: 1
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 500
 };
 
 const Slide = ({ btn, img, subtitle, title }) => (
