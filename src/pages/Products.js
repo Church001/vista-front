@@ -31,6 +31,9 @@ const Products = props => {
   const [products, setProducts] = useState({});
 
   useEffect(() => {
+    if (products) {
+      setProducts([]);
+    }
     const endpoint = api.PRODUCT_URL + '/' + state.page_id;
     axios
       .get(endpoint)
