@@ -34,7 +34,7 @@ export class Maps extends React.Component {
   render() {
     const mapStyles = {
       width: '100%',
-      height: '100%'
+      height: '85%'
     };
 
     return (
