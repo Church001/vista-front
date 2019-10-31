@@ -250,7 +250,7 @@ const Home = () => {
 
               <div
                 className='row justify-content-center pt-10'
-                data-uk-scrollspy='cls: uk-animation-fade; target: .col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5; delay: 500; repeat: true'
+                data-uk-scrollspy='cls: uk-animation-fade; target: .card service-card; delay: 500; repeat: true'
               >
                 {servicess.servicetypes
                   ? servicess.servicetypes.map(serve => {

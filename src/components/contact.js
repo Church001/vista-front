@@ -135,10 +135,10 @@ export const ContactForm = () => {
 
                   <div className='texts'>
                     <p className='text c-white'>
-                      Sales : {contactDetail.sales_phone}
+                      Telephone : {contactDetail.technical_phone}
                     </p>
                     <p className='text c-white'>
-                      Technical : {contactDetail.technical_phone}
+                      Sales : {contactDetail.sales_phone}
                     </p>
                     <p className='text c-white'>
                       Toll Free : {contactDetail.toll_free_phone}
