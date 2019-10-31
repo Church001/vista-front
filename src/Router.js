@@ -41,7 +41,7 @@ class RouterComponent extends React.Component {
             />
             <Route
               exact
-              path='/products'
+              path='/products/:id'
               // render={props => (
               //   <Suspense fallback={<Loader />}>
               //     <Products {...props} />

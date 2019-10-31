@@ -47,7 +47,7 @@ const Products = props => {
       .catch(err => {
         errSetter(err);
       });
-  }, []);
+  }, [state.page_id]);
 
   return state.error.msg === undefined ? (
     products.id !== undefined ? (

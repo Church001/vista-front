@@ -37,10 +37,7 @@ export const Nav = props => {
       type: SET_CATEGORY_ID,
       payload: id
     });
-    console.log(history);
-    if (state.page_id === id) {
-    }
-    history.push('/products');
+    history.push(`/products/${id}`);
   };
 
   useEffect(() => {
