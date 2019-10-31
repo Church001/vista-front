@@ -71,7 +71,7 @@ export class Maps extends React.Component {
           phone: '+2348126300272',
           address:
             'I5 Inuwa Abdulkadir Road, Industrial Estate, Kaduna South, Kaduna.'
-        } //Kaduna
+        } //Kadun
       ]
     };
   }
