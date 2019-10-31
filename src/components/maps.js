@@ -51,6 +51,8 @@ export class Maps extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  // apikey:''
+  // AIzaSyDKjYADwaHwaCBY1CVVdJlcef_6rJAmb6I -from Nani
+  // AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo -from the internet
+  apikey: 'AIzaSyDKjYADwaHwaCBY1CVVdJlcef_6rJAmb6I',
   LoadingContainer: () => <div>{''}</div>
 })(Maps);
