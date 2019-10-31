@@ -86,7 +86,7 @@ export class Maps extends React.Component {
   };
 
   markerOnClick = (props, marker) => {
-    const data = { props, marker };
+    // const data = { props, marker };
     const markerData = {
       position: props.position,
       name: marker.name,
@@ -98,7 +98,7 @@ export class Maps extends React.Component {
       showInfoWindow: marker ? true : false,
       markerData: markerData
     });
-    console.log(data);
+    // console.log(data);
   };
 
   variousStores = () => {
