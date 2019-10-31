@@ -135,13 +135,13 @@ export const ContactForm = () => {
 
                   <div className='texts'>
                     <p className='text c-white'>
-                      Sales : +234 (0) 816 911 0000 / 815 211 0000
+                      Sales : {contactDetail.sales_phone}
                     </p>
                     <p className='text c-white'>
-                      Technical : +234 (0) 810 452 1818 / 816 911 0000
+                      Technical : {contactDetail.technical_phone}
                     </p>
                     <p className='text c-white'>
-                      Toll Free : 0800 847 8264 / 0700 8478 27273
+                      Toll Free : {contactDetail.toll_free_phone}
                     </p>
                   </div>
                 </div>
