@@ -43,6 +43,7 @@ export class Maps extends React.Component {
         zoom={6}
         style={mapStyles}
         initialCenter={{ lat: 9, lng: 8.6 }}
+        onClick={this.onMapClicked}
       >
         {this.variousStores()}
       </Map>
@@ -51,6 +52,6 @@ export class Maps extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  // apikey:''
+  apikey: 'AIzaSyDKjYADwaHwaCBY1CVVdJlcef_6rJAmb6I',
   LoadingContainer: () => <div>{''}</div>
 })(Maps);

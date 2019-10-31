@@ -4,6 +4,10 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
+  DropdownToggle,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem,
   Nav as BNav,
   NavItem
 } from 'reactstrap';
@@ -94,11 +98,22 @@ export const Nav = props => {
               </a>
             </NavItem>
 
-            <NavItem className='nav__item'>
+            {/* <NavItem className='nav__item'>
               <a className='nav__link' href='/#products'>
                 Our Products
               </a>
-            </NavItem>
+            </NavItem> */}
+            <UncontrolledDropdown className='nav__item' nav inNavbar>
+              <DropdownToggle className='nav__link' nav caret>
+                Our Products
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>Paper</DropdownItem>
+                <DropdownItem>Printing</DropdownItem>
+                <DropdownItem>Stationary</DropdownItem>
+                <DropdownItem>Agrochemical</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
 
             <NavItem className='nav__item'>
               <a className='nav__link' href='/#services'>
@@ -114,7 +129,7 @@ export const Nav = props => {
 
             <NavItem className='nav__item special'>
               <a href='#' ref={phoneBtn} className='nav__link'>
-                <Phone /> +234 81 840 152 xx
+                <Phone /> +234 (0) 816 911 0000
               </a>
             </NavItem>
           </BNav>
