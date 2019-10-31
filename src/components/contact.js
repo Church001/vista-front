@@ -151,12 +151,6 @@ export const ContactForm = () => {
 
                   <div className='texts'>
                     <p className='text c-white'>loading...</p>
-                    {/* <p className='text c-white'>
-                      loading...
-                    </p>
-                    <p className='text c-white'>
-                      loading...
-                    </p> */}
                   </div>
                 </div>
               )}
@@ -216,7 +210,7 @@ export const ContactForm = () => {
               <div className='d-flex justify-content-center'>
                 <Button
                   className='btn__purple btn--rounded btn--lg'
-                  onClick={() => submitter()}
+                  onClick={e => submitter(e)}
                   disabled={!contactDetail.heading}
                 >
                   SEND MESSAGE

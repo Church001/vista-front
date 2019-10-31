@@ -111,7 +111,7 @@ export const Nav = props => {
                 <DropdownItem>Paper</DropdownItem>
                 <DropdownItem>Printing</DropdownItem>
                 <DropdownItem>Stationary</DropdownItem>
-                <DropdownItem>Agrochemical</DropdownItem>
+                <DropdownItem>Agrochemicals</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
 

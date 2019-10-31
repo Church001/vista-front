@@ -86,7 +86,7 @@ export class Maps extends React.Component {
   };
 
   markerOnClick = (props, marker) => {
-    // const data = { props, marker };
+    const data = { props, marker };
     const markerData = {
       position: props.position,
       name: marker.name,
@@ -98,7 +98,7 @@ export class Maps extends React.Component {
       showInfoWindow: marker ? true : false,
       markerData: markerData
     });
-    // console.log(data);
+    console.log(data);
   };
 
   variousStores = () => {
@@ -111,6 +111,7 @@ export class Maps extends React.Component {
           title={store.title}
           phone={store.phone}
           address={store.address}
+          icon={LOGO}
           position={{
             lat: store.latitude,
             lng: store.longitude
@@ -141,13 +142,13 @@ export class Maps extends React.Component {
         <InfoWindow
           visible={this.state.showInfoWindow}
           marker={this.state.marker}
-          style={{ maxWidth: 500 }}
+          style={{ width: 350 }}
         >
           <div>
             <div
               style={{
-                width: 250,
-                height: 100
+                width: 150,
+                height: 50
               }}
             >
               <img
@@ -173,6 +174,6 @@ export class Maps extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDKjYADwaHwaCBY1CVVdJlcef_6rJAmb6I',
+  apiKey: 'AIzaSyBKfOc3U6rSrO88lsKxnnFVOVDEmhj54qA',
   LoadingContainer: () => <div>{''}</div>
 })(Maps);
