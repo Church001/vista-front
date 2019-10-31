@@ -5,16 +5,11 @@ import history from './history';
 import Home from './pages/Home';
 import Locations from './pages/Locations';
 import Products from './pages/Products';
-// import  Loader from "./components/loader";
-// const Home = lazy(() => import('pages/Home'));
-// const Locations = lazy(() => import('pages/Locations'));
-// const Products = lazy(() => import('pages/Products'));
 
 const Scroll = props => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [props.location]);
-
   return props.children;
 };
 
@@ -46,7 +41,7 @@ class RouterComponent extends React.Component {
             />
             <Route
               exact
-              path='/products'
+              path='/products/:id'
               // render={props => (
               //   <Suspense fallback={<Loader />}>
               //     <Products {...props} />

@@ -31,6 +31,9 @@ const Products = props => {
   const [products, setProducts] = useState({});
 
   useEffect(() => {
+    if (products) {
+      setProducts([]);
+    }
     const endpoint = api.PRODUCT_URL + '/' + state.page_id;
     axios
       .get(endpoint)
@@ -47,7 +50,7 @@ const Products = props => {
       .catch(err => {
         errSetter(err);
       });
-  }, []);
+  }, [state.page_id]);
 
   return state.error.msg === undefined ? (
     products.id !== undefined ? (

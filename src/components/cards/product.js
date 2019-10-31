@@ -33,7 +33,7 @@ export const ProductCard = ({ color, icon, link, subtitle, title, id }) => {
         <Link
           className='product-card__link'
           onClick={() => setID(id)}
-          to={link}
+          to={link + '/' + id}
         >
           <RightArrow />
         </Link>

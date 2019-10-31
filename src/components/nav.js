@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { createRef, useEffect, useState, useContext } from 'react';
 import {
   Collapse,
   Navbar,
@@ -18,15 +18,28 @@ import logo from 'assets/img/logo.png';
 import { ReactComponent as Phone } from 'assets/svg/phone.svg';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import GeneralState from 'context/Context';
+import { SET_CATEGORY_ID } from 'context/Constants';
+import history from '../history';
 
 export const Nav = props => {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState(false);
   const [menuMargin, setMenuMargin] = useState(0);
+  const [products, setProducts] = useState([]);
   const phoneBtn = createRef();
+  const { state, dispatch } = useContext(GeneralState);
 
   const toggle = () => {
     setIsOpen(!isOpen);
+  };
+
+  const setId = id => {
+    dispatch({
+      type: SET_CATEGORY_ID,
+      payload: id
+    });
+    history.push(`/products/${id}`);
   };
 
   useEffect(() => {
@@ -70,6 +83,13 @@ export const Nav = props => {
     };
   });
 
+  useEffect(() => {
+    console.log('STATE FROM NAV BAR', state.page_id);
+    if (state.products) {
+      setProducts(state.products);
+    }
+  }, [state, products]);
+
   return (
     <Navbar
       expand='lg'
@@ -109,12 +129,20 @@ export const Nav = props => {
               <DropdownToggle className='nav__link' nav caret>
                 Our Products
               </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Paper</DropdownItem>
-                <DropdownItem>Printing</DropdownItem>
-                <DropdownItem>Stationary</DropdownItem>
-                <DropdownItem>Agrochemical</DropdownItem>
-              </DropdownMenu>
+              {products.length !== 0 && (
+                <DropdownMenu right>
+                  {products.map(product => {
+                    return (
+                      <DropdownItem
+                        key={product.id}
+                        onClick={() => setId(product.id)}
+                      >
+                        {product.title}
+                      </DropdownItem>
+                    );
+                  })}
+                </DropdownMenu>
+              )}
             </UncontrolledDropdown>
 
             <NavItem className='nav__item'>

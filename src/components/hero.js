@@ -89,12 +89,12 @@ export const Hero = ({ slid }) => {
           {...settings}
           afterChange={index => setActive(index)}
           ref={slider => {
-            console.log('SLIDER 89', slider);
+            // console.log('SLIDER 89', slider);
             slideRef = slider;
           }}
         >
           {sliders.map(slide => {
-            console.log('SLIDER IMAGE', slide.img);
+            // console.log('SLIDER IMAGE', slide.img);
             const image = slide.img;
             return (
               <div key={slide.id} className='hero__slide'>
