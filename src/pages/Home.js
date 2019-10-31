@@ -114,7 +114,10 @@ const Home = () => {
             height={502}
             className='symbol--left hide-for-small-only'
           />
-          <div className='container-fluid'>
+          <div
+            className='container-fluid'
+            data-uk-scrollspy='cls: uk-animation-fade; target: .section__sub; delay: 500; repeat: true'
+          >
             <div className='section__sub'>
               <div className='section__header'>
                 {abouts.heading ? (
@@ -151,7 +154,11 @@ const Home = () => {
           </div>
         </section>
 
-        <section className='section section--wo section--wo--p' id='products'>
+        <section
+          className='section section--wo section--wo--p'
+          id='products'
+          data-uk-scrollspy='cls: uk-animation-fade; target: .product-card--c-green; delay: 500; repeat: true'
+        >
           <PurpleLeft
             width={230}
             height={502}
@@ -241,7 +248,10 @@ const Home = () => {
                 )}
               </div>
 
-              <div className='row justify-content-center pt-10'>
+              <div
+                className='row justify-content-center pt-10'
+                data-uk-scrollspy='cls: uk-animation-fade; target: .col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-5; delay: 500; repeat: true'
+              >
                 {servicess.servicetypes
                   ? servicess.servicetypes.map(serve => {
                       let image = api.BASE_URL + serve.feature_image.url;
@@ -306,7 +316,10 @@ const Home = () => {
                   </h5>
                 )}
               </div>
-              <div className='row justify-content-center pt-10'>
+              <div
+                className='row justify-content-center pt-10'
+                data-uk-scrollspy='cls: uk-animation-fade; target: .csr-card; delay: 500; repeat: true'
+              >
                 {whatWeGives.givebacks
                   ? whatWeGives.givebacks.map(giveback => {
                       return (

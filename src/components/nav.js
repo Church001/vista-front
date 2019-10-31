@@ -11,7 +11,9 @@ import {
   Nav as BNav,
   NavItem
 } from 'reactstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Link, animateScroll as scroll } from 'react-scroll';
+
 import logo from 'assets/img/logo.png';
 import { ReactComponent as Phone } from 'assets/svg/phone.svg';
 import cx from 'classnames';
@@ -113,7 +115,7 @@ export const Nav = props => {
               </NavLink>
             </NavItem>
             <NavItem className='nav__item'>
-              <a className='nav__link' href='/#about'>
+              <a className='nav__link' href='/#about' data-uk-scroll>
                 About
               </a>
             </NavItem>
@@ -144,7 +146,7 @@ export const Nav = props => {
             </UncontrolledDropdown>
 
             <NavItem className='nav__item'>
-              <a className='nav__link' href='/#services'>
+              <a className='nav__link' href='/#services' data-uk-scroll>
                 Our Services
               </a>
             </NavItem>
