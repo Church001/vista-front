@@ -1,4 +1,4 @@
-import { SET_CATEGORY_ID } from '../context/Constants';
+import { SET_CATEGORY_ID, SET_ERROR } from '../context/Constants';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         page_id: action.payload
+      };
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;

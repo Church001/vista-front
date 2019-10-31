@@ -1,7 +1,8 @@
 import React from 'react';
 
 const initialState = {
-  page_id: ''
+  page_id: '',
+  error: {}
 };
 
 const GeneralState = React.createContext(initialState);

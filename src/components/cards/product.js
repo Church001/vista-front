@@ -16,7 +16,7 @@ export const ProductCard = ({ color, icon, link, subtitle, title, id }) => {
       payload
     });
   };
-
+  // console.log(""icon)
   return (
     <div className={`card product-card product-card--c-${color}`}>
       <div className='product-card__body'>

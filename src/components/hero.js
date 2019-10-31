@@ -10,17 +10,20 @@ import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
 // import Stationery from 'assets/img/stationery.jpg';
 // import Print from 'assets/img/printing-packaging.png';
 // import Agro from 'assets/img/agrochemicals.jpg';
+import Typical from 'react-typical';
 
 import axios from 'axios';
 import api from '../utils/api';
 
 const settings = {
   dots: false,
-  arrows: false,
+  arrows: true,
   infinite: true,
-  speed: 500,
+  speed: 3000,
   slidesToShow: 1,
-  slidesToScroll: 1
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 500
 };
 
 const Slide = ({ btn, img, subtitle, title }) => (
@@ -41,7 +44,9 @@ const Slide = ({ btn, img, subtitle, title }) => (
   </div>
 );
 
-export const Hero = ({ slidess }) => {
+let slidess = [];
+
+export const Hero = ({ slid }) => {
   const [active, setActive] = useState(0);
   const [sliders, setSlides] = useState([]);
 
@@ -84,18 +89,23 @@ export const Hero = ({ slidess }) => {
           {...settings}
           afterChange={index => setActive(index)}
           ref={slider => {
+            console.log('SLIDER 89', slider);
             slideRef = slider;
           }}
         >
           {sliders.map(slide => {
+            console.log('SLIDER IMAGE', slide.img);
+            const image = slide.img;
             return (
-              <div
-                key={slide.id}
-                className='hero__slide'
-                style={{ backgroundImage: `url(${slide.img})` }}
-              >
-                <div className='overlay'></div>
-                <div className='container'>
+              <div key={slide.id} className='hero__slide'>
+                <div
+                  className='overlay'
+                  style={{ backgroundImage: `url(${image})` }}
+                ></div>
+                <div
+                  className='container'
+                  // style={{ backgroundImage: `url(${image})` }}
+                >
                   <div className='col-md-7'>
                     <h3 className='title text text--sm c-white fw-regular'>
                       {slide.title}

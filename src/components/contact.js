@@ -1,21 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Form, Label, FormGroup, Input } from 'reactstrap';
 import { SocialLinks } from 'components';
 import { ReactComponent as Mail } from 'assets/svg/mail.svg';
 import { ReactComponent as Marker } from 'assets/svg/marker.svg';
 import { ReactComponent as Phone } from 'assets/svg/phone.svg';
-
 import axios from 'axios';
 import api from '../utils/api';
+import GeneralState from 'context/Context';
+import { SET_ERROR } from 'context/Constants';
 
 let contactDetail = [];
 
 export const ContactForm = () => {
   const [name, SetName] = useState('');
-  const [contact, setContact] = useState([]);
+  const [contact, setContact] = useState({});
+  const { dispatch } = useContext(GeneralState);
 
   const handlerName = e => {
+    e.preventDefault();
     console.log(e);
+  };
+
+  const submitter = e => {
+    e.preventDefault();
+    console.log(contact);
+  };
+
+  const errSetter = err => {
+    const error = {};
+    error.msg = err;
+    dispatch({
+      type: SET_ERROR,
+      payload: error
+    });
   };
 
   useEffect(() => {
@@ -26,7 +43,7 @@ export const ContactForm = () => {
         setContact(res.data[0]);
       })
       .catch(err => {
-        console.log(err);
+        errSetter(err);
       });
   }, []);
 
@@ -159,52 +176,53 @@ export const ContactForm = () => {
           </div>
           <div className='col-md-6'>
             <div className='card cf__card'>
-              <Form>
-                <FormGroup>
-                  <Label className='form__label'>Name</Label>
-                  <Input
-                    className='form__field'
-                    value={name}
-                    onChange={handlerName}
-                    disabled={!contactDetail.heading}
-                  />
-                </FormGroup>
+              {/* <Form> */}
+              <FormGroup>
+                <Label className='form__label'>Name</Label>
+                <Input
+                  className='form__field'
+                  name='name'
+                  value={name}
+                  onChange={e => handlerName(e)}
+                  disabled={!contactDetail.heading}
+                />
+              </FormGroup>
 
-                <FormGroup>
-                  <Label className='form__label'>Email</Label>
-                  <Input
-                    disabled={!contactDetail.heading}
-                    className='form__field'
-                  />
-                </FormGroup>
+              <FormGroup>
+                <Label className='form__label'>Email</Label>
+                <Input
+                  disabled={!contactDetail.heading}
+                  className='form__field'
+                />
+              </FormGroup>
 
-                <FormGroup>
-                  <Label className='form__label'>Phone Number</Label>
-                  <Input
-                    disabled={!contactDetail.heading}
-                    className='form__field'
-                  />
-                </FormGroup>
+              <FormGroup>
+                <Label className='form__label'>Phone Number</Label>
+                <Input
+                  disabled={!contactDetail.heading}
+                  className='form__field'
+                />
+              </FormGroup>
 
-                <FormGroup>
-                  <Label className='form__label'>Message</Label>
-                  <Input
-                    disabled={!contactDetail.heading}
-                    className='form__field'
-                    type={'textarea'}
-                  />
-                </FormGroup>
+              <FormGroup>
+                <Label className='form__label'>Message</Label>
+                <Input
+                  disabled={!contactDetail.heading}
+                  className='form__field'
+                  type={'textarea'}
+                />
+              </FormGroup>
 
-                <div className='d-flex justify-content-center'>
-                  <Button
-                    className='btn__purple btn--rounded btn--lg'
-                    onClick={() => alert('PLEALSE')}
-                    disabled={!contactDetail.heading}
-                  >
-                    SEND MESSAGE
-                  </Button>
-                </div>
-              </Form>
+              <div className='d-flex justify-content-center'>
+                <Button
+                  className='btn__purple btn--rounded btn--lg'
+                  onClick={() => submitter()}
+                  disabled={!contactDetail.heading}
+                >
+                  SEND MESSAGE
+                </Button>
+              </div>
+              {/* </Form> */}
             </div>
           </div>
         </div>
