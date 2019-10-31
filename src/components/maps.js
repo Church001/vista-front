@@ -1,12 +1,13 @@
 import React from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 
 export class Maps extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      showInfoWindow: false,
       stores: [
-        { latitude: 9.037831, longitude: 7.383967 }, //Abuja
+        { latitude: 9.037831, longitude: 7.383967, name: 'abuja' }, //Abuja
         { latitude: 6.537404, longitude: 3.332335 }, //Lagos
         { latitude: 4.815417, longitude: 7.049736 }, //PH
         { latitude: 7.361452, longitude: 3.869656 }, //Ibadan
@@ -17,11 +18,26 @@ export class Maps extends React.Component {
     };
   }
 
+  onMapClicked = () => {
+    if (this.state.showInfoWindow) {
+      this.setState({
+        showInfoWindow: false
+      });
+    }
+  };
+
+  markerOnClick = (props, marker, e) => {
+    const data = { props, marker, e };
+    console.log(data);
+  };
+
   variousStores = () => {
     return this.state.stores.map(store => {
       return (
         <Marker
+          onClick={this.markerOnClick}
           key={store.latitude}
+          name={store.name}
           position={{
             lat: store.latitude,
             lng: store.longitude
