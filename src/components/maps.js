@@ -76,17 +76,17 @@ export class Maps extends React.Component {
     };
   }
 
-  onMapClicked = () => {
+  onMapClicked = props => {
     if (this.state.showInfoWindow) {
       this.setState({
         showInfoWindow: false,
         marker: null
       });
     }
+    console.log(props);
   };
 
   markerOnClick = (props, marker) => {
-    const data = { props, marker };
     const markerData = {
       position: props.position,
       name: marker.name,
@@ -98,7 +98,6 @@ export class Maps extends React.Component {
       showInfoWindow: marker ? true : false,
       markerData: markerData
     });
-    console.log(data);
   };
 
   variousStores = () => {
@@ -136,6 +135,9 @@ export class Maps extends React.Component {
         zoom={6}
         style={mapStyles}
         initialCenter={{ lat: 9, lng: 8.6 }}
+        mapType={'map'}
+        disableDoubleClickZoom={true}
+        mapTypeControl={true}
         onClick={this.onMapClicked}
       >
         {this.variousStores()}

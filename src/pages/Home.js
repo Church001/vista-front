@@ -11,6 +11,7 @@ import GeneralContext from '../context/Context';
 import Loader from 'components/loader';
 import { SET_ERROR } from 'context/Constants';
 import Error from 'components/error';
+import { SET_PRODUCTS } from 'context/Constants';
 
 let servicess = [];
 let productss = [];
@@ -78,6 +79,13 @@ const Home = () => {
         errSetter(err);
       });
   }, []);
+
+  useEffect(() => {
+    dispatch({
+      type: SET_PRODUCTS,
+      payload: products.products
+    });
+  }, [products]);
 
   const colorChange = val => {
     if (val === 'EMPOWERING EDUCATION') {
