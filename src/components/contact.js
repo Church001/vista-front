@@ -181,6 +181,7 @@ export const ContactForm = () => {
                 <Label className='form__label'>Name</Label>
                 <Input
                   className='form__field'
+                  name='name'
                   value={name}
                   onChange={e => handlerName(e)}
                   disabled={!contactDetail.heading}
