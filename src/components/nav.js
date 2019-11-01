@@ -11,8 +11,8 @@ import {
   Nav as BNav,
   NavItem
 } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link, NavLink } from 'react-router-dom';
+import { NavHashLink as NavLinks } from 'react-router-hash-link';
 
 import logo from 'assets/img/logo.png';
 import { ReactComponent as Phone } from 'assets/svg/phone.svg';
@@ -110,14 +110,14 @@ export const Nav = props => {
             style={{ marginRight: menuMargin }}
           >
             <NavItem className='nav__item'>
-              <NavLink exact className='nav__link' to='/'>
+              <NavLinks exact className='nav__link' to='/'>
                 Home
-              </NavLink>
+              </NavLinks>
             </NavItem>
             <NavItem className='nav__item'>
-              <a className='nav__link' href='/#about' data-uk-scroll>
+              <NavLinks className='nav__link' to='/#about'>
                 About
-              </a>
+              </NavLinks>
             </NavItem>
 
             {/* <NavItem className='nav__item'>
@@ -146,15 +146,15 @@ export const Nav = props => {
             </UncontrolledDropdown>
 
             <NavItem className='nav__item'>
-              <a className='nav__link' href='/#services' data-uk-scroll>
+              <NavLinks className='nav__link' to='/#services'>
                 Our Services
-              </a>
+              </NavLinks>
             </NavItem>
 
             <NavItem className='nav__item'>
-              <NavLink className='nav__link' to='/location'>
+              <NavLinks className='nav__link' to='/location'>
                 Contact Us
-              </NavLink>
+              </NavLinks>
             </NavItem>
 
             <NavItem className='nav__item special'>
