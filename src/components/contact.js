@@ -70,10 +70,7 @@ export const ContactForm = () => {
                   </div>
 
                   <div className='texts'>
-                    <p className='text c-white mb-0'>
-                      2EB, Opposite Aswani Market, Osolo Way, Aswani-Oshodi
-                      Industrial Scheme, Isolo, Lagos.
-                    </p>
+                    <p className='text c-white mb-0'>{contactDetail.address}</p>
                   </div>
                 </div>
               ) : (
