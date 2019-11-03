@@ -18,7 +18,12 @@ export const ExploreCard = ({ img, text }) => {
         style={{ backgroundImage: `url(${img})` }}
       />
       <div className='explore-card__body'>
-        <p className='text text--xs c-off-dark text-center mb-0'>{text}</p>
+        <p
+          className='text text--xs c-off-dark text-center mb-0'
+          style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}
+        >
+          {text.length > 10 ? text.substring(0, 60) + '...' : text}
+        </p>
       </div>
 
       <Button color='secondary' size='lg' onClick={toggle}>
