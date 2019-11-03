@@ -12,6 +12,7 @@ import Loader from 'components/loader';
 import { SET_ERROR } from 'context/Constants';
 import Error from 'components/error';
 import { SET_PRODUCTS } from 'context/Constants';
+import StickyLinks from 'components/stickyLinks';
 
 let servicess = [];
 let productss = [];
@@ -103,6 +104,7 @@ const Home = () => {
       <Wrapper>
         <Hero />
         <SocialLinks alternate />
+        <StickyLinks />
         <section className='section section--wo section--wo--p' id='about'>
           <PurpleLeft
             width={230}
@@ -116,7 +118,7 @@ const Home = () => {
           />
           <div
             className='container-fluid'
-            data-uk-scrollspy='cls: uk-animation-fade; target: .section__sub; delay: 500; repeat: true'
+            data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .section__sub; delay: 500; repeat: true'
           >
             <div className='section__sub'>
               <div className='section__header'>
@@ -157,7 +159,7 @@ const Home = () => {
         <section
           className='section section--wo section--wo--p'
           id='products'
-          data-uk-scrollspy='cls: uk-animation-fade; target: .product-card--c-green; delay: 500; repeat: true'
+          data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .product-card--c-green; delay: 500; repeat: true'
         >
           <PurpleLeft
             width={230}
@@ -199,6 +201,7 @@ const Home = () => {
                         <div
                           key={product.id}
                           className='col-lg-3 col-md-4 col-sm-6 mb-5'
+                          data-uk-scrollspy-class='uk-animation-slide-top'
                         >
                           <Card.Product
                             color='green'
@@ -250,7 +253,7 @@ const Home = () => {
 
               <div
                 className='row justify-content-center pt-10'
-                data-uk-scrollspy='cls: uk-animation-fade; target: .card service-card; delay: 500; repeat: true'
+                data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .card service-card; delay: 500; repeat: true'
               >
                 {servicess.servicetypes
                   ? servicess.servicetypes.map(serve => {
@@ -283,7 +286,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className='section section--wo section--wo--g'>
+        <section className='section section--wo section--wo--g' id='whatwegive'>
           <GreenLeft
             width={230}
             height={502}
@@ -318,7 +321,7 @@ const Home = () => {
               </div>
               <div
                 className='row justify-content-center pt-10'
-                data-uk-scrollspy='cls: uk-animation-fade; target: .csr-card; delay: 500; repeat: true'
+                data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .csr-card; delay: 500; repeat: true'
               >
                 {whatWeGives.givebacks
                   ? whatWeGives.givebacks.map(giveback => {

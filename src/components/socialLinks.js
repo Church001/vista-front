@@ -5,6 +5,7 @@ import { ReactComponent as Instagram } from 'assets/svg/instagram.svg';
 import { ReactComponent as Linkedin } from 'assets/svg/linkedin.svg';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+// import { InlineFollowButtons } from 'sharethis-reactjs';
 
 export const SocialLinks = ({ alternate }) => {
   return (

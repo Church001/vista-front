@@ -174,7 +174,7 @@ export const ContactForm = () => {
                   className='form__field'
                   name='name'
                   value={name}
-                  onChange={e => handlerName(e)}
+                  // onChange={e => handlerName(e)}
                   disabled={!contactDetail.heading}
                 />
               </FormGroup>

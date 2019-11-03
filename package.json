@@ -17,6 +17,7 @@
     "react-typical": "^0.1.2",
     "reactstrap": "^8.0.1",
     "regenerator-runtime": "^0.13.3",
+    "sharethis-reactjs": "^1.5.0",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
