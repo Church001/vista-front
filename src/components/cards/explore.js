@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export const ExploreCard = ({ img, text }) => {
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+  const closeBtn = (
+    <button className='close' onClick={toggle}>
+      &times;
+    </button>
+  );
+
   return (
     <div className='card explore-card'>
       <div
@@ -11,6 +20,24 @@ export const ExploreCard = ({ img, text }) => {
       <div className='explore-card__body'>
         <p className='text text--xs c-off-dark text-center mb-0'>{text}</p>
       </div>
+
+      <Button color='secondary' size='lg' onClick={toggle}>
+        Read More
+      </Button>
+
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle} close={closeBtn}>
+          {' '}
+        </ModalHeader>
+        <ModalBody>
+          <div className='row'>
+            <div className='col-md-6'>
+              <img src={img} />
+            </div>
+            <div className='col-md-6'>{text}</div>
+          </div>
+        </ModalBody>
+      </Modal>
     </div>
   );
 };
