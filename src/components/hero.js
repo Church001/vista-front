@@ -67,10 +67,11 @@ export const Hero = ({ slid }) => {
   const slideObjectCreator = something => {
     let result = [];
     something.map(onething => {
+      // console.log('sally', onething);
       let obj = {
         btn: {
-          title: 'LEARN MORE',
-          link: '#'
+          title: onething.button_text,
+          link: onething.button_url
         }
       };
       obj.img = api.BASE_URL + onething.image.url;
@@ -94,7 +95,7 @@ export const Hero = ({ slid }) => {
           }}
         >
           {sliders.map(slide => {
-            // console.log('SLIDER IMAGE', slide.img);
+            // console.log('SLIDER IMAGE', slide);
             const image = slide.img;
             return (
               <div key={slide.id} className='hero__slide'>
@@ -117,6 +118,7 @@ export const Hero = ({ slid }) => {
                       <Link
                         to={slide.btn.link}
                         className='btn btn__white btn--rounded btn--lg'
+                        data-uk-scroll
                       >
                         {slide.btn.title}
                       </Link>
