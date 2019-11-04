@@ -110,14 +110,14 @@ export const Nav = props => {
             style={{ marginRight: menuMargin }}
           >
             <NavItem className='nav__item'>
-              <NavLinks exact className='nav__link' to='/'>
+              <NavLink exact className='nav__link' to='/'>
                 Home
-              </NavLinks>
+              </NavLink>
             </NavItem>
             <NavItem className='nav__item'>
-              <NavLinks className='nav__link' to='/#about'>
+              <a className='nav__link' href='/#about'>
                 About
-              </NavLinks>
+              </a>
             </NavItem>
 
             {/* <NavItem className='nav__item'>
@@ -146,9 +146,9 @@ export const Nav = props => {
             </UncontrolledDropdown>
 
             <NavItem className='nav__item'>
-              <NavLinks className='nav__link' to='/#services'>
+              <a className='nav__link' href='/#services'>
                 Our Services
-              </NavLinks>
+              </a>
             </NavItem>
 
             <NavItem className='nav__item'>

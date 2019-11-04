@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import LOGO from '../assets/img/logo.png';
+import { Badge } from 'reactstrap';
 
 export class Maps extends React.Component {
   constructor(props) {
@@ -123,7 +124,7 @@ export class Maps extends React.Component {
   render() {
     const mapStyles = {
       width: '100%',
-      height: '100%'
+      height: '80%'
     };
     let place;
     if (this.state.markerData !== null) {
@@ -132,7 +133,7 @@ export class Maps extends React.Component {
     return (
       <Map
         google={this.props.google}
-        zoom={6}
+        zoom={7}
         style={mapStyles}
         initialCenter={{ lat: 9, lng: 8.6 }}
         mapType={'map'}
@@ -168,6 +169,9 @@ export class Maps extends React.Component {
               <p>{place ? place.address : ''}</p>
             </span>
             <h3>TEL: {place ? place.phone : ''}</h3>
+            <Badge color='secondary' pill>
+              View on Maps
+            </Badge>
           </div>
         </InfoWindow>
       </Map>
