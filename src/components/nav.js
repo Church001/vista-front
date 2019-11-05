@@ -24,9 +24,7 @@ import history from '../history';
 
 export const Nav = props => {
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState(
-    history.location && history.location.pathname === '/location' ? true : false
-  );
+  const [active, setActive] = useState(false);
   const [menuMargin, setMenuMargin] = useState(0);
   const [products, setProducts] = useState([]);
   const phoneBtn = createRef();
@@ -72,15 +70,15 @@ export const Nav = props => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (history.location && history.location.pathname === '/location') {
+      // if (history.location && history.location.pathname === '/location') {
+      //   setActive(true);
+      // } else {
+      if (window.pageYOffset > 30) {
         setActive(true);
       } else {
-        if (window.pageYOffset > 30) {
-          setActive(true);
-        } else {
-          setActive(false);
-        }
+        setActive(false);
       }
+      // }
     };
 
     window.addEventListener('scroll', handleScroll);
