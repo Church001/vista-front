@@ -6,27 +6,24 @@ import { ReactComponent as Marker } from 'assets/svg/marker.svg';
 import { ReactComponent as Phone } from 'assets/svg/phone.svg';
 import axios from 'axios';
 import api from '../utils/api';
-import GeneralState from 'context/Context';
-import { SET_ERROR } from 'context/Constants';
+import { AST_True } from 'terser';
 
 class ContactForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      contactDetail: null
+      contactDetail: null,
+      attemptedSubmission: false,
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      success: false,
+      error: null,
+      isSubmitting: false
     };
   }
-
-  handSubmit = e => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    console.log('DATA SUBMISSION', data.getAll());
-  };
-  handlerName = e => {
-    e.preventDefault();
-    console.log(e);
-  };
 
   errSetter = err => {
     const error = {};
@@ -42,12 +39,75 @@ class ContactForm extends React.Component {
         });
       })
       .catch(err => {
-        // errSetter(err);
+        this.errSetter(err);
       });
   }
 
+  onChange = e =>
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+
+  onSubmit = ev => {
+    ev.preventDefault();
+    const data = {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      message: this.state.message
+    };
+    this.setState({
+      attemptedSubmission: true,
+      error: null,
+      success: false
+    });
+    const { name, email, phone, message } = this.state;
+    let declined = false;
+    if (name === '') declined = true;
+    if (email === '') declined = true;
+    if (phone === '') declined = true;
+    if (message === '') declined = true;
+    if (!declined) {
+      this.setState({
+        isSubmitting: true
+      });
+      axios
+        .post(api.EMAIL_URL, data)
+        .then(res => {
+          this.setState({
+            name: '',
+            email: '',
+            phone: '',
+            message: '',
+            attemptedSubmission: false,
+            error: null,
+            success: true,
+            isSubmitting: false
+          });
+        })
+        .catch(err => {
+          this.setState({
+            error: err,
+            success: false,
+            attemptedSubmission: false,
+            isSubmitting: false
+          });
+        });
+    }
+  };
+
   render() {
-    const { contactDetail } = this.state;
+    const {
+      contactDetail,
+      name,
+      email,
+      phone,
+      message,
+      attemptedSubmission,
+      success,
+      error,
+      isSubmitting
+    } = this.state;
     return (
       <div className='cf'>
         <div className='container'>
@@ -164,36 +224,117 @@ class ContactForm extends React.Component {
             </div>
             <div className='col-md-6'>
               <div className='card cf__card'>
-                <Form onSubmit={this.handSubmit}>
+                <form>
+                  {success && (
+                    <h1
+                      style={{
+                        color: 'green'
+                      }}
+                    >
+                      Thank you for Submitting
+                    </h1>
+                  )}
+                  {error !== null && (
+                    <h1
+                      style={{
+                        color: 'red'
+                      }}
+                    >
+                      Something went wrong, Please try again
+                    </h1>
+                  )}
                   <FormGroup>
                     <Label className='form__label'>Name</Label>
-                    <Input className='form__field' name='name' />
+                    <Input
+                      className={
+                        attemptedSubmission && name === ''
+                          ? 'form__field_error'
+                          : 'form__field'
+                      }
+                      name='name'
+                      onChange={this.onChange}
+                      value={name}
+                      disabled={isSubmitting ? true : false}
+                    />
+                    {attemptedSubmission && name === '' && (
+                      <p style={{ color: 'red' }}>must be filled</p>
+                    )}
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Email</Label>
-                    <Input className='form__field' />
+                    <Input
+                      className={
+                        attemptedSubmission && email === ''
+                          ? 'form__field_error'
+                          : 'form__field'
+                      }
+                      name='email'
+                      onChange={this.onChange}
+                      value={email}
+                      disabled={isSubmitting ? true : false}
+                    />
+                    {attemptedSubmission && email === '' && (
+                      <p style={{ color: 'red' }}>must be filled</p>
+                    )}
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Phone Number</Label>
-                    <Input className='form__field' />
+                    <Input
+                      className={
+                        attemptedSubmission && phone === ''
+                          ? 'form__field_error'
+                          : 'form__field'
+                      }
+                      name='phone'
+                      onChange={this.onChange}
+                      value={phone}
+                      disabled={isSubmitting ? true : false}
+                    />
+                    {attemptedSubmission && phone === '' && (
+                      <p style={{ color: 'red' }}>must be filled</p>
+                    )}
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Message</Label>
-                    <Input className='form__field' type={'textarea'} />
+                    <Input
+                      className={
+                        attemptedSubmission && message === ''
+                          ? 'form__field_error'
+                          : 'form__field'
+                      }
+                      type={'textarea'}
+                      name='message'
+                      onChange={this.onChange}
+                      value={message}
+                      disabled={isSubmitting ? true : false}
+                    />
+                    {attemptedSubmission && message === '' && (
+                      <p style={{ color: 'red' }}>must be filled</p>
+                    )}
                   </FormGroup>
 
                   <div className='d-flex justify-content-center'>
-                    <Button
-                      className='btn__purple btn--rounded btn--lg'
-                      type='submit'
-                    >
-                      SEND MESSAGE
-                    </Button>
+                    {isSubmitting ? (
+                      <Button
+                        className='btn__purple btn--rounded btn--lg'
+                        // onClick={this.onSubmit}
+                        disabled={true}
+                      >
+                        SUBMITTING...
+                      </Button>
+                    ) : (
+                      <Button
+                        className='btn__purple btn--rounded btn--lg'
+                        onClick={this.onSubmit}
+                      >
+                        SEND MESSAGE
+                      </Button>
+                    )}
                   </div>
-                </Form>
+                </form>
               </div>
             </div>
           </div>

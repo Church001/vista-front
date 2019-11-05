@@ -16,6 +16,8 @@ const LOCATONS = BASE_URL + '/locations';
 
 const PRODUCT_URL = BASE_URL + '/products';
 
+const EMAIL_URL = BASE_URL + '/emails';
+
 export default {
   ABOUT_URL,
   SERVICE_URL,
@@ -25,6 +27,7 @@ export default {
   SLIDERS,
   LOCATONS,
   PRODUCT_URL,
+  EMAIL_URL,
   BASE_URL
 };
 
