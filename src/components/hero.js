@@ -5,11 +5,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
-
-// import Paper from 'assets/img/new-paper.jpg';
-// import Stationery from 'assets/img/stationery.jpg';
-// import Print from 'assets/img/printing-packaging.png';
-// import Agro from 'assets/img/agrochemicals.jpg';
 import Typical from 'react-typical';
 
 import axios from 'axios';

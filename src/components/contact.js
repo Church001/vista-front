@@ -312,6 +312,7 @@ class ContactForm extends React.Component {
                           : 'form__field'
                       }
                       name='phone'
+                      type='number'
                       onChange={this.onChange}
                       value={phone}
                       disabled={isSubmitting ? true : false}
