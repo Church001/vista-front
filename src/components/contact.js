@@ -159,53 +159,53 @@ class ContactForm extends React.Component {
             </div>
             <div className='col-md-6'>
               <div className='card cf__card'>
-                {/* <Form> */}
-                <FormGroup>
-                  <Label className='form__label'>Name</Label>
-                  <Input
-                    className='form__field'
-                    name='name'
-                    // value={name}
-                    onChange={e => this.handlerName(e)}
-                    // disabled={!contactDetail.heading}
-                  />
-                </FormGroup>
+                <Form netify>
+                  <FormGroup>
+                    <Label className='form__label'>Name</Label>
+                    <Input
+                      className='form__field'
+                      name='name'
+                      // value={name}
+                      onChange={e => this.handlerName(e)}
+                      // disabled={!contactDetail.heading}
+                    />
+                  </FormGroup>
 
-                <FormGroup>
-                  <Label className='form__label'>Email</Label>
-                  <Input
-                    // disabled={!contactDetail.heading}
-                    className='form__field'
-                  />
-                </FormGroup>
+                  <FormGroup>
+                    <Label className='form__label'>Email</Label>
+                    <Input
+                      // disabled={!contactDetail.heading}
+                      className='form__field'
+                    />
+                  </FormGroup>
 
-                <FormGroup>
-                  <Label className='form__label'>Phone Number</Label>
-                  <Input
-                    // disabled={!contactDetail.heading}
-                    className='form__field'
-                  />
-                </FormGroup>
+                  <FormGroup>
+                    <Label className='form__label'>Phone Number</Label>
+                    <Input
+                      // disabled={!contactDetail.heading}
+                      className='form__field'
+                    />
+                  </FormGroup>
 
-                <FormGroup>
-                  <Label className='form__label'>Message</Label>
-                  <Input
-                    // disabled={!contactDetail.heading}
-                    className='form__field'
-                    type={'textarea'}
-                  />
-                </FormGroup>
+                  <FormGroup>
+                    <Label className='form__label'>Message</Label>
+                    <Input
+                      // disabled={!contactDetail.heading}
+                      className='form__field'
+                      type={'textarea'}
+                    />
+                  </FormGroup>
 
-                <div className='d-flex justify-content-center'>
-                  <Button
-                    className='btn__purple btn--rounded btn--lg'
-                    // onClick={e => submitter(e)}
-                    // disabled={!contactDetail.heading}
-                  >
-                    SEND MESSAGE
-                  </Button>
-                </div>
-                {/* </Form> */}
+                  <div className='d-flex justify-content-center'>
+                    <Button
+                      className='btn__purple btn--rounded btn--lg'
+                      // onClick={e => submitter(e)}
+                      // disabled={!contactDetail.heading}
+                    >
+                      SEND MESSAGE
+                    </Button>
+                  </div>
+                </Form>
               </div>
             </div>
           </div>

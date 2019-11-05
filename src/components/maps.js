@@ -196,7 +196,7 @@ export class Maps extends React.Component {
             </span>
             <h3>TEL: {place ? place.phone : ''}</h3>
             {this.state.isMarkerClicked ? (
-              <Badge>CLICK MAP TO RETURN</Badge>
+              <Badge>CLICK ANYWHERE ON MAP TO RETURN</Badge>
             ) : (
               <Badge>View on Maps</Badge>
             )}
