@@ -162,45 +162,28 @@ class ContactForm extends React.Component {
                 <Form netify>
                   <FormGroup>
                     <Label className='form__label'>Name</Label>
-                    <Input
-                      className='form__field'
-                      name='name'
-                      // value={name}
-                      onChange={e => this.handlerName(e)}
-                      // disabled={!contactDetail.heading}
-                    />
+                    <Input className='form__field' name='name' />
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Email</Label>
-                    <Input
-                      // disabled={!contactDetail.heading}
-                      className='form__field'
-                    />
+                    <Input className='form__field' />
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Phone Number</Label>
-                    <Input
-                      // disabled={!contactDetail.heading}
-                      className='form__field'
-                    />
+                    <Input className='form__field' />
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Message</Label>
-                    <Input
-                      // disabled={!contactDetail.heading}
-                      className='form__field'
-                      type={'textarea'}
-                    />
+                    <Input className='form__field' type={'textarea'} />
                   </FormGroup>
 
                   <div className='d-flex justify-content-center'>
                     <Button
                       className='btn__purple btn--rounded btn--lg'
                       // onClick={e => submitter(e)}
-                      // disabled={!contactDetail.heading}
                     >
                       SEND MESSAGE
                     </Button>
