@@ -14,7 +14,11 @@ class ContactForm extends React.Component {
     super(props);
 
     this.state = {
-      contactDetail: null
+      contactDetail: null,
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
     };
   }
 
@@ -41,8 +45,22 @@ class ContactForm extends React.Component {
       });
   }
 
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  onSubmit = ev => {
+    ev.preventDefault();
+    const data = {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      message: this.state.message
+    };
+    console.log('state-data:', data);
+  };
+
   render() {
-    const { contactDetail } = this.state;
+    const { contactDetail, name, email, phone, message } = this.state;
+    console.log('statehouse', name, email, phone, message);
     return (
       <div className='cf'>
         <div className='container'>
@@ -159,31 +177,48 @@ class ContactForm extends React.Component {
             </div>
             <div className='col-md-6'>
               <div className='card cf__card'>
-                <form netify>
+                <form>
                   <FormGroup>
                     <Label className='form__label'>Name</Label>
-                    <Input className='form__field' name='name' />
+                    <Input
+                      className='form__field'
+                      name='name'
+                      onChange={this.onChange}
+                    />
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Email</Label>
-                    <Input className='form__field' />
+                    <Input
+                      className='form__field'
+                      name='email'
+                      onChange={this.onChange}
+                    />
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Phone Number</Label>
-                    <Input className='form__field' />
+                    <Input
+                      className='form__field'
+                      name='phone'
+                      onChange={this.onChange}
+                    />
                   </FormGroup>
 
                   <FormGroup>
                     <Label className='form__label'>Message</Label>
-                    <Input className='form__field' type={'textarea'} />
+                    <Input
+                      className='form__field'
+                      type={'textarea'}
+                      name='message'
+                      onChange={this.onChange}
+                    />
                   </FormGroup>
 
                   <div className='d-flex justify-content-center'>
                     <Button
                       className='btn__purple btn--rounded btn--lg'
-                      // onClick={e => submitter(e)}
+                      onClick={this.onSubmit}
                     >
                       SEND MESSAGE
                     </Button>
