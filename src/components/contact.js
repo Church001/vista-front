@@ -18,6 +18,11 @@ class ContactForm extends React.Component {
     };
   }
 
+  handSubmit = e => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    console.log('DATA SUBMISSION', data.getAll());
+  };
   handlerName = e => {
     e.preventDefault();
     console.log(e);
@@ -159,7 +164,7 @@ class ContactForm extends React.Component {
             </div>
             <div className='col-md-6'>
               <div className='card cf__card'>
-                <Form netify>
+                <Form onSubmit={this.handSubmit}>
                   <FormGroup>
                     <Label className='form__label'>Name</Label>
                     <Input className='form__field' name='name' />
@@ -183,7 +188,7 @@ class ContactForm extends React.Component {
                   <div className='d-flex justify-content-center'>
                     <Button
                       className='btn__purple btn--rounded btn--lg'
-                      // onClick={e => submitter(e)}
+                      type='submit'
                     >
                       SEND MESSAGE
                     </Button>
