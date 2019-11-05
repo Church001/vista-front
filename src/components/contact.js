@@ -159,7 +159,7 @@ class ContactForm extends React.Component {
             </div>
             <div className='col-md-6'>
               <div className='card cf__card'>
-                <Form netify>
+                <form netify>
                   <FormGroup>
                     <Label className='form__label'>Name</Label>
                     <Input className='form__field' name='name' />
@@ -188,7 +188,7 @@ class ContactForm extends React.Component {
                       SEND MESSAGE
                     </Button>
                   </div>
-                </Form>
+                </form>
               </div>
             </div>
           </div>
