@@ -147,7 +147,7 @@ export class Maps extends React.Component {
     const mapStyles = {
       width: '100%',
       height: '80%',
-      backgroundColor: '#00ff000d'
+      backgroundColor: '#000000aa'
     };
     let place;
     if (this.state.markerData !== null) {
@@ -156,16 +156,16 @@ export class Maps extends React.Component {
     let { position } = this.state;
     return (
       <Map
+        className='hero.__map'
         google={this.props.google}
         zoom={this.state.zoom}
         style={mapStyles}
         initialCenter={{ lat: position.lat, lng: position.lng }}
-        // mapType={this.state.map}
+        mapType={this.state.map}
         disableDoubleClickZoom={true}
         // mapTypeControl={true}
         mapTypeId='SATELITTE'
         onClick={this.onMapClicked}
-        panControl={true}
         center={this.state.position}
       >
         {this.variousStores()}
