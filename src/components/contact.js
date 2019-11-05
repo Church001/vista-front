@@ -9,139 +9,144 @@ import api from '../utils/api';
 import GeneralState from 'context/Context';
 import { SET_ERROR } from 'context/Constants';
 
-let contactDetail = [];
+class ContactForm extends React.Component {
+  constructor(props) {
+    super(props);
 
-export const ContactForm = () => {
-  const [name, SetName] = useState('');
-  const [contact, setContact] = useState({});
-  const { dispatch } = useContext(GeneralState);
+    this.state = {
+      contactDetail: null
+    };
+  }
 
-  const handlerName = e => {
+  handlerName = e => {
     e.preventDefault();
     console.log(e);
   };
 
-  const submitter = e => {
-    e.preventDefault();
-    console.log(contact);
-  };
-
-  const errSetter = err => {
+  errSetter = err => {
     const error = {};
     error.msg = err;
-    dispatch({
-      type: SET_ERROR,
-      payload: error
-    });
   };
 
-  useEffect(() => {
+  componentDidMount() {
     axios
       .get(api.CONTACTS_URL)
       .then(res => {
-        contactDetail = res.data[0];
-        setContact(res.data[0]);
+        this.setState({
+          contactDetail: res.data[0]
+        });
       })
       .catch(err => {
-        errSetter(err);
+        // errSetter(err);
       });
-  }, []);
+  }
 
-  return (
-    <div className='cf'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-6 mb-4 mb-md-0'>
-            {contactDetail.heading ? (
-              <h1 className='cf__title text text--xl c-white fw-light'>
-                {contactDetail.heading}
-              </h1>
-            ) : (
-              <h1 className='cf__title text text--xl c-white fw-light'>
-                loading...
-              </h1>
-            )}
-
-            <div className='cf__info'>
-              {contactDetail.address ? (
-                <div className='cf__info__item'>
-                  <div className='icon'>
-                    <Marker width={20} />
-                  </div>
-
-                  <div className='texts'>
-                    <p className='text c-white mb-0'>{contactDetail.address}</p>
-                  </div>
-                </div>
+  render() {
+    const { contactDetail } = this.state;
+    return (
+      <div className='cf'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-6 mb-4 mb-md-0'>
+              {contactDetail && contactDetail.heading ? (
+                <h1 className='cf__title text text--xl c-white fw-light'>
+                  {contactDetail.heading}
+                </h1>
               ) : (
-                <div className='cf__info__item'>
-                  <div className='icon' />
-                  <div className='texts'>
-                    <p className='text c-white mb-0'>loading...</p>
-                  </div>
-                </div>
+                <h1 className='cf__title text text--xl c-white fw-light'>
+                  loading...
+                </h1>
               )}
 
-              {contactDetail.address ? (
-                <div className='cf__info__item'>
-                  <div className='icon'>
-                    <Mail width={20} height={20} />
-                  </div>
+              <div className='cf__info'>
+                {contactDetail && contactDetail.address ? (
+                  <div className='cf__info__item'>
+                    <div className='icon'>
+                      <Marker width={20} />
+                    </div>
 
-                  <div className='texts'>
-                    <a
-                      className='text c-white'
-                      href='mailto:sales.ng@vistaafrica.net'
-                    >
-                      {contactDetail.email1}
-                    </a>
-                    <a
-                      className='text c-white'
-                      href='mailto:info.ng@vistaafrica.net'
-                    >
-                      {contactDetail.email2}
-                    </a>
+                    <div className='texts'>
+                      <p className='text c-white mb-0'>
+                        {contactDetail.address}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className='cf__info__item'>
-                  <div className='icon' />
+                ) : (
+                  <div className='cf__info__item'>
+                    <div className='icon' />
+                    <div className='texts'>
+                      <p className='text c-white mb-0'>loading...</p>
+                    </div>
+                  </div>
+                )}
 
-                  <div className='texts'>
-                    <a
-                      className='text c-white'
-                      href='mailto:sales.ng@vistaafrica.net'
-                    >
-                      loading...
-                    </a>
-                    {/* <a
-                      className='text c-white'
-                      href='mailto:info.ng@vistaafrica.net'
-                    >
-                      loading...
-                    </a> */}
-                  </div>
-                </div>
-              )}
+                {contactDetail && contactDetail.address ? (
+                  <div className='cf__info__item'>
+                    <div className='icon'>
+                      <Mail width={20} height={20} />
+                    </div>
 
-              {contactDetail.address ? (
-                <div className='cf__info__item'>
-                  <div className='icon'>
-                    <Phone width={20} height={20} />
+                    <div className='texts'>
+                      <a
+                        className='text c-white'
+                        href='mailto:sales.ng@vistaafrica.net'
+                      >
+                        {contactDetail.email1}
+                      </a>
+                      <a
+                        className='text c-white'
+                        href='mailto:info.ng@vistaafrica.net'
+                      >
+                        {contactDetail.email2}
+                      </a>
+                    </div>
                   </div>
+                ) : (
+                  <div className='cf__info__item'>
+                    <div className='icon' />
 
-                  <div className='texts'>
-                    <p className='text c-white'>
-                      Telephone : {contactDetail.technical_phone}
-                    </p>
-                    <p className='text c-white'>
-                      Sales : {contactDetail.sales_phone}
-                    </p>
-                    <p className='text c-white'>
-                      Toll Free : {contactDetail.toll_free_phone}
-                    </p>
+                    <div className='texts'>
+                      <a
+                        className='text c-white'
+                        href='mailto:sales.ng@vistaafrica.net'
+                      >
+                        loading...
+                      </a>
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {contactDetail && contactDetail.address ? (
+                  <div className='cf__info__item'>
+                    <div className='icon'>
+                      <Phone width={20} height={20} />
+                    </div>
+
+                    <div className='texts'>
+                      <p className='text c-white'>
+                        Telephone : {contactDetail.technical_phone}
+                      </p>
+                      <p className='text c-white'>
+                        Sales : {contactDetail.sales_phone}
+                      </p>
+                      <p className='text c-white'>
+                        Toll Free : {contactDetail.toll_free_phone}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className='cf__info__item'>
+                    <div className='icon' />
+
+                    <div className='texts'>
+                      <p className='text c-white'>loading...</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {contactDetail && contactDetail.address ? (
+                <SocialLinks />
               ) : (
                 <div className='cf__info__item'>
                   <div className='icon' />
@@ -152,72 +157,45 @@ export const ContactForm = () => {
                 </div>
               )}
             </div>
+            <div className='col-md-6'>
+              <div className='card cf__card'>
+                <Form netify>
+                  <FormGroup>
+                    <Label className='form__label'>Name</Label>
+                    <Input className='form__field' name='name' />
+                  </FormGroup>
 
-            {contactDetail.address ? (
-              <SocialLinks />
-            ) : (
-              <div className='cf__info__item'>
-                <div className='icon' />
+                  <FormGroup>
+                    <Label className='form__label'>Email</Label>
+                    <Input className='form__field' />
+                  </FormGroup>
 
-                <div className='texts'>
-                  <p className='text c-white'>loading...</p>
-                </div>
+                  <FormGroup>
+                    <Label className='form__label'>Phone Number</Label>
+                    <Input className='form__field' />
+                  </FormGroup>
+
+                  <FormGroup>
+                    <Label className='form__label'>Message</Label>
+                    <Input className='form__field' type={'textarea'} />
+                  </FormGroup>
+
+                  <div className='d-flex justify-content-center'>
+                    <Button
+                      className='btn__purple btn--rounded btn--lg'
+                      // onClick={e => submitter(e)}
+                    >
+                      SEND MESSAGE
+                    </Button>
+                  </div>
+                </Form>
               </div>
-            )}
-          </div>
-          <div className='col-md-6'>
-            <div className='card cf__card'>
-              {/* <Form> */}
-              <FormGroup>
-                <Label className='form__label'>Name</Label>
-                <Input
-                  className='form__field'
-                  name='name'
-                  value={name}
-                  // onChange={e => handlerName(e)}
-                  disabled={!contactDetail.heading}
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label className='form__label'>Email</Label>
-                <Input
-                  disabled={!contactDetail.heading}
-                  className='form__field'
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label className='form__label'>Phone Number</Label>
-                <Input
-                  disabled={!contactDetail.heading}
-                  className='form__field'
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label className='form__label'>Message</Label>
-                <Input
-                  disabled={!contactDetail.heading}
-                  className='form__field'
-                  type={'textarea'}
-                />
-              </FormGroup>
-
-              <div className='d-flex justify-content-center'>
-                <Button
-                  className='btn__purple btn--rounded btn--lg'
-                  onClick={e => submitter(e)}
-                  disabled={!contactDetail.heading}
-                >
-                  SEND MESSAGE
-                </Button>
-              </div>
-              {/* </Form> */}
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
+
+export default ContactForm;

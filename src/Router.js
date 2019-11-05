@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Router, Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import history from './history';
