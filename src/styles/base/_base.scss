@@ -44,9 +44,11 @@ body {
 
 .map {
   height: 670px;
-  background-color: color(offDark);
+  background-color: black; //color(black);
+  opacity: 0.9;
   &__image {
     width: 100%;
+    background-color: black; //color(black);
   }
 }
 
