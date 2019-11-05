@@ -84,7 +84,6 @@ export const Nav = props => {
   });
 
   useEffect(() => {
-    console.log('STATE FROM NAV BAR', state.page_id);
     if (state.products) {
       setProducts(state.products);
     }
