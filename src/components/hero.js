@@ -5,11 +5,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
-
-// import Paper from 'assets/img/new-paper.jpg';
-// import Stationery from 'assets/img/stationery.jpg';
-// import Print from 'assets/img/printing-packaging.png';
-// import Agro from 'assets/img/agrochemicals.jpg';
 import Typical from 'react-typical';
 
 import axios from 'axios';
@@ -50,6 +45,9 @@ export const Hero = ({ slid }) => {
   const [active, setActive] = useState(0);
   const [sliders, setSlides] = useState([]);
 
+  const redirector = () => {
+    window.location.href = 'https://www.officeeverything.com.ng';
+  };
   useEffect(() => {
     axios
       .get(api.SLIDERS)
@@ -95,7 +93,8 @@ export const Hero = ({ slid }) => {
           }}
         >
           {sliders.map(slide => {
-            // console.log('SLIDER IMAGE', slide);
+            console.log('SLIDER IMAGE', slide.btn.link);
+
             const image = slide.img;
             return (
               <div key={slide.id} className='hero__slide'>
@@ -115,13 +114,26 @@ export const Hero = ({ slid }) => {
                       {slide.subtitle}
                     </h4>
                     {slide.btn && slide.btn.title ? (
-                      <Link
-                        to={slide.btn.link}
-                        className='btn btn__white btn--rounded btn--lg'
-                        data-uk-scroll
-                      >
-                        {slide.btn.title}
-                      </Link>
+                      <div>
+                        {slide.btn.link ===
+                        'https://www.officeeverything.com.ng/' ? (
+                          <button
+                            className='btn btn__white btn--rounded btn--lg'
+                            data-uk-scroll
+                            onClick={() => redirector()}
+                          >
+                            {slide.btn.title}
+                          </button>
+                        ) : (
+                          <a
+                            className='btn btn__white btn--rounded btn--lg'
+                            data-uk-scroll
+                            href={slide.btn.link}
+                          >
+                            {slide.btn.title}
+                          </a>
+                        )}
+                      </div>
                     ) : null}
                   </div>
                 </div>

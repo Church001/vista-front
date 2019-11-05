@@ -43,11 +43,19 @@ body {
 }
 
 .map {
-  height: 670px;
+  height: 710px;
   background-color: color(black);
-  opacity: 0.9;
   &__image {
     width: 100%;
+  }
+}
+
+.map_custom {
+  height: 100%;
+  opacity: 0.4;
+  &__image {
+    width: 100%;
+    background-color: color(black);
   }
 }
 

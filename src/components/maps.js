@@ -155,14 +155,13 @@ export class Maps extends React.Component {
     let { position } = this.state;
     return (
       <Map
-        className='hero.__map'
         google={this.props.google}
         zoom={this.state.zoom}
         style={mapStyles}
         initialCenter={{ lat: position.lat, lng: position.lng }}
         mapType={this.state.map}
         disableDoubleClickZoom={true}
-        // mapTypeControl={true}
+        className={'map_custom'}
         mapTypeId='SATELITTE'
         onClick={this.onMapClicked}
         center={this.state.position}
