@@ -10,6 +10,13 @@ export class Maps extends React.Component {
       showInfoWindow: false,
       marker: null,
       markerData: null,
+      position: {
+        lat: 9,
+        lng: 8.6
+      },
+      zoom: 6,
+      map: 'map',
+      isMarkerClicked: false,
       stores: [
         {
           latitude: 9.037831,
@@ -79,12 +86,19 @@ export class Maps extends React.Component {
 
   onMapClicked = props => {
     if (this.state.showInfoWindow) {
+      let position = {
+        lat: 9,
+        lng: 8.6
+      };
       this.setState({
         showInfoWindow: false,
-        marker: null
+        marker: null,
+        zoom: 6,
+        isMarkerClicked: false,
+        position: position,
+        map: 'MAP'
       });
     }
-    console.log(props);
   };
 
   markerOnClick = (props, marker) => {
@@ -94,10 +108,18 @@ export class Maps extends React.Component {
       address: props.address,
       phone: props.phone
     };
+    const position1 = {
+      lat: markerData.position.lat,
+      lng: markerData.position.lng
+    };
     this.setState({
       marker: marker,
       showInfoWindow: marker ? true : false,
-      markerData: markerData
+      zoom: 17,
+      markerData: markerData,
+      map: 'SATELLITE',
+      position: position1,
+      isMarkerClicked: true
     });
   };
 
@@ -124,22 +146,27 @@ export class Maps extends React.Component {
   render() {
     const mapStyles = {
       width: '100%',
-      height: '80%'
+      height: '80%',
+      backgroundColor: '#00ff000d'
     };
     let place;
     if (this.state.markerData !== null) {
       place = this.state.markerData;
     }
+    let { position } = this.state;
     return (
       <Map
         google={this.props.google}
-        zoom={7}
+        zoom={this.state.zoom}
         style={mapStyles}
-        initialCenter={{ lat: 9, lng: 8.6 }}
-        mapType={'map'}
+        initialCenter={{ lat: position.lat, lng: position.lng }}
+        // mapType={this.state.map}
         disableDoubleClickZoom={true}
-        mapTypeControl={true}
+        // mapTypeControl={true}
+        mapTypeId='SATELITTE'
         onClick={this.onMapClicked}
+        panControl={true}
+        center={this.state.position}
       >
         {this.variousStores()}
         <InfoWindow
@@ -169,9 +196,11 @@ export class Maps extends React.Component {
               <p>{place ? place.address : ''}</p>
             </span>
             <h3>TEL: {place ? place.phone : ''}</h3>
-            <Badge color='secondary' pill>
-              View on Maps
-            </Badge>
+            {this.state.isMarkerClicked ? (
+              <Badge>CLICK MAP TO RETURN</Badge>
+            ) : (
+              <Badge>View on Maps</Badge>
+            )}
           </div>
         </InfoWindow>
       </Map>

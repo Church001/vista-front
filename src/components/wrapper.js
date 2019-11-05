@@ -1,6 +1,7 @@
 import React from 'react';
-import { ContactForm, Nav, Footer } from 'components';
+import { Nav, Footer } from 'components';
 import PropTypes from 'prop-types';
+import ContactForm from './contact';
 
 export const Wrapper = props => (
   <div className='wrapper'>
