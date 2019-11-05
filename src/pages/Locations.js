@@ -12,9 +12,10 @@ import GeneralState from 'context/Context';
 import { SET_ERROR } from 'context/Constants';
 import Error from 'components/error';
 import StickyLinks from 'components/stickyLinks';
+import { SET_PRODUCTS } from 'context/Constants';
 
 const falseLocations = ['1', '2', '3', '4', '5', '6', '7'];
-
+let products = [];
 const Location = props => {
   const { state, dispatch } = useContext(GeneralState);
   const [locations, setLocations] = useState([]);
@@ -37,6 +38,16 @@ const Location = props => {
       .catch(err => {
         errSetter(err);
       });
+
+    if (state.products.length === 0) {
+      axios.get(api.PRODUCT_CATEGORY_URL).then(res => {
+        products = res.data[0];
+        dispatch({
+          type: SET_PRODUCTS,
+          payload: res.data[0].products
+        });
+      });
+    }
   }, []);
 
   return state.error.msg === undefined ? (
