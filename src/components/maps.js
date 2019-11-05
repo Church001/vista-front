@@ -146,8 +146,7 @@ export class Maps extends React.Component {
   render() {
     const mapStyles = {
       width: '100%',
-      height: '80%',
-      backgroundColor: '#000000aa'
+      height: '80%'
     };
     let place;
     if (this.state.markerData !== null) {

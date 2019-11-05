@@ -7,16 +7,16 @@ import { ReactComponent as Linkedin } from 'assets/svg/linkedin.svg';
 export default function StickyLinks() {
   return (
     <div className='icon-bar'>
-      <a href='twitter.com' className='twitter'>
+      <a href='https://twitter.com' className='twitter'>
         <Twitter />
       </a>
-      <a href='facebook.com' className='facebook'>
+      <a href='https://facebook.com' className='facebook'>
         <Facebook />
       </a>
-      <a href='instagram.com' className='instagram'>
+      <a href='https://instagram.com' className='instagram'>
         <Instagram />
       </a>
-      <a href='linkedin.com' className='linkedin'>
+      <a href='https://linkedin.com' className='linkedin'>
         <Linkedin />
       </a>
     </div>
