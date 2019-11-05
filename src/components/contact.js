@@ -226,22 +226,22 @@ class ContactForm extends React.Component {
               <div className='card cf__card'>
                 <form>
                   {success && (
-                    <h1
+                    <h4
                       style={{
                         color: 'green'
                       }}
                     >
-                      Thank you for Submitting
-                    </h1>
+                      Thank you for reaching out to us. We'll get back to you.
+                    </h4>
                   )}
                   {error !== null && (
-                    <h1
+                    <h4
                       style={{
                         color: 'red'
                       }}
                     >
                       Something went wrong, Please try again
-                    </h1>
+                    </h4>
                   )}
                   <FormGroup>
                     <Label className='form__label'>Name</Label>
@@ -323,7 +323,7 @@ class ContactForm extends React.Component {
                         // onClick={this.onSubmit}
                         disabled={true}
                       >
-                        SUBMITTING...
+                        SENDING...
                       </Button>
                     ) : (
                       <Button
