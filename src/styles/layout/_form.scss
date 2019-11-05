@@ -8,6 +8,13 @@
     @extend .fw-semi;
   }
 
+  &__label_error {
+    @extend .text;
+    @extend .text--xs;
+    @extend .fw-semi;
+    color: color(red);
+  }
+
   &__field {
     border-radius: 0;
     border: none;

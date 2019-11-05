@@ -244,7 +244,15 @@ class ContactForm extends React.Component {
                     </h1>
                   )}
                   <FormGroup>
-                    <Label className='form__label'>Name</Label>
+                    <Label
+                      className={
+                        attemptedSubmission && name === ''
+                          ? 'form__label_error'
+                          : 'form__label'
+                      }
+                    >
+                      Name
+                    </Label>
                     <Input
                       className={
                         attemptedSubmission && name === ''
@@ -262,7 +270,15 @@ class ContactForm extends React.Component {
                   </FormGroup>
 
                   <FormGroup>
-                    <Label className='form__label'>Email</Label>
+                    <Label
+                      className={
+                        attemptedSubmission && email === ''
+                          ? 'form__label_error'
+                          : 'form__label'
+                      }
+                    >
+                      Email
+                    </Label>
                     <Input
                       className={
                         attemptedSubmission && email === ''
@@ -280,7 +296,15 @@ class ContactForm extends React.Component {
                   </FormGroup>
 
                   <FormGroup>
-                    <Label className='form__label'>Phone Number</Label>
+                    <Label
+                      className={
+                        attemptedSubmission && phone === ''
+                          ? 'form__label_error'
+                          : 'form__label'
+                      }
+                    >
+                      Phone Number
+                    </Label>
                     <Input
                       className={
                         attemptedSubmission && phone === ''
@@ -298,7 +322,15 @@ class ContactForm extends React.Component {
                   </FormGroup>
 
                   <FormGroup>
-                    <Label className='form__label'>Message</Label>
+                    <Label
+                      className={
+                        attemptedSubmission && message === ''
+                          ? 'form__label_error'
+                          : 'form__label'
+                      }
+                    >
+                      Message
+                    </Label>
                     <Input
                       className={
                         attemptedSubmission && message === ''
