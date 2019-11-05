@@ -16,7 +16,19 @@
     font-size: 1.8rem;
     outline: none !important;
     padding: 0;
+    &:not(textarea) {
+      height: 2.5rem;
+    }
+  }
 
+  &__field_error {
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid rgba(color(red), 0.15);
+    box-shadow: none !important;
+    font-size: 1.8rem;
+    outline: none !important;
+    padding: 0;
     &:not(textarea) {
       height: 2.5rem;
     }
