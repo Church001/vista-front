@@ -8,13 +8,16 @@ export const Footer = () => {
           <div className='col-md-6 mb-3 mb-md-0'>
             <ul className='footer__menu'>
               <li className='footer__menu__item'>
-                <a href='#about' className='footer__menu__link text c-off-dark'>
+                <a
+                  href='/#about'
+                  className='footer__menu__link text c-off-dark'
+                >
                   About
                 </a>
               </li>
               <li className='footer__menu__item'>
                 <a
-                  href='#products'
+                  href='/#products'
                   className='footer__menu__link text c-off-dark'
                 >
                   Our Products

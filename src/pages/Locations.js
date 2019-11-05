@@ -11,6 +11,7 @@ import Loader from '../components/loader';
 import GeneralState from 'context/Context';
 import { SET_ERROR } from 'context/Constants';
 import Error from 'components/error';
+import StickyLinks from 'components/stickyLinks';
 
 const falseLocations = ['1', '2', '3', '4', '5', '6', '7'];
 
@@ -44,6 +45,7 @@ const Location = props => {
         <div className='map'>
           <Maps />
         </div>
+        <StickyLinks />
         <section className='section section--wo section--wo--p'>
           <PurpleLeft
             width={230}

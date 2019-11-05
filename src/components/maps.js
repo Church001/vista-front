@@ -146,8 +146,7 @@ export class Maps extends React.Component {
   render() {
     const mapStyles = {
       width: '100%',
-      height: '80%',
-      backgroundColor: '#000000aa'
+      height: '80%'
     };
     let place;
     if (this.state.markerData !== null) {
@@ -197,7 +196,7 @@ export class Maps extends React.Component {
             </span>
             <h3>TEL: {place ? place.phone : ''}</h3>
             {this.state.isMarkerClicked ? (
-              <Badge>CLICK MAP TO RETURN</Badge>
+              <Badge>CLICK ANYWHERE ON MAP TO RETURN</Badge>
             ) : (
               <Badge>View on Maps</Badge>
             )}
