@@ -14,25 +14,31 @@ export const SocialLinks = ({ alternate }) => {
       })}
     >
       <div className='sl__item'>
-        <a href='https://twitter.com' className='sl__link'>
+        <a href='https://twitter.com/Vista_Intl' className='sl__link'>
           <Twitter />
         </a>
       </div>
 
       <div className='sl__item'>
-        <a href='https://www.facebook.com' className='sl__link'>
+        <a
+          href='https://www.facebook.com/vistainternationalltd/'
+          className='sl__link'
+        >
           <Facebook />
         </a>
       </div>
 
       <div className='sl__item'>
-        <a href='https://instagram.com' className='sl__link'>
+        <a href='https://www.instagram.com/vista_intl/' className='sl__link'>
           <Instagram />
         </a>
       </div>
 
       <div className='sl__item'>
-        <a href='https://linkedin.com' className='sl__link'>
+        <a
+          href='https://www.linkedin.com/company/vista-international-ltd/'
+          className='sl__link'
+        >
           <Linkedin />
         </a>
       </div>
