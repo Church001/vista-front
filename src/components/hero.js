@@ -22,7 +22,10 @@ const settings = {
 };
 
 const Slide = ({ btn, img, subtitle, title }) => (
-  <div className='hero__slide' style={{ backgroundImage: `url(${img})` }}>
+  <div
+    className='hero__slide'
+    style={{ backgroundImage: `url(/static/media/new-paper.6366cc56.jpg)` }}
+  >
     <div className='overlay'></div>
     <div className='container'>
       <div className='col-md-7'>
