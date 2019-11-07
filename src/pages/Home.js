@@ -110,11 +110,10 @@ const Home = () => {
       currentHeightP = productRef.current.offsetTop;
     }
     if (servicesRef.current && window.location.hash === '#services') {
+      window.scrollTo(0, servicesRef.current.offsetTop);
+      window.document.title = 'Vista International | Services';
       currentHeightS = servicesRef.current.offsetTop; //2025
       currentHeightP = servicesRef.current.previousSibling.offsetTop;
-      window.document.title = 'Vista International | Services';
-      window.scrollTo(0, servicesRef.current.offsetTop);
-      currentHeightS = servicesRef.current.offsetTop;
       if (currentHeightS - currentHeightP < 1000) {
         window.scrollTo(0, servicesRef.current.offsetTop + 600);
       } else if (currentHeightS - currentHeightP > 1300) {
