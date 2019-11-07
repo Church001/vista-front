@@ -68,7 +68,10 @@ const Location = props => {
             height={502}
             className='symbol--left hide-for-small-only'
           />
-          <div className='container'>
+          <div
+            className='container'
+            data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .section__sub; delay: 500; repeat: true'
+          >
             <div className='section__sub'>
               <div className='section__header'>
                 {locations.heading ? (
