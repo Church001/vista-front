@@ -51,6 +51,7 @@ export const Hero = ({ slid }) => {
   const redirector = () => {
     window.location.href = 'https://www.officeeverything.com.ng';
   };
+
   useEffect(() => {
     axios
       .get(api.SLIDERS)

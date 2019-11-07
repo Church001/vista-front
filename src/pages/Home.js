@@ -171,7 +171,10 @@ const Home = () => {
             height={502}
             className='symbol--left hide-for-small-only'
           />
-          <div className='container-fluid'>
+          <div
+            className='container-fluid'
+            data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .section__sub; delay: 500; repeat: true'
+          >
             <div className='section__sub'>
               <div className='section__header'>
                 {productss.products ? (
@@ -230,7 +233,10 @@ const Home = () => {
         </section>
 
         <section className='section section--pbg' id='services'>
-          <div className='container-fluid'>
+          <div
+            className='container-fluid'
+            data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .section__sub; delay: 500; repeat: true'
+          >
             <div className='section__sub'>
               <div className='section__header'>
                 {servicess.servicetypes ? (
@@ -297,7 +303,10 @@ const Home = () => {
             height={502}
             className='symbol--left hide-for-small-only'
           />
-          <div className='container-fluid'>
+          <div
+            className='container-fluid'
+            data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .section__sub; delay: 500; repeat: true'
+          >
             <div className='section__sub'>
               <div className='section__header more'>
                 {whatWeGives.givebacks ? (

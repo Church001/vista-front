@@ -11,8 +11,18 @@ export const ExploreCard = ({ img, text }) => {
     </button>
   );
 
+  const externalCloseBtn = (
+    <button
+      className='close'
+      style={{ position: 'absolute', top: '15px', right: '15px' }}
+      onClick={toggle}
+    >
+      &times;
+    </button>
+  );
+
   return (
-    <div className='card explore-card'>
+    <div className='card explore-card' data-uk-lightbox='animation: slide'>
       <div
         className='explore-card__header'
         style={{ backgroundImage: `url(${img})` }}
@@ -30,16 +40,20 @@ export const ExploreCard = ({ img, text }) => {
         Read More
       </Button>
 
-      <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle} close={closeBtn}>
-          {' '}
-        </ModalHeader>
+      <Modal
+        isOpen={modal}
+        toggle={toggle}
+        className='modal-dialog modal-dialog-centered modal-xl'
+        external={externalCloseBtn}
+      >
         <ModalBody>
           <div className='row'>
             <div className='col-md-6'>
               <img src={img} />
             </div>
-            <div className='col-md-6'>{text}</div>
+            <div className='col-md-6 modal-content-ct'>
+              <div className='modal-body-content pt40'>{text}</div>
+            </div>
           </div>
         </ModalBody>
       </Modal>

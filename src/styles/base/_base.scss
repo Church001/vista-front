@@ -108,6 +108,34 @@ body {
   padding: 5px;
 }
 
+.modal-body {
+  padding: 0 !important;
+}
+
+// .pt40 {
+// padding-top: 40px;
+// }
+.modal-content {
+  border-radius: 0 !important;
+}
+
+.modal-body-content {
+  text-align: center;
+  padding-right: 30px;
+}
+
+.modal-content-ct {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.close {
+  color: #fff;
+  right: 50px !important;
+  top: 50px !important;
+}
+
 body {
   max-width: 100%;
   overflow-x: hidden;
