@@ -28,6 +28,8 @@ let servicesRef = null;
 let currentHeightS = null;
 let currentHeightP = null;
 
+let heightResult = null;
+
 const Home = () => {
   const { state, dispatch } = useContext(GeneralContext);
   const [products, setProducts] = useState([]);
@@ -115,13 +117,20 @@ const Home = () => {
       currentHeightS = servicesRef.current.offsetTop; //2025
       currentHeightP = servicesRef.current.previousSibling.offsetTop;
       if (currentHeightS - currentHeightP < 1000) {
-        window.scrollTo(0, servicesRef.current.offsetTop + 600);
-      } else if (currentHeightS - currentHeightP > 1300) {
-        window.scrollTo(0, servicesRef.current.offsetTop);
+        window.scrollTo(0, currentHeightS + 640);
+        heightResult = currentHeightS + 629;
+      }
+      if (currentHeightS - currentHeightP > 1300) {
+        window.scrollTo(0, currentHeightS);
+      } else {
+        heightResult && window.scrollTo(0, heightResult);
       }
     } else if (window.location.hash === '') {
       window.document.title = 'Vista International';
     }
+    console.log('SERVICE HEIGHT', currentHeightS);
+    console.log('PRODUCT HEIGHT', currentHeightP);
+    console.log('IDEAL HEIGHT', heightResult);
   }, [aboutRef, productRef, servicesRef]);
 
   const colorChange = val => {
