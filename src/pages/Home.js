@@ -115,17 +115,9 @@ const Home = () => {
       window.document.title = 'Vista International | Services';
       window.scrollTo(0, servicesRef.current.offsetTop);
       currentHeightS = servicesRef.current.offsetTop;
-      if (
-        servicesRef.current.offsetTop -
-          servicesRef.current.previousSibling.offsetTop <
-        1000
-      ) {
+      if (currentHeightS - currentHeightP < 1000) {
         window.scrollTo(0, servicesRef.current.offsetTop + 600);
-      } else if (
-        servicesRef.current.offsetTop -
-          servicesRef.current.previousSibling.offsetTop >
-        1300
-      ) {
+      } else if (currentHeightS - currentHeightP > 1300) {
         window.scrollTo(0, servicesRef.current.offsetTop);
       }
     } else if (window.location.hash === '') {
