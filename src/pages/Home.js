@@ -123,8 +123,6 @@ const Home = () => {
     } else if (window.location.hash === '') {
       window.document.title = 'Vista International';
     }
-    console.log('PRODUCT HEIGHT', currentHeightP);
-    console.log('SERVICE HEIGHT', currentHeightS);
   }, [aboutRef, productRef, servicesRef]);
 
   const colorChange = val => {
