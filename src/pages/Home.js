@@ -25,6 +25,8 @@ const falseWhatWeGive = ['1', '2'];
 let aboutRef = null;
 let productRef = null;
 let servicesRef = null;
+let currentHeightS = null;
+let currentHeightP = null;
 
 const Home = () => {
   const { state, dispatch } = useContext(GeneralContext);
@@ -99,13 +101,42 @@ const Home = () => {
   useEffect(() => {
     if (aboutRef.current && window.location.hash === '#about') {
       window.scrollTo(0, aboutRef.current.offsetTop);
+      window.document.title = 'Vista International | About Us';
     }
     if (productRef.current && window.location.hash === '#products') {
       window.scrollTo(0, productRef.current.offsetTop);
+      window.document.title = 'Vista International | Products';
+      console.log(productRef.current.offsetTop);
+      currentHeightP = productRef.current.offsetTop;
     }
     if (servicesRef.current && window.location.hash === '#services') {
+      currentHeightS = servicesRef.current.offsetTop; //2025
+      window.document.title = 'Vista International | Services';
       window.scrollTo(0, servicesRef.current.offsetTop);
+      currentHeightS = servicesRef.current.offsetTop;
+      console.log(
+        'PREVIOUS SIBLING',
+        servicesRef.current.previousSibling
+          ? servicesRef.current.previousSibling.offsetTop
+          : null
+      );
+      if (
+        servicesRef.current.offsetTop -
+          servicesRef.current.previousSibling.offsetTop <
+        1500
+      ) {
+        window.scrollTo(
+          0,
+          servicesRef.current.previousSibling.offsetTop + 1560
+        );
+      } else {
+        window.scrollTo(0, servicesRef.current.offsetTop);
+      }
+    } else if (window.location.hash === '') {
+      window.document.title = 'Vista International';
     }
+    console.log('PRODUCT HEIGHT', currentHeightP);
+    console.log('SERVICE HEIGHT', currentHeightS);
   }, [aboutRef, productRef, servicesRef]);
 
   const colorChange = val => {
