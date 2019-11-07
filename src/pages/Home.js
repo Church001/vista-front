@@ -22,11 +22,19 @@ const falseProductsLoading = ['1', '2', '3', '4'];
 const falseServicesLoading = ['1', '2', '3'];
 const falseWhatWeGive = ['1', '2'];
 
+let aboutRef = null;
+let productRef = null;
+let servicesRef = null;
+
 const Home = () => {
   const { state, dispatch } = useContext(GeneralContext);
   const [products, setProducts] = useState([]);
   const [services, setServices] = useState(null);
   const [about, setAbout] = useState([]);
+
+  aboutRef = React.createRef();
+  productRef = React.createRef();
+  servicesRef = React.createRef();
 
   const errSetter = err => {
     const error = {};
@@ -88,6 +96,18 @@ const Home = () => {
     });
   }, [products]);
 
+  useEffect(() => {
+    if (aboutRef.current && window.location.hash === '#about') {
+      window.scrollTo(0, aboutRef.current.offsetTop);
+    }
+    if (productRef.current && window.location.hash === '#products') {
+      window.scrollTo(0, productRef.current.offsetTop);
+    }
+    if (servicesRef.current && window.location.hash === '#services') {
+      window.scrollTo(0, servicesRef.current.offsetTop);
+    }
+  }, [aboutRef, productRef, servicesRef]);
+
   const colorChange = val => {
     if (val === 'EMPOWERING EDUCATION') {
       return { color: 'yellow', number: '1' };
@@ -105,7 +125,11 @@ const Home = () => {
         <Hero />
         <SocialLinks alternate />
         <StickyLinks />
-        <section className='section section--wo section--wo--p' id='about'>
+        <section
+          ref={aboutRef}
+          className='section section--wo section--wo--p'
+          id='about'
+        >
           <PurpleLeft
             width={230}
             height={502}
@@ -157,6 +181,7 @@ const Home = () => {
         </section>
 
         <section
+          ref={productRef}
           className='section section--wo section--wo--p'
           id='products'
           data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .product-card--c-green; delay: 500; repeat: true'
@@ -229,7 +254,11 @@ const Home = () => {
           </div>
         </section>
 
-        <section className='section section--pbg' id='services'>
+        <section
+          ref={servicesRef}
+          className='section section--pbg'
+          id='services'
+        >
           <div className='container-fluid'>
             <div className='section__sub'>
               <div className='section__header'>

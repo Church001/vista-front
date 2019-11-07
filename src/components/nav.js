@@ -93,6 +93,10 @@ export const Nav = props => {
     }
   }, [state, products]);
 
+  useEffect(() => {
+    console.log('WINDOW DATA', window.location.hash);
+  }, [window.location.hash]);
+
   return (
     <Navbar
       expand='lg'
@@ -118,7 +122,11 @@ export const Nav = props => {
               </NavLink>
             </NavItem>
             <NavItem className='nav__item'>
-              <a className='nav__link' href='/#about'>
+              <a
+                // onClick={() => alert("ONCLICK")}
+                className='nav__link'
+                href='/#about'
+              >
                 About
               </a>
             </NavItem>
