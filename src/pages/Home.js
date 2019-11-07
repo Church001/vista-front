@@ -116,7 +116,7 @@ const Home = () => {
       window.document.title = 'Vista International | Services';
       currentHeightS = servicesRef.current.offsetTop; //2025
       currentHeightP = servicesRef.current.previousSibling.offsetTop;
-      if (currentHeightS - currentHeightP < 1000) {
+      if (currentHeightS - currentHeightP < 1300) {
         window.scrollTo(0, currentHeightS + 640);
         heightResult = currentHeightS + 629;
       }
