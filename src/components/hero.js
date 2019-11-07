@@ -97,7 +97,7 @@ export const Hero = ({ slid }) => {
           }}
         >
           {sliders.map(slide => {
-            console.log('SLIDER IMAGE', slide.btn.link);
+            // console.log('SLIDER IMAGE', slide.btn.link);
 
             const image = slide.img;
             return (

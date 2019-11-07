@@ -29,36 +29,9 @@ class RouterComponent extends React.Component {
       <Router history={history}>
         <ScrollToTop>
           <Switch>
-            <Route
-              exact
-              path='/'
-              // render={props => (
-              //   <Suspense fallback={<Loader />}>
-              //     <Home {...props} />
-              //   </Suspense>
-              // )}
-              component={Home}
-            />
-            <Route
-              exact
-              path='/products/:id'
-              // render={props => (
-              //   <Suspense fallback={<Loader />}>
-              //     <Products {...props} />
-              //   </Suspense>
-              // )}
-              component={Products}
-            />
-            <Route
-              exact
-              path='/location'
-              // render={props => (
-              //   <Suspense fallback={<Loader />}>
-              //     <Locations {...props} />
-              //   </Suspense>
-              // )}
-              component={Locations}
-            />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/products/:id' component={Products} />
+            <Route exact path='/location' component={Locations} />
           </Switch>
         </ScrollToTop>
       </Router>

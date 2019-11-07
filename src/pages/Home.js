@@ -22,11 +22,23 @@ const falseProductsLoading = ['1', '2', '3', '4'];
 const falseServicesLoading = ['1', '2', '3'];
 const falseWhatWeGive = ['1', '2'];
 
+let aboutRef = null;
+let productRef = null;
+let servicesRef = null;
+let currentHeightS = null;
+let currentHeightP = null;
+
+let heightResult = null;
+
 const Home = () => {
   const { state, dispatch } = useContext(GeneralContext);
   const [products, setProducts] = useState([]);
   const [services, setServices] = useState(null);
   const [about, setAbout] = useState([]);
+
+  aboutRef = React.createRef();
+  productRef = React.createRef();
+  servicesRef = React.createRef();
 
   const errSetter = err => {
     const error = {};
@@ -88,6 +100,39 @@ const Home = () => {
     });
   }, [products]);
 
+  useEffect(() => {
+    if (aboutRef.current && window.location.hash === '#about') {
+      window.scrollTo(0, aboutRef.current.offsetTop);
+      window.document.title = 'Vista International | About Us';
+    }
+    if (productRef.current && window.location.hash === '#products') {
+      window.scrollTo(0, productRef.current.offsetTop);
+      window.document.title = 'Vista International | Products';
+      console.log(productRef.current.offsetTop);
+      currentHeightP = productRef.current.offsetTop;
+    }
+    if (servicesRef.current && window.location.hash === '#services') {
+      window.scrollTo(0, servicesRef.current.offsetTop);
+      window.document.title = 'Vista International | Services';
+      currentHeightS = servicesRef.current.offsetTop; //2025
+      currentHeightP = servicesRef.current.previousSibling.offsetTop;
+      if (currentHeightS - currentHeightP < 1300) {
+        window.scrollTo(0, currentHeightS + 640);
+        heightResult = currentHeightS + 629;
+      }
+      if (currentHeightS - currentHeightP > 1300) {
+        window.scrollTo(0, currentHeightS);
+      } else {
+        heightResult && window.scrollTo(0, heightResult);
+      }
+    } else if (window.location.hash === '') {
+      window.document.title = 'Vista International';
+    }
+    console.log('SERVICE HEIGHT', currentHeightS);
+    console.log('PRODUCT HEIGHT', currentHeightP);
+    console.log('IDEAL HEIGHT', heightResult);
+  }, [aboutRef, productRef, servicesRef]);
+
   const colorChange = val => {
     if (val === 'EMPOWERING EDUCATION') {
       return { color: 'yellow', number: '1' };
@@ -105,7 +150,11 @@ const Home = () => {
         <Hero />
         <SocialLinks alternate />
         <StickyLinks />
-        <section className='section section--wo section--wo--p' id='about'>
+        <section
+          ref={aboutRef}
+          className='section section--wo section--wo--p'
+          id='about'
+        >
           <PurpleLeft
             width={230}
             height={502}
@@ -157,6 +206,7 @@ const Home = () => {
         </section>
 
         <section
+          ref={productRef}
           className='section section--wo section--wo--p'
           id='products'
           data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .product-card--c-green; delay: 500; repeat: true'
@@ -232,7 +282,11 @@ const Home = () => {
           </div>
         </section>
 
-        <section className='section section--pbg' id='services'>
+        <section
+          ref={servicesRef}
+          className='section section--pbg'
+          id='services'
+        >
           <div
             className='container-fluid'
             data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .section__sub; delay: 500; repeat: true'
