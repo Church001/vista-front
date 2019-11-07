@@ -93,10 +93,6 @@ export const Nav = props => {
     }
   }, [state, products]);
 
-  useEffect(() => {
-    console.log('WINDOW DATA', window.location.hash);
-  }, [window.location.hash]);
-
   return (
     <Navbar
       expand='lg'
