@@ -111,32 +111,18 @@ const Home = () => {
     }
     if (servicesRef.current && window.location.hash === '#services') {
       currentHeightS = servicesRef.current.offsetTop; //2025
+      currentHeightP = servicesRef.current.previousSibling.offsetTop;
       window.document.title = 'Vista International | Services';
       window.scrollTo(0, servicesRef.current.offsetTop);
       currentHeightS = servicesRef.current.offsetTop;
-      console.log(
-        'PREVIOUS SIBLING',
-        servicesRef.current.previousSibling
-          ? servicesRef.current.previousSibling.offsetTop
-          : null
-      );
-      if (
-        servicesRef.current.offsetTop -
-          servicesRef.current.previousSibling.offsetTop <
-        1500
-      ) {
-        window.scrollTo(
-          0,
-          servicesRef.current.previousSibling.offsetTop + 1560
-        );
-      } else {
+      if (currentHeightS - currentHeightP < 1000) {
+        window.scrollTo(0, servicesRef.current.offsetTop + 600);
+      } else if (currentHeightS - currentHeightP > 1300) {
         window.scrollTo(0, servicesRef.current.offsetTop);
       }
     } else if (window.location.hash === '') {
       window.document.title = 'Vista International';
     }
-    console.log('PRODUCT HEIGHT', currentHeightP);
-    console.log('SERVICE HEIGHT', currentHeightS);
   }, [aboutRef, productRef, servicesRef]);
 
   const colorChange = val => {
