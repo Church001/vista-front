@@ -199,7 +199,12 @@ export class Maps extends React.Component {
               <p>{place ? place.address : ''}</p>
             </span>
             <hr />
-            <div className='badge_main'>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
               <div>
                 <h3>TEL: {place ? place.phone : ''}</h3>
               </div>
@@ -207,7 +212,11 @@ export class Maps extends React.Component {
                 {this.state.isMarkerClicked ? (
                   <Badge>
                     <a
-                      className='badge_a'
+                      style={{
+                        color: 'green',
+                        textDecoration: 'none',
+                        backgroundColor: 'white'
+                      }}
                       href={`https://www.google.com/maps/place/${place.name}/@${place.position.lat},${place.position.lng},18.7z`}
                       target='blank'
                     >
