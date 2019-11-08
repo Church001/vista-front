@@ -51,8 +51,8 @@ body {
 }
 
 .map_custom {
-  height: 100%;
-  opacity: 0.4;
+  height: 890px;
+  opacity: 0.5;
   &__image {
     width: 100%;
     background-color: color(black);
@@ -144,4 +144,15 @@ button.close {
 body {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+.badge_a {
+  color: 'green';
+  text-decoration: 'none';
+  background-color: 'white';
+}
+
+.badge_main {
+  display: 'flex';
+  flex-direction: 'column';
 }
