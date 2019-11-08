@@ -16,7 +16,7 @@ const LOCATONS = BASE_URL + '/locations';
 
 const PRODUCT_URL = BASE_URL + '/products';
 
-const EMAIL_URL = BASE_URL + '/emails';
+const EMAIL_URL = BASE_URL + '/email';
 
 export default {
   ABOUT_URL,
