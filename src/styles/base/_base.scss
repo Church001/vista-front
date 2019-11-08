@@ -140,3 +140,14 @@ body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+.badge_a {
+  color: 'green';
+  text-decoration: 'none';
+  background-color: 'white';
+}
+
+.badge_main {
+  display: 'flex';
+  flex-direction: 'column';
+}
