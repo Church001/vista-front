@@ -3,6 +3,10 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import LOGO from '../assets/img/logo.png';
 import { Badge } from 'reactstrap';
 
+let anonRef = null;
+let infoW = null;
+
+let URL = 'https://www.google.com/maps/place/Lagos/@6.5288271,3.2420067,19.72z';
 export class Maps extends React.Component {
   constructor(props) {
     super(props);
@@ -108,17 +112,17 @@ export class Maps extends React.Component {
       address: props.address,
       phone: props.phone
     };
-    const position1 = {
-      lat: markerData.position.lat,
-      lng: markerData.position.lng
-    };
+    // const position1 = {
+    //   lat: markerData.position.lat,
+    //   lng: markerData.position.lng
+    // };
     this.setState({
       marker: marker,
       showInfoWindow: marker ? true : false,
-      zoom: 17,
+      // zoom: 17,
       markerData: markerData,
       map: 'SATELLITE',
-      position: position1,
+      // position: position1,
       isMarkerClicked: true
     });
   };
@@ -146,7 +150,7 @@ export class Maps extends React.Component {
   render() {
     const mapStyles = {
       width: '100%',
-      height: '80%'
+      height: '100%'
     };
     let place;
     if (this.state.markerData !== null) {
@@ -171,6 +175,7 @@ export class Maps extends React.Component {
           visible={this.state.showInfoWindow}
           marker={this.state.marker}
           style={{ width: 350 }}
+          // onOpen={() => console.log("FUCKER OPENED!")}
         >
           <div>
             <div
@@ -193,12 +198,22 @@ export class Maps extends React.Component {
             <span>
               <p>{place ? place.address : ''}</p>
             </span>
-            <h3>TEL: {place ? place.phone : ''}</h3>
-            {this.state.isMarkerClicked ? (
-              <Badge>CLICK ANYWHERE ON MAP TO RETURN</Badge>
-            ) : (
-              <Badge>View on Maps</Badge>
-            )}
+            <hr />
+            <div>
+              <h3>TEL: {place ? place.phone : ''}</h3>
+              <div>
+                {this.state.isMarkerClicked ? (
+                  <Badge>
+                    <a
+                      href={`https://www.google.com/maps/place/${place.name}/@${place.position.lat},${place.position.lng},18.7z`}
+                      target='blank'
+                    >
+                      VIEW ON MAP
+                    </a>
+                  </Badge>
+                ) : null}
+              </div>
+            </div>
           </div>
         </InfoWindow>
       </Map>
