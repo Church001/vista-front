@@ -14,9 +14,11 @@ import Error from 'components/error';
 import StickyLinks from 'components/stickyLinks';
 import { SET_PRODUCTS } from 'context/Constants';
 
+let mapRef = null;
 const falseLocations = ['1', '2', '3', '4', '5', '6', '7'];
 let products = [];
 const Location = props => {
+  mapRef = React.createRef();
   const { state, dispatch } = useContext(GeneralState);
   const [locations, setLocations] = useState([]);
 
@@ -50,10 +52,14 @@ const Location = props => {
     }
   }, []);
 
+  useEffect(() => {
+    console.log('MAP REF', mapRef);
+  }, [mapRef]);
+
   return state.error.msg === undefined ? (
     locations.length !== 0 ? (
       <Wrapper>
-        <div className='map'>
+        <div ref={mapRef} className='map'>
           <Maps />
         </div>
         <StickyLinks />
