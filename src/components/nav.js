@@ -96,7 +96,7 @@ export const Nav = props => {
   return (
     <Navbar
       expand='lg'
-      className={cx('nav__bar', {
+      className={cx('nav__bar', 'shift', {
         'nav__bar--fixed': props.fixed,
         active: active || isOpen
       })}

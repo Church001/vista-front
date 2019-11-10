@@ -105,7 +105,10 @@ const Location = props => {
               </div>
             </div>
 
-            <div className='row'>
+            <div
+              className='row'
+              data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .card location-card; delay: 500; repeat: true'
+            >
               {locations.cities
                 ? locations.cities.map(city => {
                     let phone = 'Tel: +' + city.telephone;
