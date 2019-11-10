@@ -51,10 +51,15 @@ class ContactForm extends React.Component {
   onSubmit = ev => {
     ev.preventDefault();
     const data = {
-      name: this.state.name,
-      email: this.state.email,
-      phone: this.state.phone,
-      message: this.state.message
+      service_id: 'sendgrid',
+      template_id: 'template_MRaGFUZ5',
+      user_id: 'user_HPapAzeDrNpzNMlZ0buh4',
+      template_params: {
+        name: this.state.name,
+        email: this.state.email,
+        phone: this.state.phone,
+        message: this.state.message
+      }
     };
     this.setState({
       attemptedSubmission: true,
@@ -71,8 +76,12 @@ class ContactForm extends React.Component {
       this.setState({
         isSubmitting: true
       });
-      axios
-        .post(api.EMAIL_URL, data)
+      axios({
+        method: 'post',
+        url: api.EMAIL_URL,
+        data: data
+      })
+        // .post(, data)
         .then(res => {
           this.setState({
             name: '',
