@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
@@ -9,6 +9,9 @@ import Typical from 'react-typical';
 
 import axios from 'axios';
 import api from '../utils/api';
+import GeneralState from 'context/Context';
+import history from '../history';
+import { SET_CATEGORY_ID } from 'context/Constants';
 
 const settings = {
   dots: false,
@@ -47,9 +50,59 @@ let slidess = [];
 export const Hero = ({ slid }) => {
   const [active, setActive] = useState(0);
   const [sliders, setSlides] = useState([]);
+  const { state, dispatch } = useContext(GeneralState);
 
-  const redirector = () => {
-    window.location.href = 'https://www.officeeverything.com.ng';
+  // const redirector = () => {
+  //   window.location.href = 'https://www.officeeverything.com.ng';
+  // };
+
+  const extractID = (name, data) => {
+    let result = null;
+    data.map(one => {
+      if (name === one.title.toUpperCase()) {
+        console.log('ONE', one.id);
+      }
+    });
+    return result;
+  };
+
+  const setId = id => {
+    dispatch({
+      type: SET_CATEGORY_ID,
+      payload: id
+    });
+    history.push(`/products/${id}`);
+  };
+
+  const customRedirector = data => {
+    // let link = null;
+    console.log(state.products);
+    if (data === 'VISTA INTERNATIONAL') {
+      console.log('VISTA INTERNATIONAL WAS CLICKED');
+      window.location.href = '/#about';
+    }
+    if (data === 'QUALITY PAPER') {
+      console.log('QUALITY PAPER CLICKED');
+      if (state.products) {
+        extractID(data, state.products);
+        // setId()
+      }
+    }
+    if (data === 'STATIONARY') {
+      console.log('STATIONARY');
+      extractID(data, state.products);
+      // setId()
+    }
+    if (data === 'AGROCHEMICALS') {
+      console.log('AGROCHEMICALS');
+      extractID(data, state.products);
+      // setId()
+    }
+    if (data === 'PRINTING & PACKAGING') {
+      console.log('PRINTING & PACKAGING WAS CLICKED');
+      extractID(data, state.products);
+      // setId()
+    }
   };
 
   useEffect(() => {
@@ -57,20 +110,20 @@ export const Hero = ({ slid }) => {
       .get(api.SLIDERS)
       .then(res => {
         slidess = res.data[0].slides;
-        console.log('SLIDER VALUES', res.data[0]);
+        // console.log('SLIDER VALUES', res.data[0]);
         slideObjectCreator(slidess);
       })
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [state]);
 
   let slideRef;
 
   const slideObjectCreator = something => {
+    console.log(state.products);
     let result = [];
     something.map(onething => {
-      // console.log('sally', onething);
       let obj = {
         btn: {
           title: onething.button_text,
@@ -83,6 +136,7 @@ export const Hero = ({ slid }) => {
       obj.subtitle = onething.description;
       result.push(obj);
     });
+    console.log('RESULT', result);
     setSlides(result);
   };
 
@@ -93,12 +147,11 @@ export const Hero = ({ slid }) => {
           {...settings}
           afterChange={index => setActive(index)}
           ref={slider => {
-            // console.log('SLIDER 89', slider);
             slideRef = slider;
           }}
         >
           {sliders.map(slide => {
-            // console.log('SLIDER IMAGE', slide.btn.link);
+            console.log('SLIDER IMAGE', slide.title);
 
             const image = slide.img;
             return (
@@ -107,10 +160,7 @@ export const Hero = ({ slid }) => {
                   className='overlay'
                   style={{ backgroundImage: `url(${image})` }}
                 ></div>
-                <div
-                  className='container'
-                  // style={{ backgroundImage: `url(${image})` }}
-                >
+                <div className='container'>
                   <div className='col-md-7'>
                     <h3 className='title text text--sm c-white fw-regular'>
                       {slide.title}
@@ -118,28 +168,37 @@ export const Hero = ({ slid }) => {
                     <h4 className='subtitle text text--xl c-white fw-light'>
                       {slide.subtitle}
                     </h4>
-                    {slide.btn && slide.btn.title ? (
-                      <div>
-                        {slide.btn.link ===
-                        'https://www.officeeverything.com.ng/' ? (
-                          <button
-                            className='btn btn__white btn--rounded btn--lg'
-                            data-uk-scroll
-                            onClick={() => redirector()}
-                          >
-                            {slide.btn.title}
-                          </button>
-                        ) : (
-                          <a
-                            className='btn btn__white btn--rounded btn--lg'
-                            data-uk-scroll
-                            href={slide.btn.link}
-                          >
-                            {slide.btn.title}
-                          </a>
-                        )}
-                      </div>
-                    ) : null}
+                    {
+                      //   slide.btn && slide.btn.title ? (
+                      //   <div>
+                      //     {slide.btn.link ===
+                      //     'https://www.officeeverything.com.ng/' ? (
+                      //       <button
+                      //         className='btn btn__white btn--rounded btn--lg'
+                      //         data-uk-scroll
+                      //         onClick={() => redirector()}
+                      //       >
+                      //         {slide.btn.title}
+                      //       </button>
+                      //     ) : (
+                      //       <button
+                      //         className='btn btn__white btn--rounded btn--lg'
+                      //         data-uk-scroll
+                      //         href={slide.btn.link}
+                      //       >
+                      //         {slide.btn.title}
+                      //       </button>
+                      //     )}
+                      //   </div>
+                      // ) : null
+                      <button
+                        className='btn btn__white btn--rounded btn--lg'
+                        data-uk-scroll
+                        onClick={() => customRedirector(slide.title)}
+                      >
+                        {slide.btn.title}
+                      </button>
+                    }
                   </div>
                 </div>
               </div>
