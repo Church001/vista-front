@@ -14,11 +14,11 @@ const settings = {
   dots: false,
   arrows: true,
   infinite: true,
-  speed: 3000,
+  speed: 6000,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 500
+  autoplaySpeed: 6000
 };
 
 const Slide = ({ btn, img, subtitle, title }) => (
