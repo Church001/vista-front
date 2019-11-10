@@ -57,6 +57,7 @@ export const Hero = ({ slid }) => {
       .get(api.SLIDERS)
       .then(res => {
         slidess = res.data[0].slides;
+        console.log('SLIDER VALUES', res.data[0]);
         slideObjectCreator(slidess);
       })
       .catch(err => {
