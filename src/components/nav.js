@@ -47,6 +47,13 @@ export const Nav = props => {
     history.push(`/products/${id}`);
   };
 
+  const setIdForHome = title => {
+    dispatch({
+      type: SET_PRODUCT_TITLE,
+      payload: title
+    });
+  };
+
   useEffect(() => {
     if (!phoneBtn.current || !phoneBtn.current.getBoundingClientRect().width)
       return;
@@ -118,7 +125,12 @@ export const Nav = props => {
             style={{ marginRight: menuMargin }}
           >
             <NavItem className='nav__item'>
-              <NavLink exact className='nav__link' to='/'>
+              <NavLink
+                exact
+                className='nav__link'
+                onClick={() => setIdForHome('Home')}
+                to='/'
+              >
                 Home
               </NavLink>
             </NavItem>
@@ -144,7 +156,6 @@ export const Nav = props => {
               {products.length !== 0 && (
                 <DropdownMenu right>
                   {products.map(product => {
-                    // console.log('PRODUCT NAME', product.title);
                     return (
                       <DropdownItem
                         key={product.id}

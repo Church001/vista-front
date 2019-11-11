@@ -2,18 +2,21 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow-dark.svg';
-import { SET_CATEGORY_ID } from '../../context/Constants';
+import { SET_CATEGORY_ID, SET_PRODUCT_TITLE } from '../../context/Constants';
 import GeneralState from '../../context/Context';
 
 export const ProductCard = ({ color, icon, link, subtitle, title, id }) => {
   const { dispatch } = useContext(GeneralState);
-
   const setID = id => {
     const payload = id;
     const type = SET_CATEGORY_ID;
     dispatch({
       type,
       payload
+    });
+    dispatch({
+      type: SET_PRODUCT_TITLE,
+      payload: title
     });
   };
   // console.log(""icon)
