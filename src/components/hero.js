@@ -13,6 +13,8 @@ import GeneralState from 'context/Context';
 import history from '../history';
 import { SET_CATEGORY_ID } from 'context/Constants';
 
+let current_page_title = '';
+
 const settings = {
   dots: false,
   arrows: true,
@@ -20,7 +22,7 @@ const settings = {
   speed: 6000,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: true,
+  autoplay: false,
   autoplaySpeed: 6000
 };
 
@@ -52,9 +54,15 @@ export const Hero = ({ slid }) => {
   const [sliders, setSlides] = useState([]);
   const { state, dispatch } = useContext(GeneralState);
 
+  // console.log('CURRENT PAGE TITLE', state.page_title);
   // const redirector = () => {
   //   window.location.href = 'https://www.officeeverything.com.ng';
   // };
+  useEffect(() => {
+    if (current_page_title !== state.page_title) {
+      current_page_title = state.page_title;
+    }
+  }, [state]);
 
   const extractID = (name, data) => {
     let result = null;
@@ -109,34 +117,36 @@ export const Hero = ({ slid }) => {
     axios
       .get(api.SLIDERS)
       .then(res => {
-        slidess = res.data[0].slides;
-        // console.log('SLIDER VALUES', res.data[0]);
-        slideObjectCreator(slidess);
+        slidess = res.data;
+        slideObjectCreator(slidess, current_page_title);
       })
       .catch(err => {
         console.log(err);
       });
-  }, [state]);
+  }, [state.page_title]);
 
   let slideRef;
 
-  const slideObjectCreator = something => {
-    console.log(state.products);
+  const slideObjectCreator = (something, title) => {
     let result = [];
     something.map(onething => {
-      let obj = {
-        btn: {
-          title: onething.button_text,
-          link: onething.button_url
-        }
-      };
-      obj.img = api.BASE_URL + onething.image.url;
-      obj.id = onething._id;
-      obj.title = onething.title;
-      obj.subtitle = onething.description;
-      result.push(obj);
+      if (onething.sliders === title) {
+        let slides = onething.slides;
+        slides.map(anotherthing => {
+          let obj = {
+            btn: {
+              title: anotherthing.button_text,
+              link: anotherthing.button_url
+            }
+          };
+          obj.img = api.BASE_URL + anotherthing.image.url;
+          obj.id = anotherthing._id;
+          obj.title = anotherthing.title;
+          obj.subtitle = anotherthing.description;
+          result.push(obj);
+        });
+      }
     });
-    console.log('RESULT', result);
     setSlides(result);
   };
 
@@ -151,8 +161,6 @@ export const Hero = ({ slid }) => {
           }}
         >
           {sliders.map(slide => {
-            // console.log('SLIDER IMAGE', slide.title);
-
             const image = slide.img;
             return (
               <div key={slide.id} className='hero__slide'>
@@ -194,7 +202,7 @@ export const Hero = ({ slid }) => {
                       <button
                         className='btn btn__white btn--rounded btn--lg'
                         data-uk-scroll
-                        onClick={() => customRedirector(slide.title)}
+                        // onClick={() => customRedirector(slide.title)}
                       >
                         {slide.btn.title}
                       </button>

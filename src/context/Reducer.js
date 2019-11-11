@@ -1,4 +1,9 @@
-import { SET_CATEGORY_ID, SET_ERROR, SET_PRODUCTS } from '../context/Constants';
+import {
+  SET_CATEGORY_ID,
+  SET_ERROR,
+  SET_PRODUCTS,
+  SET_PRODUCT_TITLE
+} from '../context/Constants';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -16,6 +21,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         products: action.payload
+      };
+    case SET_PRODUCT_TITLE:
+      return {
+        ...state,
+        page_title: action.payload
       };
     default:
       return state;

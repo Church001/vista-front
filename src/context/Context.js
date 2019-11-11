@@ -3,7 +3,8 @@ import React from 'react';
 const initialState = {
   page_id: '',
   error: {},
-  products: []
+  products: [],
+  page_title: 'Home'
 };
 
 const GeneralState = React.createContext(initialState);

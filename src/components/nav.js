@@ -21,6 +21,7 @@ import PropTypes from 'prop-types';
 import GeneralState from 'context/Context';
 import { SET_CATEGORY_ID } from 'context/Constants';
 import history from '../history';
+import { SET_PRODUCT_TITLE } from 'context/Constants';
 
 export const Nav = props => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,12 +35,23 @@ export const Nav = props => {
     setIsOpen(!isOpen);
   };
 
-  const setId = id => {
+  const setId = (id, title) => {
     dispatch({
       type: SET_CATEGORY_ID,
       payload: id
     });
+    dispatch({
+      type: SET_PRODUCT_TITLE,
+      payload: title
+    });
     history.push(`/products/${id}`);
+  };
+
+  const setIdForHome = title => {
+    dispatch({
+      type: SET_PRODUCT_TITLE,
+      payload: title
+    });
   };
 
   useEffect(() => {
@@ -113,7 +125,12 @@ export const Nav = props => {
             style={{ marginRight: menuMargin }}
           >
             <NavItem className='nav__item'>
-              <NavLink exact className='nav__link' to='/'>
+              <NavLink
+                exact
+                className='nav__link'
+                onClick={() => setIdForHome('Home')}
+                to='/'
+              >
                 Home
               </NavLink>
             </NavItem>
@@ -142,7 +159,7 @@ export const Nav = props => {
                     return (
                       <DropdownItem
                         key={product.id}
-                        onClick={() => setId(product.id)}
+                        onClick={() => setId(product.id, product.title)}
                       >
                         {product.title}
                       </DropdownItem>
