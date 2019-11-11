@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Card, Hero, SocialLinks, Wrapper } from 'components';
 import { ReactComponent as Gradhat } from 'assets/svg/gradhat.svg';
+import { ReactComponent as Idea } from 'assets/svg/idea.svg';
 import { ReactComponent as PurpleLeft } from 'assets/svg/purple-left.svg';
 import { ReactComponent as PurpleRight } from 'assets/svg/purple-right.svg';
 import { ReactComponent as GreenLeft } from 'assets/svg/green-left.svg';
@@ -395,7 +396,13 @@ const Home = () => {
                             title={giveback.title}
                             subtitle={giveback.description}
                             number={colorChange(giveback.title).number}
-                            icon={<Gradhat />}
+                            icon={
+                              giveback.title === 'EMPOWERING EDUCATION' ? (
+                                <Gradhat />
+                              ) : (
+                                <Idea />
+                              )
+                            }
                           />
                         </div>
                       );
