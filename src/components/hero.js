@@ -60,9 +60,17 @@ export const Hero = ({ slid }) => {
     let result = null;
     data.map(one => {
       if (name === one.title.toUpperCase()) {
-        console.log(one.title.toUpperCase());
-        console.log(name);
         result = one.id;
+      } else {
+        if (one.title === 'Stationery') {
+          result = one.id;
+        }
+        if (one.title === 'Paper') {
+          result = one.id;
+        }
+        if (one.title === 'Printing & Packaging') {
+          result = one.id;
+        }
       }
     });
     return result;
@@ -77,7 +85,6 @@ export const Hero = ({ slid }) => {
   };
 
   const customRedirector = data => {
-    // let link = null;
     console.log(state.products);
     if (data === 'VISTA INTERNATIONAL') {
       console.log('VISTA INTERNATIONAL WAS CLICKED');
@@ -87,6 +94,7 @@ export const Hero = ({ slid }) => {
       setId(extractID(data, state.products));
     }
     if (data === 'STATIONARY') {
+      console.log(data.toUpperCase());
       setId(extractID(data, state.products));
     }
     if (data === 'AGROCHEMICALS') {
