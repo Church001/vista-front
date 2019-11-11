@@ -14,6 +14,7 @@ import history from '../history';
 import { SET_CATEGORY_ID } from 'context/Constants';
 
 let current_page_title = '';
+
 const settings = {
   dots: false,
   arrows: true,
@@ -53,7 +54,7 @@ export const Hero = ({ slid }) => {
   const [sliders, setSlides] = useState([]);
   const { state, dispatch } = useContext(GeneralState);
 
-  console.log('CURRENT PAGE TITLE', state.page_title);
+  // console.log('CURRENT PAGE TITLE', state.page_title);
   // const redirector = () => {
   //   window.location.href = 'https://www.officeeverything.com.ng';
   // };
@@ -117,7 +118,7 @@ export const Hero = ({ slid }) => {
       .get(api.SLIDERS)
       .then(res => {
         slidess = res.data[0].slides;
-        console.log('SLIDER VALUES', res.data[0]);
+        console.log('SLIDER VALUES', res.data);
         slideObjectCreator(slidess, current_page_title);
       })
       .catch(err => {

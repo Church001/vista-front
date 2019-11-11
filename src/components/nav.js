@@ -144,7 +144,7 @@ export const Nav = props => {
               {products.length !== 0 && (
                 <DropdownMenu right>
                   {products.map(product => {
-                    console.log('PRODUCT NAME', product.title);
+                    // console.log('PRODUCT NAME', product.title);
                     return (
                       <DropdownItem
                         key={product.id}
