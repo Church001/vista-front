@@ -15,16 +15,7 @@ import { SET_CATEGORY_ID } from 'context/Constants';
 
 let current_page_title = '';
 
-const settings = {
-  dots: false,
-  arrows: true,
-  infinite: true,
-  speed: 6000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 6000
-};
+let settings = {};
 
 const Slide = ({ btn, img, subtitle, title }) => (
   <div
@@ -129,8 +120,32 @@ export const Hero = ({ slid }) => {
 
   const slideObjectCreator = (something, title) => {
     let result = [];
+    // console.log(something)
     something.map(onething => {
       if (onething.sliders === title) {
+        if (onething.enabled === true) {
+          settings = {
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 5000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000
+          };
+        } else {
+          settings = {
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 5000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: false,
+            autoplaySpeed: 2000
+          };
+        }
         let slides = onething.slides;
         slides.map(anotherthing => {
           let obj = {
