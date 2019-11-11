@@ -22,7 +22,7 @@ const settings = {
   speed: 6000,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: false,
+  autoplay: true,
   autoplaySpeed: 6000
 };
 

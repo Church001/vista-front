@@ -94,7 +94,6 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log('PRODUCTSSSSS', products);
     dispatch({
       type: SET_PRODUCTS,
       payload: products.products
