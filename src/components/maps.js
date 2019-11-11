@@ -3,10 +3,9 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import LOGO from '../assets/img/logo.png';
 import { Badge } from 'reactstrap';
 
-let anonRef = null;
-let infoW = null;
+// let anonRef = null;
+// let infoW = null;
 
-let URL = 'https://www.google.com/maps/place/Lagos/@6.5288271,3.2420067,19.72z';
 export class Maps extends React.Component {
   constructor(props) {
     super(props);
@@ -87,6 +86,10 @@ export class Maps extends React.Component {
       ]
     };
   }
+
+  // componentDidMount(){
+  //   anonRef = React.createRef()
+  // }
 
   onMapClicked = props => {
     if (this.state.showInfoWindow) {
