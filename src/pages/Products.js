@@ -25,7 +25,7 @@ const Products = props => {
   };
 
   if (state.page_id === '') {
-    props.history.goBack();
+    props.history.push('/');
   }
 
   const [products, setProducts] = useState({});

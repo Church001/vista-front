@@ -5,7 +5,15 @@ import { ReactComponent as RightArrow } from 'assets/svg/right-arrow-dark.svg';
 import { SET_CATEGORY_ID, SET_PRODUCT_TITLE } from '../../context/Constants';
 import GeneralState from '../../context/Context';
 
-export const ProductCard = ({ color, icon, link, subtitle, title, id }) => {
+export const ProductCard = ({
+  color,
+  icon,
+  link,
+  subtitle,
+  title,
+  id,
+  slug
+}) => {
   const { dispatch } = useContext(GeneralState);
   const setID = id => {
     const payload = id;
@@ -16,7 +24,7 @@ export const ProductCard = ({ color, icon, link, subtitle, title, id }) => {
     });
     dispatch({
       type: SET_PRODUCT_TITLE,
-      payload: title
+      payload: slug
     });
   };
   // console.log(""icon)

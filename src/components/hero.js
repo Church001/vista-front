@@ -12,10 +12,22 @@ import api from '../utils/api';
 import GeneralState from 'context/Context';
 import history from '../history';
 import { SET_CATEGORY_ID } from 'context/Constants';
+import { SET_PRODUCT_TITLE } from 'context/Constants';
 
 let current_page_title = '';
 
-let settings = {};
+let settings = {
+  dots: false,
+  arrows: true,
+  infinite: true,
+  speed: 4000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000
+};
+
+let products = [];
 
 const Slide = ({ btn, img, subtitle, title }) => (
   <div
@@ -45,62 +57,36 @@ export const Hero = ({ slid }) => {
   const [sliders, setSlides] = useState([]);
   const { state, dispatch } = useContext(GeneralState);
 
-  // console.log('CURRENT PAGE TITLE', state.page_title);
-  // const redirector = () => {
-  //   window.location.href = 'https://www.officeeverything.com.ng';
-  // };
   useEffect(() => {
     if (current_page_title !== state.page_title) {
       current_page_title = state.page_title;
     }
+    products = state.products;
   }, [state]);
 
-  const extractID = (name, data) => {
-    let result = null;
-    data.map(one => {
-      if (name === one.title.toUpperCase()) {
-        result = one.id;
-      } else {
-        if (one.title === 'Stationery') {
-          result = one.id;
-        }
-        if (one.title === 'Paper') {
-          result = one.id;
-        }
-        if (one.title === 'Printing & Packaging') {
-          result = one.id;
-        }
-      }
-    });
-    return result;
-  };
-
-  const setId = id => {
-    dispatch({
-      type: SET_CATEGORY_ID,
-      payload: id
-    });
-    history.push(`/products/${id}`);
-  };
-
-  const customRedirector = data => {
-    console.log(state.products);
-    if (data === 'VISTA INTERNATIONAL') {
-      console.log('VISTA INTERNATIONAL WAS CLICKED');
+  const handleGoTo = title => {
+    if (title === '/#about') {
       window.location.href = '/#about';
-    }
-    if (data === 'QUALITY PAPER') {
-      setId(extractID(data, state.products));
-    }
-    if (data === 'STATIONARY') {
-      console.log(data.toUpperCase());
-      setId(extractID(data, state.products));
-    }
-    if (data === 'AGROCHEMICALS') {
-      setId(extractID(data, state.products));
-    }
-    if (data === 'PRINTING & PACKAGING') {
-      setId(extractID(data, state.products));
+    } else {
+      let id = '';
+      let page_t = '';
+      products.map(product => {
+        if (product.slug.toUpperCase() === title) {
+          page_t = product.slug;
+          id = product.id;
+        }
+      });
+      dispatch({
+        type: SET_CATEGORY_ID,
+        payload: id
+      });
+      dispatch({
+        type: SET_PRODUCT_TITLE,
+        payload: page_t
+      });
+      if (id !== '') {
+        history.push(`/products/${id}`);
+      }
     }
   };
 
@@ -114,36 +100,26 @@ export const Hero = ({ slid }) => {
       .catch(err => {
         console.log(err);
       });
+
+    return;
   }, [state.page_title]);
 
   let slideRef;
 
   const slideObjectCreator = (something, title) => {
     let result = [];
-    // console.log(something)
     something.map(onething => {
-      if (onething.sliders === title) {
-        if (onething.enabled === true) {
+      if (onething.key === title) {
+        if (onething.enabled === false) {
           settings = {
             dots: false,
             arrows: true,
             infinite: true,
-            speed: 5000,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000
-          };
-        } else {
-          settings = {
-            dots: false,
-            arrows: true,
-            infinite: true,
-            speed: 5000,
+            speed: 3000,
             slidesToShow: 1,
             slidesToScroll: 1,
             autoplay: false,
-            autoplaySpeed: 2000
+            autoplaySpeed: 1000
           };
         }
         let slides = onething.slides;
@@ -192,32 +168,10 @@ export const Hero = ({ slid }) => {
                       {slide.subtitle}
                     </h4>
                     {
-                      //   slide.btn && slide.btn.title ? (
-                      //   <div>
-                      //     {slide.btn.link ===
-                      //     'https://www.officeeverything.com.ng/' ? (
-                      //       <button
-                      //         className='btn btn__white btn--rounded btn--lg'
-                      //         data-uk-scroll
-                      //         onClick={() => redirector()}
-                      //       >
-                      //         {slide.btn.title}
-                      //       </button>
-                      //     ) : (
-                      //       <button
-                      //         className='btn btn__white btn--rounded btn--lg'
-                      //         data-uk-scroll
-                      //         href={slide.btn.link}
-                      //       >
-                      //         {slide.btn.title}
-                      //       </button>
-                      //     )}
-                      //   </div>
-                      // ) : null
                       <button
                         className='btn btn__white btn--rounded btn--lg'
                         data-uk-scroll
-                        // onClick={() => customRedirector(slide.title)}
+                        onClick={() => handleGoTo(slide.btn.link)}
                       >
                         {slide.btn.title}
                       </button>

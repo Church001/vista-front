@@ -18,7 +18,6 @@ let mapRef = null;
 const falseLocations = ['1', '2', '3', '4', '5', '6', '7'];
 let products = [];
 const Location = props => {
-  mapRef = React.createRef();
   const { state, dispatch } = useContext(GeneralState);
   const [locations, setLocations] = useState([]);
 
@@ -51,10 +50,6 @@ const Location = props => {
       });
     }
   }, []);
-
-  useEffect(() => {
-    console.log('MAP REF', mapRef);
-  }, [mapRef]);
 
   return state.error.msg === undefined ? (
     locations.length !== 0 ? (
