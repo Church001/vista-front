@@ -108,7 +108,6 @@ const Home = () => {
     if (productRef.current && window.location.hash === '#products') {
       window.scrollTo(0, productRef.current.offsetTop);
       window.document.title = 'Vista International | Products';
-      console.log(productRef.current.offsetTop);
       currentHeightP = productRef.current.offsetTop;
     }
     if (servicesRef.current && window.location.hash === '#services') {
@@ -128,9 +127,6 @@ const Home = () => {
     } else if (window.location.hash === '') {
       window.document.title = 'Vista International';
     }
-    // console.log('SERVICE HEIGHT', currentHeightS);
-    // console.log('PRODUCT HEIGHT', currentHeightP);
-    // console.log('IDEAL HEIGHT', heightResult);
   }, [aboutRef, productRef, servicesRef]);
 
   const colorChange = val => {
@@ -263,6 +259,7 @@ const Home = () => {
                             link={'products'}
                             icon={image}
                             id={product.id}
+                            slug={product.slug}
                           />
                         </div>
                       );
