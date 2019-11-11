@@ -136,7 +136,10 @@ const Location = props => {
                     );
                   })}
             </div>
-            <div className='row'>
+            <div
+              className='row'
+              data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .map__image; delay: 500; repeat: true'
+            >
               <div className='col-xl-12'>
                 <img className='map__image' src={Branch} />
               </div>
