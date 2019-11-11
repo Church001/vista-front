@@ -13,6 +13,7 @@ import GeneralState from 'context/Context';
 import history from '../history';
 import { SET_CATEGORY_ID } from 'context/Constants';
 
+let current_page_title = '';
 const settings = {
   dots: false,
   arrows: true,
@@ -20,7 +21,7 @@ const settings = {
   speed: 6000,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: true,
+  autoplay: false,
   autoplaySpeed: 6000
 };
 
@@ -52,9 +53,15 @@ export const Hero = ({ slid }) => {
   const [sliders, setSlides] = useState([]);
   const { state, dispatch } = useContext(GeneralState);
 
+  console.log('CURRENT PAGE TITLE', state.page_title);
   // const redirector = () => {
   //   window.location.href = 'https://www.officeeverything.com.ng';
   // };
+  useEffect(() => {
+    if (current_page_title !== state.page_title) {
+      current_page_title = state.page_title;
+    }
+  }, [state]);
 
   const extractID = (name, data) => {
     let result = null;
@@ -110,8 +117,8 @@ export const Hero = ({ slid }) => {
       .get(api.SLIDERS)
       .then(res => {
         slidess = res.data[0].slides;
-        // console.log('SLIDER VALUES', res.data[0]);
-        slideObjectCreator(slidess);
+        console.log('SLIDER VALUES', res.data[0]);
+        slideObjectCreator(slidess, current_page_title);
       })
       .catch(err => {
         console.log(err);
@@ -120,23 +127,42 @@ export const Hero = ({ slid }) => {
 
   let slideRef;
 
-  const slideObjectCreator = something => {
-    console.log(state.products);
+  const slideObjectCreator = (something, title) => {
+    // console.log(state.products);
     let result = [];
-    something.map(onething => {
-      let obj = {
-        btn: {
-          title: onething.button_text,
-          link: onething.button_url
+    console.log(title);
+    if (title === 'Home') {
+      something.map(onething => {
+        let obj = {
+          btn: {
+            title: onething.button_text,
+            link: onething.button_url
+          }
+        };
+        obj.img = api.BASE_URL + onething.image.url;
+        obj.id = onething._id;
+        obj.title = onething.title;
+        obj.subtitle = onething.description;
+        result.push(obj);
+      });
+    } else {
+      something.map(onething => {
+        console.log(onething);
+        if (title.toUpperCase() === onething.title) {
+          let obj = {
+            btn: {
+              title: onething.button_text,
+              link: onething.button_url
+            }
+          };
+          obj.img = api.BASE_URL + onething.image.url;
+          obj.id = onething._id;
+          obj.title = onething.title;
+          obj.subtitle = onething.description;
+          result.push(obj);
         }
-      };
-      obj.img = api.BASE_URL + onething.image.url;
-      obj.id = onething._id;
-      obj.title = onething.title;
-      obj.subtitle = onething.description;
-      result.push(obj);
-    });
-    console.log('RESULT', result);
+      });
+    }
     setSlides(result);
   };
 
@@ -151,8 +177,6 @@ export const Hero = ({ slid }) => {
           }}
         >
           {sliders.map(slide => {
-            // console.log('SLIDER IMAGE', slide.title);
-
             const image = slide.img;
             return (
               <div key={slide.id} className='hero__slide'>
