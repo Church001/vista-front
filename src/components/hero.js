@@ -60,7 +60,9 @@ export const Hero = ({ slid }) => {
     let result = null;
     data.map(one => {
       if (name === one.title.toUpperCase()) {
-        console.log('ONE', one.id);
+        console.log(one.title.toUpperCase());
+        console.log(name);
+        result = one.id;
       }
     });
     return result;
@@ -82,26 +84,16 @@ export const Hero = ({ slid }) => {
       window.location.href = '/#about';
     }
     if (data === 'QUALITY PAPER') {
-      console.log('QUALITY PAPER CLICKED');
-      if (state.products) {
-        extractID(data, state.products);
-        // setId()
-      }
+      setId(extractID(data, state.products));
     }
     if (data === 'STATIONARY') {
-      console.log('STATIONARY');
-      extractID(data, state.products);
-      // setId()
+      setId(extractID(data, state.products));
     }
     if (data === 'AGROCHEMICALS') {
-      console.log('AGROCHEMICALS');
-      extractID(data, state.products);
-      // setId()
+      setId(extractID(data, state.products));
     }
     if (data === 'PRINTING & PACKAGING') {
-      console.log('PRINTING & PACKAGING WAS CLICKED');
-      extractID(data, state.products);
-      // setId()
+      setId(extractID(data, state.products));
     }
   };
 
@@ -151,7 +143,7 @@ export const Hero = ({ slid }) => {
           }}
         >
           {sliders.map(slide => {
-            console.log('SLIDER IMAGE', slide.title);
+            // console.log('SLIDER IMAGE', slide.title);
 
             const image = slide.img;
             return (
