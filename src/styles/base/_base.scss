@@ -43,7 +43,7 @@ body {
 }
 
 .map {
-  height: 673px;
+  height: 624px;
   background-color: color(black);
   &__image {
     width: 100%;
@@ -158,4 +158,8 @@ body {
 .badge_main {
   display: 'flex';
   flex-direction: 'column';
+}
+
+.img-fill {
+  min-width: -webkit-fill-available;
 }

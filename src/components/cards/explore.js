@@ -49,7 +49,7 @@ export const ExploreCard = ({ img, text }) => {
         <ModalBody>
           <div className='row'>
             <div className='col-md-6'>
-              <img src={img} />
+              <img src={img} className='img-fill' />
             </div>
             <div className='col-md-6 modal-content-ct'>
               <div className='modal-body-content pt40'>{text}</div>
