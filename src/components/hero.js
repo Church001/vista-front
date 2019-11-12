@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
-// import Typical from 'react-typical';
-
 import axios from 'axios';
 import api from '../utils/api';
 import GeneralState from 'context/Context';
@@ -29,7 +27,7 @@ let settings = {
 
 let products = [];
 
-const Slide = ({ btn, img, subtitle, title }) => (
+const Slide = ({ btn, subtitle, title }) => (
   <div
     className='hero__slide'
     style={{ backgroundImage: `url(/static/media/new-paper.6366cc56.jpg)` }}
@@ -52,7 +50,7 @@ const Slide = ({ btn, img, subtitle, title }) => (
 
 let slidess = [];
 
-export const Hero = ({ slid }) => {
+export const Hero = () => {
   const [active, setActive] = useState(0);
   const [sliders, setSlides] = useState([]);
   const { state, dispatch } = useContext(GeneralState);
@@ -76,6 +74,7 @@ export const Hero = ({ slid }) => {
           page_t = product.slug;
           id = product.id;
         }
+        return null;
       });
       dispatch({
         type: SET_CATEGORY_ID,
@@ -131,14 +130,15 @@ export const Hero = ({ slid }) => {
               link: anotherthing.button_url
             }
           };
-          // obj.img = api.BASE_URL + anotherthing.image.url;
           obj.img = anotherthing.image.url;
           obj.id = anotherthing._id;
           obj.title = anotherthing.title;
           obj.subtitle = anotherthing.description;
           result.push(obj);
+          return null;
         });
       }
+      return null;
     });
     setSlides(result);
   };

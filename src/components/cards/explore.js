@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody } from 'reactstrap';
 
 export const ExploreCard = ({ img, text }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  const closeBtn = (
-    <button className='close' onClick={toggle}>
-      &times;
-    </button>
-  );
+  // const closeBtn = (
+  //   <button className='close' onClick={toggle}>
+  //     &times;
+  //   </button>
+  // );
 
   const externalCloseBtn = (
     <button
@@ -49,7 +49,7 @@ export const ExploreCard = ({ img, text }) => {
         <ModalBody>
           <div className='row'>
             <div className='col-md-6'>
-              <img src={img} className='img-fill' />
+              <img alt='' src={img} />
             </div>
             <div className='col-md-6 modal-content-ct'>
               <div className='modal-body-content pt40'>{text}</div>

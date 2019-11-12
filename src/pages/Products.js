@@ -70,7 +70,7 @@ const Products = props => {
         errSetter(err);
       });
 
-    return;
+    return () => setProductLength(0);
   }, [state.page_id]);
 
   return state.error.msg === undefined ? (
@@ -158,7 +158,7 @@ const Products = props => {
               </div>
             )}
             <div className='d-flex justify-content-center mt-40'>
-              {allProductss && productLength > 3 && (
+              {productLength > 3 && (
                 <Button
                   className='btn__purple btn--rounded btn--lg'
                   onClick={() => loadMore()}
