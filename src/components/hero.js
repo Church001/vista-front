@@ -95,6 +95,7 @@ export const Hero = ({ slid }) => {
       .get(api.SLIDERS)
       .then(res => {
         slidess = res.data;
+        // console.log("SLDIERS ::::", slidess)
         slideObjectCreator(slidess, current_page_title);
       })
       .catch(err => {
@@ -130,7 +131,8 @@ export const Hero = ({ slid }) => {
               link: anotherthing.button_url
             }
           };
-          obj.img = api.BASE_URL + anotherthing.image.url;
+          // obj.img = api.BASE_URL + anotherthing.image.url;
+          obj.img = anotherthing.image.url;
           obj.id = anotherthing._id;
           obj.title = anotherthing.title;
           obj.subtitle = anotherthing.description;
