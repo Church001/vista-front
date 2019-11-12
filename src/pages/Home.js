@@ -14,6 +14,7 @@ import { SET_ERROR } from 'context/Constants';
 import Error from 'components/error';
 import { SET_PRODUCTS } from 'context/Constants';
 import StickyLinks from 'components/stickyLinks';
+import { async } from 'q';
 
 let servicess = [];
 let productss = [];
@@ -81,7 +82,9 @@ const Home = () => {
       .catch(err => {
         errSetter(err);
       });
+  }, []);
 
+  useEffect(() => {
     axios
       .get(api.SERVICE_URL)
       .then(res => {
@@ -92,6 +95,7 @@ const Home = () => {
       .catch(err => {
         errSetter(err);
       });
+    return;
   }, []);
 
   useEffect(() => {
@@ -245,8 +249,6 @@ const Home = () => {
                 {/* <div className='col-lg-3 col-md-4 col-sm-6 mb-5'> */}
                 {productss.products
                   ? productss.products.map(product => {
-                      // console.log("PRODUCTS HERE", products)
-                      // let image = api.BASE_URL + product.feature_image.url;
                       let image = product.feature_image.url;
                       return (
                         <div

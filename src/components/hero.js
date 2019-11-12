@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RightArrow } from 'assets/svg/right-arrow.svg';
-import Typical from 'react-typical';
+// import Typical from 'react-typical';
 
 import axios from 'axios';
 import api from '../utils/api';
@@ -62,6 +62,7 @@ export const Hero = ({ slid }) => {
       current_page_title = state.page_title;
     }
     products = state.products;
+    return;
   }, [state]);
 
   const handleGoTo = title => {
@@ -95,14 +96,13 @@ export const Hero = ({ slid }) => {
       .get(api.SLIDERS)
       .then(res => {
         slidess = res.data;
-        // console.log("SLDIERS ::::", slidess)
         slideObjectCreator(slidess, current_page_title);
       })
       .catch(err => {
         console.log(err);
       });
 
-    return;
+    return () => setSlides([]);
   }, [state.page_title]);
 
   let slideRef;
