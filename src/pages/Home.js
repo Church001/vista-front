@@ -246,7 +246,8 @@ const Home = () => {
                 {productss.products
                   ? productss.products.map(product => {
                       // console.log("PRODUCTS HERE", products)
-                      let image = api.BASE_URL + product.feature_image.url;
+                      // let image = api.BASE_URL + product.feature_image.url;
+                      let image = product.feature_image.url;
                       return (
                         <div
                           key={product.id}
@@ -315,7 +316,8 @@ const Home = () => {
               >
                 {servicess.servicetypes
                   ? servicess.servicetypes.map(serve => {
-                      let image = api.BASE_URL + serve.feature_image.url;
+                      // let image = api.BASE_URL + serve.feature_image.url;
+                      let image = serve.feature_image.url;
                       return (
                         <div
                           key={serve._id}
