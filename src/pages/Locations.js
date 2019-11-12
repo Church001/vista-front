@@ -16,8 +16,7 @@ import { SET_PRODUCTS } from 'context/Constants';
 
 let mapRef = null;
 const falseLocations = ['1', '2', '3', '4', '5', '6', '7'];
-let products = [];
-const Location = props => {
+const Location = () => {
   const { state, dispatch } = useContext(GeneralState);
   const [locations, setLocations] = useState([]);
 
@@ -42,7 +41,6 @@ const Location = props => {
 
     if (state.products.length === 0) {
       axios.get(api.PRODUCT_CATEGORY_URL).then(res => {
-        products = res.data[0];
         dispatch({
           type: SET_PRODUCTS,
           payload: res.data[0].products
@@ -136,7 +134,7 @@ const Location = props => {
               data-uk-scrollspy='cls: uk-animation-slide-bottom; target: .map__image; delay: 500; repeat: true'
             >
               <div className='col-xl-12'>
-                <img className='map__image' src={Branch} />
+                <img alt='' className='map__image' src={Branch} />
               </div>
             </div>
           </div>

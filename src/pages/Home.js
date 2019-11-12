@@ -14,7 +14,6 @@ import { SET_ERROR } from 'context/Constants';
 import Error from 'components/error';
 import { SET_PRODUCTS } from 'context/Constants';
 import StickyLinks from 'components/stickyLinks';
-import { async } from 'q';
 
 let servicess = [];
 let productss = [];
@@ -35,8 +34,6 @@ let heightResult = null;
 const Home = () => {
   const { state, dispatch } = useContext(GeneralContext);
   const [products, setProducts] = useState([]);
-  const [services, setServices] = useState(null);
-  const [about, setAbout] = useState([]);
 
   aboutRef = React.createRef();
   productRef = React.createRef();
@@ -60,18 +57,21 @@ const Home = () => {
       .catch(err => {
         errSetter(err);
       });
+  }, []);
 
+  useEffect(() => {
     axios
       .get(api.ABOUT_URL)
       .then(res => {
         abouts = res.data;
         abouts = abouts[0];
-        setAbout(abouts);
       })
       .catch(err => {
         errSetter(err);
       });
+  }, []);
 
+  useEffect(() => {
     axios
       .get(api.PRODUCT_CATEGORY_URL)
       .then(res => {
@@ -90,7 +90,6 @@ const Home = () => {
       .then(res => {
         servicess = res.data;
         servicess = servicess[0]; //NOTE: This is a useless move, I made it because my code works
-        setServices(servicess);
       })
       .catch(err => {
         errSetter(err);
@@ -144,7 +143,7 @@ const Home = () => {
   };
 
   return state.error.msg === undefined ? (
-    productss.length == 0 ? (
+    productss.length === 0 ? (
       <Loader />
     ) : (
       <Wrapper>
@@ -318,7 +317,6 @@ const Home = () => {
               >
                 {servicess.servicetypes
                   ? servicess.servicetypes.map(serve => {
-                      // let image = api.BASE_URL + serve.feature_image.url;
                       let image = serve.feature_image.url;
                       return (
                         <div

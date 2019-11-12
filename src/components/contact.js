@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Button, Form, Label, FormGroup, Input } from 'reactstrap';
+import React from 'react';
+import { Button, Label, FormGroup, Input } from 'reactstrap';
 import { SocialLinks } from 'components';
 import { ReactComponent as Mail } from 'assets/svg/mail.svg';
 import { ReactComponent as Marker } from 'assets/svg/marker.svg';
 import { ReactComponent as Phone } from 'assets/svg/phone.svg';
 import axios from 'axios';
 import api from '../utils/api';
-import { AST_True } from 'terser';
 
 class ContactForm extends React.Component {
   constructor(props) {
