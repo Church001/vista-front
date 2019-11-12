@@ -34,7 +34,6 @@ let heightResult = null;
 const Home = () => {
   const { state, dispatch } = useContext(GeneralContext);
   const [products, setProducts] = useState([]);
-  const [services, setServices] = useState(null);
   const [about, setAbout] = useState([]);
 
   aboutRef = React.createRef();
@@ -88,8 +87,7 @@ const Home = () => {
       .get(api.SERVICE_URL)
       .then(res => {
         servicess = res.data;
-        servicess = servicess[0]; //NOTE: This is a useless move, I made it because my code works
-        setServices(servicess);
+        servicess = servicess[0];
       })
       .catch(err => {
         errSetter(err);
@@ -143,7 +141,7 @@ const Home = () => {
   };
 
   return state.error.msg === undefined ? (
-    productss.length == 0 ? (
+    productss.length === 0 ? (
       <Loader />
     ) : (
       <Wrapper>
@@ -171,7 +169,7 @@ const Home = () => {
           >
             <div className='section__sub'>
               <div className='section__header'>
-                {abouts.heading ? (
+                {about.heading ? (
                   <h4 className='text text--xs c-purple fw-semi text-center home'>
                     About Us
                   </h4>
