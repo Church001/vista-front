@@ -11,9 +11,15 @@ import { SET_ERROR } from 'context/Constants';
 import Error from 'components/error';
 
 const falseSomething = ['1', '2', '3', '4', '5', '6'];
+let beginning = 0;
+let end = 3;
 
 const Products = props => {
   const { state, dispatch } = useContext(GeneralState);
+  const [products, setProducts] = useState({});
+  const [allProductss, setAllProductss] = useState([]);
+  const [productHolder, setProductHolder] = useState([]);
+  const [productLength, setProductLength] = useState(0);
 
   const errSetter = err => {
     const error = {};
@@ -28,7 +34,12 @@ const Products = props => {
     props.history.push('/');
   }
 
-  const [products, setProducts] = useState({});
+  const loadMore = () => {
+    setProductLength(0);
+    if (allProductss.length !== 0) {
+      setProductHolder(allProductss);
+    }
+  };
 
   useEffect(() => {
     if (products) {
@@ -45,11 +56,21 @@ const Products = props => {
           products: res.data.productitems,
           id: res.data.id
         };
+        let allProducts = res.data.productitems;
+        if (allProducts.length > 3) {
+          setProductHolder(allProducts.slice(beginning, end));
+          setProductLength(allProducts.length);
+        } else {
+          setProductHolder(allProducts);
+        }
         setProducts(prod);
+        setAllProductss(allProducts);
       })
       .catch(err => {
         errSetter(err);
       });
+
+    return;
   }, [state.page_id]);
 
   return state.error.msg === undefined ? (
@@ -113,10 +134,9 @@ const Products = props => {
               </div>
             )}
 
-            {products.products && products.products.length > 0 ? (
+            {products.products && productHolder.length > 0 ? (
               <div className='row'>
-                {products.products.map(product => {
-                  // const image = api.BASE_URL + product.image.url;
+                {productHolder.map(product => {
                   const image = product.image.url;
                   return (
                     <div
@@ -138,8 +158,11 @@ const Products = props => {
               </div>
             )}
             <div className='d-flex justify-content-center mt-40'>
-              {products.title && products.products.length > 9 && (
-                <Button className='btn__purple btn--rounded btn--lg'>
+              {allProductss && productLength > 3 && (
+                <Button
+                  className='btn__purple btn--rounded btn--lg'
+                  onClick={() => loadMore()}
+                >
                   LOAD MORE
                 </Button>
               )}
