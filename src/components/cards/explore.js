@@ -107,7 +107,7 @@ export const ExploreCard = ({ img, text, product }) => {
                   {state.product_items.map(single => {
                     if (state.product_items.indexOf(single) === currentIndex) {
                       return (
-                        <div key={single.id} className='row'>
+                        <div key={single.id} className='row fade-in'>
                           <div className='col-md-6'>
                             <img
                               alt=''
