@@ -9,6 +9,7 @@ import axios from 'axios';
 import Loader from '../components/loader';
 import { SET_ERROR } from 'context/Constants';
 import Error from 'components/error';
+import { SET_PRODUCT_ITEM } from 'context/Constants';
 
 const falseSomething = ['1', '2', '3', '4', '5', '6'];
 let beginning = 0;
@@ -57,6 +58,10 @@ const Products = props => {
           id: res.data.id
         };
         let allProducts = res.data.productitems;
+        dispatch({
+          type: SET_PRODUCT_ITEM,
+          payload: allProducts
+        });
         if (allProducts.length > 3) {
           setProductHolder(allProducts.slice(beginning, end));
           setProductLength(allProducts.length);
@@ -138,7 +143,6 @@ const Products = props => {
               <div className='row'>
                 {productHolder.map(product => {
                   const image = product.image.url;
-                  console.log('PRODSSSS', product);
                   return (
                     <div
                       key={product._id}
@@ -148,6 +152,7 @@ const Products = props => {
                         img={image}
                         text={product.description}
                         id={product.id}
+                        product={product}
                       />
                     </div>
                   );
