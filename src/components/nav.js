@@ -82,15 +82,11 @@ export const Nav = props => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // if (history.location && history.location.pathname === '/location') {
-      //   setActive(true);
-      // } else {
       if (window.pageYOffset > 30) {
         setActive(true);
       } else {
         setActive(false);
       }
-      // }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -135,20 +131,10 @@ export const Nav = props => {
               </NavLink>
             </NavItem>
             <NavItem className='nav__item'>
-              <a
-                // onClick={() => alert("ONCLICK")}
-                className='nav__link'
-                href='/#about'
-              >
+              <a className='nav__link' href='/#about'>
                 About
               </a>
             </NavItem>
-
-            {/* <NavItem className='nav__item'>
-              <a className='nav__link' href='/#products'>
-                Our Products
-              </a>
-            </NavItem> */}
             <UncontrolledDropdown className='nav__item' nav inNavbar>
               <DropdownToggle className='nav__link' nav caret>
                 Our Products

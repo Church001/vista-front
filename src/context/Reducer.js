@@ -2,7 +2,8 @@ import {
   SET_CATEGORY_ID,
   SET_ERROR,
   SET_PRODUCTS,
-  SET_PRODUCT_TITLE
+  SET_PRODUCT_TITLE,
+  SET_PRODUCT_ITEM
 } from '../context/Constants';
 
 const reducer = (state, action) => {
@@ -26,6 +27,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         page_title: action.payload
+      };
+    case SET_PRODUCT_ITEM:
+      return {
+        ...state,
+        product_items: action.payload
       };
     default:
       return state;

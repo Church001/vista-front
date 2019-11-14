@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, ModalBody } from 'reactstrap';
+import GeneralState from 'context/Context';
 
-export const ExploreCard = ({ img, text }) => {
+export const ExploreCard = ({ img, text, product }) => {
+  const { state } = useContext(GeneralState);
   const [modal, setModal] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(null);
   const toggle = () => setModal(!modal);
-  // const closeBtn = (
-  //   <button className='close' onClick={toggle}>
-  //     &times;
-  //   </button>
-  // );
-
   const externalCloseBtn = (
     <button
       className='close'
@@ -21,7 +18,27 @@ export const ExploreCard = ({ img, text }) => {
     </button>
   );
 
-  let count = 0;
+  useEffect(() => {
+    if (currentIndex === null) {
+      setCurrentIndex(state.product_items.indexOf(product));
+    }
+  }, [currentIndex]);
+
+  const onPrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else {
+      setCurrentIndex(currentIndex);
+    }
+  };
+
+  const onNext = () => {
+    if (currentIndex < state.product_items.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(currentIndex);
+    }
+  };
 
   return (
     <div
@@ -37,7 +54,7 @@ export const ExploreCard = ({ img, text }) => {
         className='explore-card__header'
         style={{ backgroundImage: `url(${img})` }}
         data-target='#carouselExample'
-        data-slide-to={count}
+        data-slide-to={currentIndex}
       />
       <div className='explore-card__body'>
         <p
@@ -70,31 +87,50 @@ export const ExploreCard = ({ img, text }) => {
               data-ride='carousel'
             >
               <ol className='carousel-indicators'>
-                <li
-                  data-target='#carouselExample'
-                  data-slide-to='0'
-                  className='active'
-                ></li>
-                <li data-target='#carouselExample' data-slide-to='1'></li>
-                <li data-target='#carouselExample' data-slide-to='2'></li>
-                <li data-target='#carouselExample' data-slide-to='3'></li>
+                {state.product_items.map(one => {
+                  return (
+                    <li
+                      key={one.id}
+                      data-target='#carouselExample'
+                      data-slide-to={state.product_items.indexOf(one)}
+                      className={
+                        state.product_items.indexOf(one) === currentIndex
+                          ? 'active'
+                          : ''
+                      }
+                    ></li>
+                  );
+                })}
               </ol>
               <div className='carousel-inner'>
                 <div className='carousel-item active'>
-                  <div className='row'>
-                    <div className='col-md-6'>
-                      <img alt='' src={img} className='img-fill' />
-                    </div>
-                    <div className='col-md-6 modal-content-ct'>
-                      <div className='modal-body-content pt40'>{text}</div>
-                    </div>
-                  </div>
+                  {state.product_items.map(single => {
+                    if (state.product_items.indexOf(single) === currentIndex) {
+                      return (
+                        <div key={single.id} className='row'>
+                          <div className='col-md-6'>
+                            <img
+                              alt=''
+                              src={single.image.url}
+                              className='img-fill'
+                            />
+                          </div>
+                          <div className='col-md-6 modal-content-ct'>
+                            <div className='modal-body-content pt40'>
+                              {single.description}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
                 </div>
               </div>
 
               <a
                 className='carousel-control-prev'
-                href='#carouselExample'
+                // href='#carouselExample'
+                onClick={onPrev}
                 role='button'
                 data-slide='prev'
               >
@@ -106,7 +142,8 @@ export const ExploreCard = ({ img, text }) => {
               </a>
               <a
                 className='carousel-control-next'
-                href='#carouselExample'
+                // href='#carouselExample'
+                onClick={onNext}
                 role='button'
                 data-slide='next'
               >

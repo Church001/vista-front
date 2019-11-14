@@ -315,7 +315,6 @@ const Home = () => {
               >
                 {servicess.servicetypes
                   ? servicess.servicetypes.map(serve => {
-                      // let image = api.BASE_URL + serve.feature_image.url;
                       let image = serve.feature_image.url;
                       return (
                         <div
