@@ -37,7 +37,7 @@ export const ExploreCard = ({ img, text }) => {
         className='explore-card__header'
         style={{ backgroundImage: `url(${img})` }}
         data-target='#carouselExample'
-        data-slide-to={++count}
+        data-slide-to={count}
       />
       <div className='explore-card__body'>
         <p
@@ -58,7 +58,7 @@ export const ExploreCard = ({ img, text }) => {
         className='modal-dialog modal-dialog-centered modal-xl'
         external={externalCloseBtn}
         id='exampleModal'
-        tabindex='-1'
+        tabIndex='-1'
         role='dialog'
         aria-hidden='true'
       >
@@ -66,14 +66,14 @@ export const ExploreCard = ({ img, text }) => {
           <div className='row'>
             <div
               id='carouselExample'
-              class='carousel slide'
+              className='carousel slide'
               data-ride='carousel'
             >
-              <ol class='carousel-indicators'>
+              <ol className='carousel-indicators'>
                 <li
                   data-target='#carouselExample'
                   data-slide-to='0'
-                  class='active'
+                  className='active'
                 ></li>
                 <li data-target='#carouselExample' data-slide-to='1'></li>
                 <li data-target='#carouselExample' data-slide-to='2'></li>
@@ -81,11 +81,13 @@ export const ExploreCard = ({ img, text }) => {
               </ol>
               <div className='carousel-inner'>
                 <div className='carousel-item active'>
-                  <div className='col-md-6'>
-                    <img alt='' src={img} className='img-fill' />
-                  </div>
-                  <div className='col-md-6 modal-content-ct'>
-                    <div className='modal-body-content pt40'>{text}</div>
+                  <div className='row'>
+                    <div className='col-md-6'>
+                      <img alt='' src={img} className='img-fill' />
+                    </div>
+                    <div className='col-md-6 modal-content-ct'>
+                      <div className='modal-body-content pt40'>{text}</div>
+                    </div>
                   </div>
                 </div>
               </div>
