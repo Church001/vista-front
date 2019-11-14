@@ -138,12 +138,17 @@ const Products = props => {
               <div className='row'>
                 {productHolder.map(product => {
                   const image = product.image.url;
+                  console.log('PRODSSSS', product);
                   return (
                     <div
                       key={product._id}
                       className='col-xl-4 col-md-4 col-sm-6 mb-4'
                     >
-                      <Card.Explore img={image} text={product.description} />
+                      <Card.Explore
+                        img={image}
+                        text={product.description}
+                        id={product.id}
+                      />
                     </div>
                   );
                 })}
